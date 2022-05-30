@@ -1,0 +1,3 @@
+/home/bartlomiej/Desktop/Exercises/Cars/build/CMakeFiles/Cars.dir
+/home/bartlomiej/Desktop/Exercises/Cars/build/CMakeFiles/edit_cache.dir
+/home/bartlomiej/Desktop/Exercises/Cars/build/CMakeFiles/rebuild_cache.dir
