@@ -11,3 +11,10 @@ PetrolCar::~PetrolCar()         { std::cout << __FUNCTION__ << std::endl; }
 
 void PetrolCar::refuel()        { std::cout << __FUNCTION__ << std::endl; }
 
+void PetrolCar::refill(){
+    refuel();
+}
+void PetrolCar::changeEngine(PetrolEngine* ee){
+    delete engine_;
+    engine_ = ee;
+}
