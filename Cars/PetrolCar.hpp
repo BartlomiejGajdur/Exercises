@@ -1,16 +1,13 @@
 #include "PetrolEngine.hpp"
-
-class PetrolCar
+#include "Cars.hpp"
+class PetrolCar : public Cars
 {
 public:
     PetrolCar(PetrolEngine* engine);
     ~PetrolCar();
-    void turnLeft();
-    void turnRight();
-    void brake();
-    void accelerate(int speed);
-    void refuel();
 
+private:
+    void refuel();
     PetrolEngine* engine_;
 };
 
