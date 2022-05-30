@@ -1,13 +1,16 @@
+#pragma once
 #include "ElectricEngine.hpp"
-#include "Cars.hpp"
-class ElectricCar : public Cars
+#include "Car.hpp"
+class ElectricCar : public Car
 {
 public:
     ElectricCar(ElectricEngine* engine);
     ~ElectricCar();
     
-    void charge();
+    void refill() override;
 
+    private:
+    void charge();
     ElectricEngine* engine_;
 };
 

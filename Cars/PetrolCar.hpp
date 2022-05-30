@@ -1,6 +1,7 @@
+#pragma once
 #include "PetrolEngine.hpp"
-#include "Cars.hpp"
-class PetrolCar : public Cars
+#include "Car.hpp"
+class PetrolCar : public Car
 {
 public:
     PetrolCar(PetrolEngine* engine);
