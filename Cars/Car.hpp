@@ -8,5 +8,6 @@ class Car{
         void brake() ;
         void accelerate(int speed);
         virtual void refill() = 0;
-        ~Car(){};
+       // virtual void changeEngine() = 0;
+        virtual ~Car(){};
 };
