@@ -1,15 +1,21 @@
-// #include "PetrolEngine.hpp"
-// #include "ElectricEngine.hpp"
+#include "PetrolEngine.hpp"
+#include "ElectricEngine.hpp"
 
-// class Engine
-// {
-// private:
+class Engine
+{
+private:
+    PetrolEngine* Petrolengine_;
+    ElectricEngine* Electricengine_;
+public:
     
-// public:
-//     PetrolEngine* Petrolengine_;
-//     ElectricEngine* Electricengine_;
-//     Engine(PetrolEngine* petrolEng) : PetrolEngine_(petrolEng) {}
-//     Engine(ElectricEngine* electricEng);
+    Engine(PetrolEngine* petrolEng) : Petrolengine_(petrolEng) 
+    {
+    std::cout << __FUNCTION__ << std::endl;
+}
+    Engine(ElectricEngine* electricEng) : Electricengine_(electricEng)
+    {
+    std::cout << __FUNCTION__ << std::endl;
+}
 
     
-// };
+};

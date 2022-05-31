@@ -181,7 +181,10 @@ CMakeFiles/Cars.dir/Car.cpp.o: ../Car.cpp \
   /usr/include/c++/11/bits/basic_ios.tcc \
   /usr/include/c++/11/bits/ostream.tcc \
   /usr/include/c++/11/istream \
-  /usr/include/c++/11/bits/istream.tcc
+  /usr/include/c++/11/bits/istream.tcc \
+  ../Engine.hpp \
+  ../PetrolEngine.hpp \
+  ../ElectricEngine.hpp
 
 CMakeFiles/Cars.dir/ElectricCar.cpp.o: ../ElectricCar.cpp \
   /usr/include/stdc-predef.h \
@@ -365,7 +368,9 @@ CMakeFiles/Cars.dir/ElectricCar.cpp.o: ../ElectricCar.cpp \
   /usr/include/c++/11/bits/basic_ios.tcc \
   /usr/include/c++/11/bits/ostream.tcc \
   /usr/include/c++/11/istream \
-  /usr/include/c++/11/bits/istream.tcc
+  /usr/include/c++/11/bits/istream.tcc \
+  ../Engine.hpp \
+  ../PetrolEngine.hpp
 
 CMakeFiles/Cars.dir/ElectricEngine.cpp.o: ../ElectricEngine.cpp \
   /usr/include/stdc-predef.h \
@@ -734,6 +739,7 @@ CMakeFiles/Cars.dir/HybridCar.cpp.o: ../HybridCar.cpp \
   /usr/include/c++/11/bits/ostream.tcc \
   /usr/include/c++/11/istream \
   /usr/include/c++/11/bits/istream.tcc \
+  ../Engine.hpp \
   ../PetrolCar.hpp
 
 CMakeFiles/Cars.dir/PetrolCar.cpp.o: ../PetrolCar.cpp \
@@ -918,7 +924,9 @@ CMakeFiles/Cars.dir/PetrolCar.cpp.o: ../PetrolCar.cpp \
   /usr/include/c++/11/bits/basic_ios.tcc \
   /usr/include/c++/11/bits/ostream.tcc \
   /usr/include/c++/11/istream \
-  /usr/include/c++/11/bits/istream.tcc
+  /usr/include/c++/11/bits/istream.tcc \
+  ../Engine.hpp \
+  ../ElectricEngine.hpp
 
 CMakeFiles/Cars.dir/PetrolEngine.cpp.o: ../PetrolEngine.cpp \
   /usr/include/stdc-predef.h \
@@ -1285,8 +1293,9 @@ CMakeFiles/Cars.dir/main.cpp.o: ../main.cpp \
   /usr/include/c++/11/bits/ostream.tcc \
   /usr/include/c++/11/istream \
   /usr/include/c++/11/bits/istream.tcc \
-  ../ElectricCar.hpp \
+  ../Engine.hpp \
   ../ElectricEngine.hpp \
+  ../ElectricCar.hpp \
   ../HybridCar.hpp
 
 
@@ -1297,6 +1306,8 @@ CMakeFiles/Cars.dir/main.cpp.o: ../main.cpp \
 ../ElectricCar.hpp:
 
 ../ElectricCar.cpp:
+
+../Engine.hpp:
 
 /usr/include/c++/11/bits/istream.tcc:
 
