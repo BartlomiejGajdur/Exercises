@@ -1,6 +1,6 @@
-#pragma once
-
-class PetrolEngine
+//#pragma once
+//#include "Engine.hpp"
+class PetrolEngine //: public Engine
 {
 public:
     PetrolEngine(int power, float capacity, int gears);
