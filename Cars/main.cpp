@@ -21,11 +21,13 @@ int main()
 
     PetrolEngine petrol(1,2,3);
 
+    Engine* engine =&petrol;
+
     car->accelerate(50);
     car->brake();
     car->accelerate(-900);
     car->refill();
-    car->changeEngine(new PetrolEngine(150, 700, 7));
+    car->changeEngine(engine);
     car->refill();
     
     std::cout << std::endl << "NISSAN" << std::endl;

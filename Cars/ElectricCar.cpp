@@ -15,7 +15,7 @@ void ElectricCar::refill(){
     charge();
 }
 
-void ElectricCar::changeEngine(ElectricEngine* ee){
+void ElectricCar::changeEngine(ElectricEngine* engine){
     delete engine_;
-    engine_= ee;
+    engine_= engine;
 }

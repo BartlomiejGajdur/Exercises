@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-//#include "Engine.hpp"
+#include "Engine.hpp"
 
 class Car{
     public:
@@ -9,6 +9,6 @@ class Car{
         void brake() ;
         void accelerate(int speed);
         virtual void refill() = 0;
-        void changeEngine(Engine* eng);
+        void changeEngine(Engine* engine);
         virtual ~Car(){};
 };
