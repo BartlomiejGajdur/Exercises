@@ -28,6 +28,7 @@ Zadanie 2
 #include <vector>
 
 void wypiszVector(const std::vector<int>&);
+void paramVector(const std::vector<int>&);
 
 int main()
 {
@@ -43,15 +44,33 @@ int main()
     zadanie1.emplace(zadanie1.begin(),12);
     wypiszVector(zadanie1);
 
-    std::cout<<"Size: " << zadanie1.size()<<"  Capacity: "<< zadanie1.capacity()<<std::endl;
+    paramVector(zadanie1);
   
     zadanie1.clear();
     wypiszVector(zadanie1);
 
-    std::cout<<"Size: " << zadanie1.size()<<"  Capacity: "<< zadanie1.capacity()<<std::endl;
+    paramVector(zadanie1);
+
 
     //Zadanie 2:
+    std::cout<<"\n\nZadanie - 2\n\n";
+    
+    std::vector<int> zadanie2;
 
+    paramVector(zadanie2);
+
+    zadanie2.reserve(10);
+    paramVector(zadanie2);
+
+    zadanie2.insert(zadanie2.begin(),10,5);
+    wypiszVector(zadanie2);
+    paramVector(zadanie2);
+    
+    zadanie2.reserve(20);
+    paramVector(zadanie2);
+
+    zadanie2.shrink_to_fit();
+    paramVector(zadanie2);
 
     return 0;
 }
@@ -63,4 +82,9 @@ void wypiszVector(const std::vector<int>& vec)
         std::cout<<element<<" ";
     }
     std::cout<<std::endl;
+}
+
+void paramVector(const std::vector<int>& vec)
+{
+    std::cout<<"Size: " << vec.size()<<"  Capacity: "<< vec.capacity()<<std::endl;
 }
