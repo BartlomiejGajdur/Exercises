@@ -23,19 +23,46 @@ Zadanie 2
 #include <iostream>
 #include <array>
 
+void printArray(const std::array<int,10>&);
+
 int main(){
 
     //Zadanie 1 
 
-    std::array<int,5> other;
+    std::array<int,10> other;
     
-    for (auto& arg : other)
+    printArray(other);
+    if(other.empty())
+        std::cout<<"Empty";
+
+    //Zadanie 2
+
+    std::array<int,10> zadanie2;
+
+    zadanie2.fill(10);
+    std::cout<<"Array - Zadanie2: ";
+    printArray(zadanie2);
+
+    zadanie2[3] = 4;
+    std::cout<<"Array - Zadanie2: ";
+    printArray(zadanie2);
+
+    std::array<int,10> zadanie2_new;
+    swap(zadanie2,zadanie2_new);
+
+    std::cout<<"\nSWAP\n\nArray - Zadanie2: ";
+    printArray(zadanie2);
+    std::cout<<"Array - Zadanie2_new: ";
+    printArray(zadanie2_new);
+
+    return 0;
+}
+
+void printArray(const std::array<int,10>& arr)
+{
+    for (auto& arg : arr)
     {
         std::cout<<arg<<" ";
     }
     std::cout<<std::endl;
-    if(other.empty())
-        std::cout<<"Empty";
-
-    return 0;
 }
