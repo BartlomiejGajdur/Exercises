@@ -25,11 +25,14 @@ class Month{
 int main (){
     try{
         Month month{13};
-    }catch(std::range_error const & re){
-        std::cout<<re.what()<<std::endl;
-    }catch(MonthRangeError const & mre){
-        std::cout<<mre.what()<<std::endl;
+    }catch(...){
+        std::cout<<"Cos zlapalem"<<std::endl;
     }
+    // }catch(std::range_error const & re){
+    //     std::cout<<re.what()<<std::endl;
+    // }catch(MonthRangeError const & mre){
+    //     std::cout<<mre.what()<<std::endl;
+    // }
     
     return 0;
 }
