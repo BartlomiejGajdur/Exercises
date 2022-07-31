@@ -15,7 +15,7 @@ class Month{
         if (validate(n)){
             number = n;
         }else{
-        throw MonthRangeError{"Month should be between 1 and 12"};
+        throw MonthRangeError{"Month should be between  1  and  12"};
         }
         
     };
