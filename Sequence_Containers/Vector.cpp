@@ -88,6 +88,4 @@ void paramVector(const std::vector<int>& vec)
 {
     std::cout<<"Size: " << vec.size();
     std::cout<<" Capacity: "<< vec.capacity()<<std::endl;
-
-
 }
