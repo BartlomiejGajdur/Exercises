@@ -86,5 +86,8 @@ void wypiszVector(const std::vector<int>& vec)
 
 void paramVector(const std::vector<int>& vec)
 {
-    std::cout<<"Size of Vector: " << vec.size()    <<"  Capacity: "<< vec.capacity()<<std::endl;
+    std::cout<<"Size: " << vec.size();
+    std::cout<<" Capacity: "<< vec.capacity()<<std::endl;
+
+
 }
