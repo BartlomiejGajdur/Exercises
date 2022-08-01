@@ -1,5 +1,5 @@
-/*Zadanie 1
-
+/*
+Zadanie 1
     Pomyśl, kiedy empty() może zwrócić true dla std::array
     Znajdź dokumentację funkcji empty() dla std::array na cppreference.com
     Przejdź do sekcji Example i kliknij Run przy przykładzie z kodem
@@ -10,7 +10,6 @@
     Zmień kompilator np. na clang i zobacz czy zawartość jest ta sama
 
 Zadanie 2
-
     Znajdź dokumentację std::array na cppreference.com
     Stwórz nowy plik i napisz funkcję main()
     Stwórz std::array przechowujący wartości całkowitoliczbowe o rozmiarze 10
@@ -18,7 +17,8 @@ Zadanie 2
     Do czwartego elementu przypisz wartość 3
     Stwórz inną tablicę o tym samym rozmiarze
     Podmień tablice
-    Wypisz obie tablice, każdą w osobnej linii*/
+    Wypisz obie tablice, każdą w osobnej linii
+*/
 
 #include <iostream>
 #include <array>
