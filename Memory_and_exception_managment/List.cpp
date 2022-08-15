@@ -9,6 +9,9 @@ public:
         next(nullptr),
         value(v)
     {}
+    ~Node(){
+        delete next;
+    }
 
     Node* next;
     int value;
@@ -20,6 +23,9 @@ public:
     List();
     void add(Node* node);
     Node* get(const int value);
+    ~List(){
+        delete first;
+    }
 
 private:
     Node* first;
@@ -44,6 +50,7 @@ void List::add(Node* node)
         }
         current->next = node;
     }
+   
 }
 
 Node* List::get(const int value)
@@ -84,10 +91,12 @@ int main()
     lista.add(new Node(2));
     lista.add(node7);
     lista.add(new Node(9));
-    auto node = lista.get(1);
+    auto node = lista.get(7);
 
     if (node)
         cout << node->value << '\n';
+
+
 
     return 0;
 }
