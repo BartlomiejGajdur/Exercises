@@ -52,4 +52,11 @@ for (const auto& s : v2)
 {
     wcout << s->artist << L":" << s->title << endl;
 }
+
+int* i = nullptr;
+std::cout<<"\n"<<i<<std::endl;
+std::cout<<"\n"<<*i<<std::endl;
+i--;
+std::cout<<"\n"<<i<<std::endl;
+std::cout<<"\n"<<*i<<std::endl;
 }
