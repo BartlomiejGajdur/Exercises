@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include <memory>
 using namespace std;
 
 class Node
@@ -9,11 +9,9 @@ public:
         next(nullptr),
         value(v)
     {}
-    ~Node(){
-        delete next;
-    }
 
-    Node* next;
+
+    std::unique_ptr<Node> next;
     int value;
 };
 
@@ -21,34 +19,32 @@ class List
 {
 public:
     List();
-    void add(Node* node);
+    void add(std::unique_ptr<Node> node);
     Node* get(const int value);
-    ~List(){
-        delete first;
-    }
+   
 
 private:
-    Node* first;
+    std::unique_ptr<Node> first;
 };
 
 List::List() :
     first(nullptr)
 {}
 
-void List::add(Node* node)
+void List::add(std::unique_ptr<Node> node)
 {
     if(!first)
     {
-        first = node;
+        first = std::move(node);
     }
     else
     {
-        Node* current = first;
+        Node* current = first.get();
         while(current->next)
         {
-            current = current->next;
+            current = current->next.get();
         }
-        current->next = node;
+        current->next = std::move(node);
     }
    
 }
@@ -62,7 +58,7 @@ Node* List::get(const int value)
     }
     else
     {
-        Node* current = first;
+        Node* current = first.get();
         do
         {
             if(current->value == value)
@@ -73,7 +69,7 @@ Node* List::get(const int value)
             else
             {
                 cout << "Going through " << current->value << endl;
-                current = current->next;
+                current = current->next.get();
             }
         } while(current);
         cout << "Not found: value " << value << endl;
@@ -84,13 +80,13 @@ Node* List::get(const int value)
 int main()
 {
     List lista;
-    Node* node4 = new Node(4);
-    Node* node7 = new Node(7);
+    std::unique_ptr<Node> node4 = make_unique<Node>(4);
+    std::unique_ptr<Node> node7 = make_unique<Node>(7);
 
-    lista.add(node4);
-    lista.add(new Node(2));
-    lista.add(node7);
-    lista.add(new Node(9));
+    lista.add(std::move(node4));
+    lista.add(std::make_unique<Node>(4));
+    lista.add(std::move(node7));
+    lista.add(std::make_unique<Node>(4));
     auto node = lista.get(7);
 
     if (node)
