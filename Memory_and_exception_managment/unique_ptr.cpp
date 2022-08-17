@@ -1,4 +1,6 @@
 /* Tworzenie własnego unique_ptr*/
+// = delete nie mozna uzyc funkcji 
+// = default domyslna implementacja (Tylko dla 6 )
 #include <iostream>
 namespace cs{
 template <typename T>
@@ -8,6 +10,10 @@ private:
 
 public:
     unique_ptr(T* ptr = nullptr) : ptr_{ptr}{}
+
+    unique_ptr(const unique_ptr<T>&) =delete; //Konstruktor kopiujący jako delete (zakazany)                         (1)
+    unique_ptr<T> operator=(const unique_ptr<T>&) = delete; // Operator przypisania kopiujący jako delete (zakazany) (2)
+
     ~unique_ptr(){
         delete ptr_;
     };
@@ -26,12 +32,12 @@ public:
         return temp_ptr;
     }
 
-    void reset(T* ptr = nullptr){ //dodac nullptr
+    void reset(T* ptr){ 
         delete ptr_;
         ptr_ = ptr;
     }
 
-    void reset(){   // sprawdzic te funkcje 
+    void reset(){   
         delete ptr_;
     }
 
@@ -49,13 +55,21 @@ std::cout<< *ptr<<'\n';
 std::cout<< ptr.get()<<'\n';
 auto rawPtr =  ptr.release();
 delete rawPtr;
-// //cs::unique_ptr<int> ptr2 = ptr; //Zabronione
-// cs::unique_ptr<int> ptr2 = std::move(ptr);
-
-// ptr.reset(new int {10});
-// ptr.reset();
 
 
+cs::unique_ptr<int> ptr2 = ptr;          // (1)
+cs::unique_ptr<int> ptr3{new int {5}};
+ptr3 = ptr;                              // (2)
+
+
+
+
+
+ ptr.reset(new int {10});
+ std::cout<< *ptr<<std::endl;
+
+ ptr.reset();
+ std::cout<< *ptr;
 
 
     return 0;
