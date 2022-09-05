@@ -10,7 +10,6 @@ private:
 
 public:
     unique_ptr(T* ptr = nullptr) : ptr_{ptr}{}
-
     unique_ptr(const unique_ptr<T>&) =delete; //Konstruktor kopiujący jako delete (zakazany)                         (1)
     unique_ptr<T>& operator=(const unique_ptr<T>&) = delete; // Operator przypisania kopiujący jako delete (zakazany) (2)
 
