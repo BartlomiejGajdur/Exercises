@@ -77,5 +77,6 @@ int main(){
     // std::cout<<x.get()<<std::endl;
     std::cout<<x2.get()<<std::endl;
     std::cout<<x3.get()<<std::endl;
-
+     
+    return 0;
 }
