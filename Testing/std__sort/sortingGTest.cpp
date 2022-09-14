@@ -38,4 +38,40 @@ TEST_F(SortTestUnderTestFixture, SortString_tExTtextTEXT_EETTTXetttxx)
     ASSERT_EQ(textw,expected);
 }
 
+TEST_F(SortTestUnderTestFixture, SortVector)
+{
+    //Given
+    std::vector<int> expected{1,2,3,4,5};
+
+    //When  
+    std::sort(v2.begin(),v2.end());
+
+    //Then
+    ASSERT_EQ(v2,expected);
+}
+
+TEST_F(SortTestUnderTestFixture, VectorVisSortedWithReverseIterators)
+{
+    //Given
+    std::vector<int> expected {5, 4, 3, 2, 1};
+
+    //When  
+    std::sort(v1.rbegin(),v1.rend());
+
+    //Then
+    ASSERT_EQ(v1,expected);
+}
+
+TEST_F(SortTestUnderTestFixture, EmptyVectors)
+{
+    //Given
+    std::vector<int> expected {};
+
+    //When  
+    std::sort(v5.begin(),v5.end());
+
+    //Then
+    ASSERT_EQ(v5,expected);
+}
+
 
