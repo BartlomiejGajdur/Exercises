@@ -12,6 +12,32 @@ struct SortTestUnderTestFixture : public ::testing::Test{
     std::string text{"text"};
 };
 
+struct SortTestFixture : public ::testing::Test{
+    std::vector<int> v{ 3,2,1};
+    std::vector<int> expected {1,2,3};
+
+    template<typename Type>
+    void sortAndCheck(Type & input,
+                      const Type & expected){
+         //When  
+        std::sort(input.begin(),input.end());
+
+        //Then
+        ASSERT_EQ(input,expected);
+     }
+
+    template<typename Type>
+    void sortDescendingAndCheck(Type & input,
+                      const Type & expected){
+         //When  
+        std::sort(input.begin(),input.end(), std::greater<int>{});
+
+        //Then
+        ASSERT_EQ(input,expected);
+     }
+
+};
+
 
 TEST_F(SortTestUnderTestFixture, SortString_text_ettx)
 {
@@ -74,4 +100,34 @@ TEST_F(SortTestUnderTestFixture, EmptyVectors)
     ASSERT_EQ(v5,expected);
 }
 
+//@@@@//
 
+TEST_F(SortTestFixture, TestFunction){
+    sortAndCheck(v,expected);
+}
+
+TEST_F(SortTestFixture ,VShouldBeEqualTo321From123)
+{
+    std::vector<int> v {1,2,3};
+    std::vector<int> expected {3,2,1};
+
+    sortDescendingAndCheck(v,expected);
+}
+
+TEST_F(SortTestFixture, SortString_text__xtte)
+{
+    //Given
+    std::string text{"text"};
+    std::string expected{"xtte"};
+
+    sortDescendingAndCheck(text,expected);
+}
+
+TEST_F(SortTestFixture, SortString_tExTtextTEXT__xxttteXTTTEE)
+{
+    //Given
+    std::string textw{"tExTtextTEXT"};
+    std::string expected{"xxttteXTTTEE"};
+
+    sortDescendingAndCheck(textw,expected);
+}
