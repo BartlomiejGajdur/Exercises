@@ -12,7 +12,7 @@ struct SortTestUnderTestFixture : public ::testing::Test{
     std::string text{"text"};
 };
 
-struct SortTestFixture : public ::testing::Test{
+struct SortTestFixture : public ::testing::TestWithParam<std::vector<int>>{
     std::vector<int> v{ 3,2,1};
     std::vector<int> expected {1,2,3};
 
@@ -39,6 +39,7 @@ struct SortTestFixture : public ::testing::Test{
 };
 
 
+
 TEST_F(SortTestUnderTestFixture, SortString_text_ettx)
 {
     //Given
@@ -50,6 +51,7 @@ TEST_F(SortTestUnderTestFixture, SortString_text_ettx)
     //Then
     ASSERT_EQ(text,expected);
 }
+
 
 TEST_F(SortTestUnderTestFixture, SortString_tExTtextTEXT_EETTTXetttxx)
 {
@@ -102,9 +104,20 @@ TEST_F(SortTestUnderTestFixture, EmptyVectors)
 
 //@@@@//
 
-TEST_F(SortTestFixture, TestFunction){
+TEST_P(SortTestFixture, GivenPermutedVector){
+    
+    std::vector<int> v = GetParam();
+    std::vector<int> expected {1,2,3};
+
     sortAndCheck(v,expected);
 }
+
+INSTANTIATE_TEST_SUITE_P(PermutationsOf123Vector,
+                        SortTestFixture,
+                        testing::Values(std::vector<int>{3,2,1},
+                                        std::vector<int>{1,2,3},
+                                        std::vector<int>{2,1,3},
+                                        std::vector<int>{3,1,2}));
 
 TEST_F(SortTestFixture ,VShouldBeEqualTo321From123)
 {
@@ -131,3 +144,4 @@ TEST_F(SortTestFixture, SortString_tExTtextTEXT__xxttteXTTTEE)
 
     sortDescendingAndCheck(textw,expected);
 }
+
