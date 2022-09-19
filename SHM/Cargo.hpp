@@ -31,12 +31,9 @@ class Cargo{
 
     bool operator==(const Cargo& other)
     {
-        if(this->amount_ == other.amount_ &&
+        return this->amount_ == other.amount_ &&
             this->name_ == other.name_ &&
-            this->basePrice_== other.basePrice_ ) 
-            {return true;}
-            else 
-            {return false;}
+            this->basePrice_== other.basePrice_;
     }
 
     private:
