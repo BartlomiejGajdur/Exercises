@@ -1,3 +1,6 @@
+#include <string>
+#include <iostream>
+
 class Cargo{
     public:
     Cargo(std::string name, size_t amount, double basePrice) :  
@@ -6,15 +9,15 @@ class Cargo{
                                                               basePrice_(basePrice) {} 
 
 
-    Cargo& operator+=(const size_t num)
+    Cargo& operator+=(const size_t amount)
     {      
-        amount_+=num;
+        amount_+=amount;
         return *this;
     }                                                           
 
-    Cargo& operator-=(const size_t num)
+    Cargo& operator-=(const size_t amount)
     {
-        amount_-=num;
+        amount_-=amount;
         return *this;
     }   
 
