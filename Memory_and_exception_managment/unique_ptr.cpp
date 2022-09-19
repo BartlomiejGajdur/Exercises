@@ -67,8 +67,8 @@ auto rawPtr =  ptr.release();
 delete rawPtr;
 
 //cs::unique_ptr<int> ptr2 = ptr;          // (1)
-//cs::unique_ptr<int> ptr3{new int {5}};
-//ptr3 = ptr;                              // (2)
+// cs::unique_ptr<int> ptr3{new int {5}};
+// ptr3 = std::move(ptr);                              // (2)
 
 
 cs::unique_ptr<int> ptr2{new int{2}};
