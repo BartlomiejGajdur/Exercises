@@ -1,6 +1,7 @@
 #include <gtest/gtest.h>
 #include "..\Ship.hpp"
 #include "..\Cargo.hpp"
+#include "..\Coordinates.hpp"
 #include <string>
 #include <iostream>
 
@@ -69,6 +70,24 @@ TEST(ComprasionTwoCargos, DifferentCargoShouldReturnFalse)
     Cargo item1{"Apple",1,2};
     Cargo item2{"carrot",1,2};
     bool result = (item1 == item2);
+    
+    EXPECT_FALSE(result);
+}
+
+TEST(ComprasionTwoCoordinates, ExactCoordinatesShouldReturnTrue)
+{
+    Coordinates first{1,1};
+    Coordinates second{1,1};
+    bool result = (first == second);
+    
+    EXPECT_TRUE(result);
+}
+
+TEST(ComprasionTwoCoordinates, DifferentCoordinatesShouldReturnFalse)
+{
+    Coordinates first{1,1};
+    Coordinates second{1,2};
+    bool result = (first == second);
     
     EXPECT_FALSE(result);
 }
