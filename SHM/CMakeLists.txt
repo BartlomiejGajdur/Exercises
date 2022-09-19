@@ -19,7 +19,7 @@ FetchContent_MakeAvailable(googletest)
 enable_testing()
 include(GoogleTest)
 
-add_executable(${PROJECT_NAME}-ut ./tests/ShipTest.cpp)
+add_executable(${PROJECT_NAME}-ut ./tests/ShipCargoTest.cpp)
 add_executable(${PROJECT_NAME} ./Ship.cpp)
 target_compile_options(${PROJECT_NAME}-ut PRIVATE -Wall -Wextra -Werror)
 target_link_libraries(${PROJECT_NAME}-ut gtest gtest_main)
