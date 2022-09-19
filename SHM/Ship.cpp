@@ -9,6 +9,7 @@ int main(){
     Ship statek1;
     std::cout<<statek1.getId();
 
+    std::cout<<statek.getCapacity();
 
 
     return 0;
