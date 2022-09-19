@@ -7,11 +7,15 @@ class Coordinates{
         Coordinates(int positionX, int positionY) : 
                                                     positionX_(positionX), 
                                                     positionY_(positionY) {}
+        Coordinates(){}                                            
     //GETTERS
     int getPositionX() const {return positionX_;}
     int getPositionY() const {return positionY_;}
-    //SETTERS
 
+
+    //SETTERS
+    void setPositionX(const int positionX) {positionX_=positionX;}
+    void setPositionY(const int positionY) {positionY_=positionY;}
 
     //OPERATORS
     bool operator==(const Coordinates &other)
