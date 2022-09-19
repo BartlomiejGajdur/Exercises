@@ -4,14 +4,14 @@
 #include <algorithm> 
 #include <functional>
 
-struct SortTestUnderTestFixture : public ::testing::Test{
-    std::vector<int> v1{1,2,3,4,5}; //sorted
-    std::vector<int> v2{5,4,3,2,1}; //unsorted
-    std::vector<int> v3{1,2,3,3,4}; //sorted with the same values
-    std::vector<int> v4{3,5}; //the whole vector contains te same values
-    std::vector<int> v5{}; //Empty
-    std::string text{"text"};
-};
+// struct SortTestUnderTestFixture : public ::testing::Test{
+//     std::vector<int> v1{1,2,3,4,5}; //sorted
+//     std::vector<int> v2{5,4,3,2,1}; //unsorted
+//     std::vector<int> v3{1,2,3,3,4}; //sorted with the same values
+//     std::vector<int> v4{3,5}; //the whole vector contains te same values
+//     std::vector<int> v5{}; //Empty
+//     std::string text{"text"};
+// };
 
 
 using StringPair = std::pair<std::string,std::string>;
