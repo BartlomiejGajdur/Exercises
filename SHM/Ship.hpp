@@ -25,7 +25,8 @@ class Ship{
     
     //Setters
     void setName(const std::string &name) {name_ = name;}
-
+    void setCrew(const int &crew)         {crew_= crew;}
+    
     //Operators
     Ship& operator+=(const int num)
     {
@@ -53,7 +54,7 @@ class Ship{
 
 
     private:
-    const int id_;
+    int id_;
     std::string name_;
     size_t speed_;
     size_t maxCrew_;

@@ -9,6 +9,14 @@ class Cargo{
                                                               basePrice_(basePrice) {} 
 
 
+//GETTERS
+    std::string getName() const {return name_;}
+    size_t getAmount()    const {return amount_;}
+    double getBasePrice() const {return basePrice_;}
+//SETTERS
+
+
+//OPERATORS
     Cargo& operator+=(const size_t amount)
     {      
         amount_+=amount;
@@ -20,6 +28,16 @@ class Cargo{
         amount_-=amount;
         return *this;
     }   
+
+    bool operator==(const Cargo& other)
+    {
+        if(this->amount_ == other.amount_ &&
+            this->name_ == other.name_ &&
+            this->basePrice_== other.basePrice_ ) 
+            {return true;}
+            else 
+            {return false;}
+    }
 
     private:
     std::string name_;
