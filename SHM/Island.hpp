@@ -28,6 +28,12 @@ class Island{
     //OPERATORS
     friend std::ostream& operator<<(std::ostream &os, Island& island);
 
+    bool operator==(const Island &other)
+    {
+        return this->position_.getPositionX() == other.position_.getPositionX() &&
+                this->position_.getPositionY() == this->position_.getPositionY();
+    }
+
     private:
         Coordinates position_;
 
