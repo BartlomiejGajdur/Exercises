@@ -36,12 +36,15 @@ class Map{
             for(int j = 0; j < i; j++)
                 {
                     if(*allIslands_[j] == *allIslands_[i])
-                    {
+                    {   
+                        allIslands_.clear();
                         return true;
+                        break;  
                     }
                 }
         }
         return false;
+
     }
 
     private:

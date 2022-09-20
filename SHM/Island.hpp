@@ -31,9 +31,10 @@ class Island{
     bool operator==(const Island &other)
     {
         return this->position_.getPositionX() == other.position_.getPositionX() &&
-                this->position_.getPositionY() == this->position_.getPositionY();
+                this->position_.getPositionY() == other.position_.getPositionY();
     }
 
+    
     private:
         Coordinates position_;
 
