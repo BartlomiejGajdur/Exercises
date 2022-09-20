@@ -115,3 +115,37 @@ TEST(validateGeneratedIslandsTest, RecurringIslandsShouldReturnTrue)
     
     EXPECT_TRUE(result);
 }
+
+TEST(GetIsland, GetIslandByCoordinate_NoExists)
+{   
+    std::shared_ptr<Island> searchIsland = std::make_shared<Island>();
+    Map mapa;
+    std::vector<std::shared_ptr<Island>> vec;
+    mapa.generateIslandsOnMap(vec);
+    
+    searchIsland = mapa.getIsland({102,102});
+
+    EXPECT_EQ(nullptr, searchIsland);
+   
+}
+
+
+TEST(GetIsland, GetIslandByCoordinate_Exists)
+{   
+    Island wyspa1({1,2});
+    std::shared_ptr<Island> searchIsland = std::make_shared<Island>();
+    Map mapa;
+    std::vector<std::shared_ptr<Island>> vec;
+    mapa.generateIslandsOnMap(vec);
+    *vec[8] = wyspa1;
+    
+    searchIsland = mapa.getIsland({1,2});
+    
+    
+
+    bool result = (wyspa1==*searchIsland);
+    
+    EXPECT_TRUE(result);
+}
+
+
