@@ -27,7 +27,16 @@ int main(){
     {
         std::cout<<v->getPosition()<<std::endl;
     }   
+    int a,b;
+    std::cin>>a>>b;
+    std::shared_ptr<Island> Znaleziona = std::make_shared<Island>();
+    Znaleziona = mapa.getIsland({a,b});
 
+    std::cout<<std::endl<<std::endl;
+
+    std::cout<<*Znaleziona;
+
+    std::cout<<std::endl<<std::endl;
     // std::vector<std::shared_ptr<Island>> wszystkie;
     // wszystkie = mapa.getAllIslands();
     // *wszystkie[0] = Island({1,2});
@@ -45,6 +54,8 @@ int main(){
     // }else{
     //     std::cout<<"nie";
     // }
+
+
 
 
     

@@ -34,9 +34,9 @@ class Island{
                 this->position_.getPositionY() == other.position_.getPositionY();
     }
 
-    
+     
     private:
-        Coordinates position_;
+     Coordinates position_;
 
 
 };
