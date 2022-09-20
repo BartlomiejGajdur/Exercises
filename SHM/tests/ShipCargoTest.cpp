@@ -2,19 +2,15 @@
 #include "..\Ship.hpp"
 #include "..\Cargo.hpp"
 #include "..\Coordinates.hpp"
+#include "..\Map.hpp"
+#include "..\Island.hpp"
 #include <string>
 #include <iostream>
+#include <vector>
+#include <memory>
 
-// struct ShipUnderTestFixture : public ::testing::Test{  
-//      Ship statek{0,"",0,100,0};
-//      statek.setCrew(90);
-// };
 
-// TEST_F(ShipUnderTestFixture, test)
-// {   
-//     statek+=20;
-//     EXPECT_EQ(statek.getCrew(), 90);
-// }
+
 
 TEST(ShipAddingCrew, AddingCrewOverMaxCrew)
 {
@@ -90,4 +86,32 @@ TEST(ComprasionTwoCoordinates, DifferentCoordinatesShouldReturnFalse)
     bool result = (first == second);
     
     EXPECT_FALSE(result);
+}
+
+TEST(validateGeneratedIslandsTest, DifferentIslandsShouldReturnFalse)
+{       
+    Map mapa;
+    std::vector<std::shared_ptr<Island>> vec;
+   
+        
+        do{
+            mapa.generateIslandsOnMap(vec);
+        }while(mapa.validateGeneratedIslands(vec));
+        bool result = mapa.validateGeneratedIslands(vec);
+    
+    EXPECT_FALSE(result);
+}
+
+TEST(validateGeneratedIslandsTest, RecurringIslandsShouldReturnTrue)
+{   
+    Island wyspa1({1,2});
+    Map mapa;
+    std::vector<std::shared_ptr<Island>> vec;
+    mapa.generateIslandsOnMap(vec);
+    *vec[0] = wyspa1;
+    *vec[5] = wyspa1;
+   
+    bool result = mapa.validateGeneratedIslands(vec);
+    
+    EXPECT_TRUE(result);
 }
