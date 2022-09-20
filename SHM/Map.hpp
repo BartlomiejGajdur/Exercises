@@ -49,10 +49,8 @@ class Map{
 
     std::shared_ptr<Island> getIsland(const Coordinates& coordinate){ //Function returns nullptr while no Island were found
        
-       std::shared_ptr<Island> islandSearch = std::make_shared<Island>();
-        Island islandSearch1({coordinate.getPositionX(),coordinate.getPositionY()});
-       *islandSearch = islandSearch1;
-        for(auto v: allIslands_ )
+       std::shared_ptr<Island> islandSearch = std::make_shared<Island>(coordinate.getPositionX(),coordinate.getPositionY());
+        for(auto v: allIslands_)
         {
             if(*v == *islandSearch){
                 return v;

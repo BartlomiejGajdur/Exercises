@@ -5,6 +5,10 @@
 class Island{
     public:
         Island(Coordinates position) : position_(position) {}
+        Island(int positionX ,int positionY){
+            position_.setPositionX(positionX);
+            position_.setPositionY(positionY);
+        }
         Island(){
             getRandomCoordinates(position_);
         }

@@ -104,7 +104,7 @@ TEST(validateGeneratedIslandsTest, DifferentIslandsShouldReturnFalse)
 
 TEST(validateGeneratedIslandsTest, RecurringIslandsShouldReturnTrue)
 {   
-    Island wyspa1({1,2});
+    Island wyspa1(1,2);
     Map mapa;
     std::vector<std::shared_ptr<Island>> vec;
     mapa.generateIslandsOnMap(vec);
@@ -132,7 +132,7 @@ TEST(GetIsland, GetIslandByCoordinate_NoExists)
 
 TEST(GetIsland, GetIslandByCoordinate_Exists)
 {   
-    Island wyspa1({1,2});
+    Island wyspa1(1,2);
     std::shared_ptr<Island> searchIsland = std::make_shared<Island>();
     Map mapa;
     std::vector<std::shared_ptr<Island>> vec;
