@@ -4,13 +4,25 @@
 #include "..\Coordinates.hpp"
 #include "..\Map.hpp"
 #include "..\Island.hpp"
+#include "..\Player.hpp"
 #include <string>
 #include <iostream>
 #include <vector>
 #include <memory>
 
 
+TEST(GetAvaliableSpace, Function_GetAvailableSpace_ShouldReturnCorrectValueOfAvaliableSpace)
+{   
+    std::shared_ptr<Ship> statek = std::make_shared<Ship>(1,"statek",10,10,100);
+    std::vector<std::shared_ptr<Cargo>> vecCarg = statek->getAllCargo();
+    statek->addCargo(std::make_shared<Cargo>("1",25,32));
+    statek->addCargo(std::make_shared<Cargo>("2",25,32));
+    statek->addCargo(std::make_shared<Cargo>("3",25,32));
+    Player gracz{statek,10};
 
+
+    EXPECT_EQ(gracz.getAvailableSpace(),25);
+}
 
 TEST(ShipAddingCrew, AddingCrewOverMaxCrew)
 {
@@ -116,7 +128,7 @@ TEST(validateGeneratedIslandsTest, RecurringIslandsShouldReturnTrue)
     EXPECT_TRUE(result);
 }
 
-TEST(GetIsland, GetIslandByCoordinate_NoExists)
+TEST(GetIsland, GetIslandByCoordinateNoExists)
 {   
     std::shared_ptr<Island> searchIsland = std::make_shared<Island>();
     Map mapa;
@@ -130,7 +142,7 @@ TEST(GetIsland, GetIslandByCoordinate_NoExists)
 }
 
 
-TEST(GetIsland, GetIslandByCoordinate_Exists)
+TEST(GetIsland, GetIslandByCoordinateExists)
 {   
     Island wyspa1(1,2);
     std::shared_ptr<Island> searchIsland = std::make_shared<Island>();
@@ -147,5 +159,4 @@ TEST(GetIsland, GetIslandByCoordinate_Exists)
     
     EXPECT_TRUE(result);
 }
-
 
