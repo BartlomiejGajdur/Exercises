@@ -5,6 +5,10 @@
 class Island{
     public:
         Island(Coordinates position) : position_(position) {}
+        Island(int positionX ,int positionY){
+            position_.setPositionX(positionX);
+            position_.setPositionY(positionY);
+        }
         Island(){
             getRandomCoordinates(position_);
         }
@@ -28,8 +32,15 @@ class Island{
     //OPERATORS
     friend std::ostream& operator<<(std::ostream &os, Island& island);
 
+    bool operator==(const Island &other)
+    {
+        return this->position_.getPositionX() == other.position_.getPositionX() &&
+                this->position_.getPositionY() == other.position_.getPositionY();
+    }
+
+     
     private:
-        Coordinates position_;
+     Coordinates position_;
 
 
 };
