@@ -10,7 +10,14 @@ class Player{
                                                                     ship_(ship), 
                                                                     money_(money),
                                                                     availableSpace_(availableSpace) {}
-    
+    //GETTERS
+    std::shared_ptr<Ship> getShip() const {return ship_;}
+    double getMoney()               const {return money_;}
+    int getAvailableSpace()         const {return availableSpace_;}
+    //SETTERS
+
+
+    //OPERATORS
 
     private:
     std::shared_ptr<Ship> ship_;
