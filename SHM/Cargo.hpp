@@ -15,7 +15,7 @@ class Cargo{
     size_t getAmount()    const {return amount_;}
     double getBasePrice() const {return basePrice_;}
 //SETTERS
-
+    
 
 //OPERATORS
     Cargo& operator+=(const size_t amount)
@@ -32,8 +32,7 @@ class Cargo{
 
     bool operator==(const Cargo& other)
     {
-        return this->amount_ == other.amount_ &&
-            this->name_ == other.name_ &&
+        return  this->name_ == other.name_ &&
             this->basePrice_== other.basePrice_;
     }
 
