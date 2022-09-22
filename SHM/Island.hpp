@@ -2,6 +2,9 @@
 #include "Coordinates.hpp"
 #include <random>
 
+constexpr size_t kWidth = 100;
+constexpr size_t kHeight = 100;
+
 class Island{
     public:
         Island(Coordinates position) : position_(position) {}
@@ -24,9 +27,10 @@ class Island{
     {
         std::random_device rd;
         std::mt19937 gen(rd());
-        std::uniform_int_distribution<> distrib(1, 100);
-        pos.setPositionX(distrib(gen));
-        pos.setPositionY(distrib(gen));
+        std::uniform_int_distribution<> widthGen(1, kWidth);
+        std::uniform_int_distribution<> heightGen(1, kHeight);
+        pos.setPositionX(widthGen(gen));
+        pos.setPositionY(heightGen(gen));
     }
 
     //OPERATORS

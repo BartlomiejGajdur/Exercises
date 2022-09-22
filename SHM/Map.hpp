@@ -4,14 +4,15 @@
 #include "Island.hpp"
 #include <random>
 
+constexpr size_t kIslandNum = 10;
+
+
 class Map{
     public:
      Map(){
         do{
             generateIslandsOnMap(allIslands_);
         }while(validateGeneratedIslands(allIslands_));
-
-        //wykonuj dopóki nie beda wszystkie inne
             
      }
 
@@ -22,7 +23,7 @@ class Map{
    //FUNCTIONS
    void generateIslandsOnMap ( std::vector<std::shared_ptr<Island>> &islands) // Map contains vector of shared_ptr<Island> with random generate Islands
    {
-        for (int i = 0; i<10 ; i++) 
+        for (size_t i = 0; i<kIslandNum ; i++) 
         {
             islands.push_back(std::make_shared<Island>());
         }
@@ -31,9 +32,9 @@ class Map{
    bool validateGeneratedIslands(std::vector<std::shared_ptr<Island>> &allIslands_) //Check if every island is unique
     {
 
-        for(int i = 0; i < 10; i++)
+        for(size_t i = 0; i < kIslandNum; i++)
         {
-            for(int j = 0; j < i; j++)
+            for(size_t j = 0; j < i; j++)
                 {
                     if(*allIslands_[j] == *allIslands_[i])
                     {   
