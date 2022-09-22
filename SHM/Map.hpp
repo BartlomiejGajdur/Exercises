@@ -18,7 +18,7 @@ class Map{
 
     //GETTERS
    std::vector<std::shared_ptr<Island>> getAllIslands() const {return allIslands_;}
-
+   std::shared_ptr<Island> getCurrentPosition()         const {return currentPosition_;}
    //FUNCTIONS
    void generateIslandsOnMap ( std::vector<std::shared_ptr<Island>> &islands) // Map contains vector of shared_ptr<Island> with random generate Islands
    {
