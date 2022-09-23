@@ -17,76 +17,76 @@
 #include <memory>
 
 
-TEST(GetAvaliableSpace, Function_GetAvailableSpace_ShouldReturnCorrectValueOfAvaliableSpace)
-{   
-    std::shared_ptr<Ship> statek = std::make_shared<Ship>(1,"statek",10,10,100);
-    std::vector<std::shared_ptr<Cargo>> vecCarg = statek->getAllCargo();
-    statek->addCargo(std::make_shared<Cargo>("1",25,32));
-    statek->addCargo(std::make_shared<Cargo>("2",25,32));
-    statek->addCargo(std::make_shared<Cargo>("3",25,32));
-    Player gracz{statek,10};
+// TEST(GetAvaliableSpace, Function_GetAvailableSpace_ShouldReturnCorrectValueOfAvaliableSpace)
+// {   
+//     std::shared_ptr<Ship> statek = std::make_shared<Ship>(1,"statek",10,10,100);
+//     std::vector<std::shared_ptr<Cargo>> vecCarg = statek->getAllCargo();
+//     statek->addCargo(std::make_shared<Cargo>("1",25,32));
+//     statek->addCargo(std::make_shared<Cargo>("2",25,32));
+//     statek->addCargo(std::make_shared<Cargo>("3",25,32));
+//     Player gracz{statek,10};
 
 
-    EXPECT_EQ(gracz.getAvailableSpace(),25);
-}
+//     EXPECT_EQ(gracz.getAvailableSpace(),25);
+// }
 
-TEST(ShipAddingCrew, AddingCrewOverMaxCrew)
-{
-     Ship statek{0,"",0,100,0};
-     statek.setCrew(90);
-     statek+=20;
+// TEST(ShipAddingCrew, AddingCrewOverMaxCrew)
+// {
+//      Ship statek{0,"",0,100,0};
+//      statek.setCrew(90);
+//      statek+=20;
    
-     EXPECT_EQ(statek.getCrew(), 90);
+//      EXPECT_EQ(statek.getCrew(), 90);
 
-}
+// }
 
-TEST(ShipAddingCrew,AddingCrewbelowMaxCrew)
-{
-     Ship statek{0,"",0,100,0};
-     statek.setCrew(90);
-        statek+=1;
+// TEST(ShipAddingCrew,AddingCrewbelowMaxCrew)
+// {
+//      Ship statek{0,"",0,100,0};
+//      statek.setCrew(90);
+//         statek+=1;
    
-     EXPECT_EQ(statek.getCrew(), 91);
+//      EXPECT_EQ(statek.getCrew(), 91);
 
-}
+// }
 
-TEST(ShipDecreasingCrew, DecreasingCrewBelow0)
-{
-     Ship statek{0,"",0,100,0};
-     statek.setCrew(10);
-     statek-=20;
+// TEST(ShipDecreasingCrew, DecreasingCrewBelow0)
+// {
+//      Ship statek{0,"",0,100,0};
+//      statek.setCrew(10);
+//      statek-=20;
    
-     EXPECT_EQ(statek.getCrew(), 10);
+//      EXPECT_EQ(statek.getCrew(), 10);
 
-}
+// }
 
-TEST(ShipDecreasingCrew, DecreasingCrew)
-{
-     Ship statek{0,"",0,100,0};
-     statek.setCrew(90);
-        statek-=1;
+// TEST(ShipDecreasingCrew, DecreasingCrew)
+// {
+//      Ship statek{0,"",0,100,0};
+//      statek.setCrew(90);
+//         statek-=1;
    
-     EXPECT_EQ(statek.getCrew(), 89);
+//      EXPECT_EQ(statek.getCrew(), 89);
 
-}
+// }
 
-TEST(ComprasionTwoCargos, EqualCargoShouldReturnTrue)
-{
-    Cargo item1{"carrot",1,2};
-    Cargo item2{"carrot",1,2};
-    bool result = (item1 == item2);
+// TEST(ComprasionTwoCargos, EqualCargoShouldReturnTrue)
+// {
+//     Cargo item1{"carrot",1,2};
+//     Cargo item2{"carrot",1,2};
+//     bool result = (item1 == item2);
     
-    EXPECT_TRUE(result);
-}
+//     EXPECT_TRUE(result);
+// }
 
-TEST(ComprasionTwoCargos, DifferentCargoShouldReturnFalse)
-{
-    Cargo item1{"Apple",1,2};
-    Cargo item2{"carrot",1,2};
-    bool result = (item1 == item2);
+// TEST(ComprasionTwoCargos, DifferentCargoShouldReturnFalse)
+// {
+//     Cargo item1{"Apple",1,2};
+//     Cargo item2{"carrot",1,2};
+//     bool result = (item1 == item2);
     
-    EXPECT_FALSE(result);
-}
+//     EXPECT_FALSE(result);
+// }
 
 TEST(ComprasionTwoCoordinates, ExactCoordinatesShouldReturnTrue)
 {
