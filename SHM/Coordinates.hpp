@@ -18,12 +18,7 @@ class Coordinates{
     void setPositionY(const int positionY) {positionY_=positionY;}
 
     //OPERATORS
-    bool operator==(const Coordinates &other)
-    {
-        return this->positionX_ == other.positionX_ &&
-                this->positionY_ == other.positionY_;
-    }
-
+    bool operator==(const Coordinates &other);
     friend std::ostream& operator<<(std::ostream &os, const Coordinates& position);
 
     
@@ -34,8 +29,3 @@ class Coordinates{
 
 };
 
-std::ostream& operator<<(std::ostream &os, const Coordinates& position)
-    {   
-        os<<"X["<<position.getPositionX()<<"] Y["<<position.getPositionY()<<"]";
-        return os;
-    }

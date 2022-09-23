@@ -1,6 +1,5 @@
 #pragma once
 #include <string>
-#include <iostream>
 
 class Cargo{
     public:
@@ -18,23 +17,9 @@ class Cargo{
     
 
 //OPERATORS
-    Cargo& operator+=(const size_t amount)
-    {      
-        amount_+=amount;
-        return *this;
-    }                                                           
-
-    Cargo& operator-=(const size_t amount)
-    {
-        amount_-=amount;
-        return *this;
-    }   
-
-    bool operator==(const Cargo& other)
-    {
-        return  this->name_ == other.name_ &&
-            this->basePrice_== other.basePrice_;
-    }
+    Cargo& operator+=(const size_t amount);                                                      
+    Cargo& operator-=(const size_t amount);
+    bool operator==(const Cargo& other);
 
     private:
     std::string name_;

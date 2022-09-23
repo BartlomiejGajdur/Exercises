@@ -33,30 +33,10 @@ class Ship{
     void setName(const std::string &name) {name_ = name;}
     void setCrew(const int &crew)         {crew_= crew;}
     void addCargo(const std::shared_ptr<Cargo> &cargo) {cargo_.push_back(cargo);} //Shall call function which check if added Cargo not overload Capacity of the Ship
+    
     //Operators
-    Ship& operator+=(const int num)
-    {
-        if(crew_+num>maxCrew_)
-            {
-                std::cerr<<"Too many papays!";
-                return *this;
-            }else{
-                crew_+=num;
-                return *this;
-            }
-    }
-
-     Ship& operator-=(const size_t num)
-    {
-        if(num>crew_)
-            {
-                std::cerr<<"Number of papays is lower than 0\n";
-                return *this;
-            }else{
-                crew_-=num;
-                return *this;
-            }
-    }
+    Ship& operator+=(const int num);
+    Ship& operator-=(const size_t num);
 
     
     private:

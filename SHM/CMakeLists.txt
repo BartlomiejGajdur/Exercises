@@ -20,7 +20,7 @@ enable_testing()
 include(GoogleTest)
 
 add_executable(${PROJECT_NAME}-ut ./tests/ShipCargoTest.cpp)
-add_executable(${PROJECT_NAME} ./Ship.cpp)
+add_executable(${PROJECT_NAME} ./main.cpp)
 target_compile_options(${PROJECT_NAME}-ut PRIVATE -Wall -Wextra -Werror)
 target_link_libraries(${PROJECT_NAME}-ut gtest gtest_main)
 add_test(NAME tests COMMAND ${PROJECT_NAME}-ut)

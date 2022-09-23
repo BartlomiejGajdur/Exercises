@@ -19,22 +19,14 @@ class Player{
 
     
     //Functions
-    size_t getSpeed() const{
-       return ship_->getSpeed();
-    }
+    size_t getSpeed() const {return ship_->getSpeed();}
     
     // std::shared_ptr<Cargo> getCargo(size_t index) const{ //Function shall return Cargo searching by Idex? (Dont know what idex is? Name ?)
         
     // }
 
-    size_t getAvailableSpace() const{ //Checking the whole vector Cargos from Ship. Add all values then substract with Capacity _return AvailableSpace_;
-        size_t amountOfWholeCargos = 0;
-        for (auto &v : ship_->getAllCargo())
-        {
-            amountOfWholeCargos+=v->getAmount();
-        }
-        return ship_->getCapacity()-amountOfWholeCargos;
-    }
+    size_t getAvailableSpace() const; //Checking the whole vector Cargos from Ship. Add all values then substract with Capacity _return AvailableSpace_;
+       
     
     private:
     std::shared_ptr<Ship> ship_;
