@@ -28,8 +28,8 @@ class Cargo{
     // bool operator==(const Cargo& other);
     virtual void print(std::ostream& os) const = 0;
 
-    friend std::ostream& operator<<(std::ostream &os, const Cargo& cargo);
-
+   friend std::ostream& operator<<(std::ostream &os, const Cargo& cargo);
+   
     protected:
     std::string name_;
     size_t amount_;

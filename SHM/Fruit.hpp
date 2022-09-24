@@ -12,20 +12,15 @@ class Fruit : public Cargo{
                                                                                                             Cargo(name,amount,basePrice), 
                                                                                                             expire_date_(expiry_date),
                                                                                                             timeToSpoil_(time_elapsed) {};
-    //~Fruit() override;
+    Fruit() = default;
+    ~Fruit() override = default;
     
     std::string getName() const override{return name_;}
     size_t getAmount()    const override{return amount_;}
     double getBasePrice() const override{return basePrice_;}
-    double getPrice()     const override;
     size_t getTimeToSpoil() const {return timeToSpoil_;}
-
-    void print(std::ostream& os) const override{
-        os<<"Cargo: "<<name_<<" | "
-        <<"Amount: " <<amount_<<" | "
-        <<"Base Price: "<<basePrice_<<" | "
-        <<"Time to spoil: "<<timeToSpoil_<<" days";
-    }
+    double getPrice()     const override;
+    void print(std::ostream& os) const override;
 
     //Operator
     Fruit& operator--();
@@ -37,8 +32,3 @@ class Fruit : public Cargo{
 
 };
 
-std::ostream& operator<<(std::ostream &os, const Fruit& fruit)
-    {   
-        fruit.print(os);
-        return os;
-    }

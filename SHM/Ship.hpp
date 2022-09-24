@@ -1,9 +1,10 @@
 #pragma once
-#include "Cargo.hpp"
-#include <string>
+#include "Cargo.cpp"
 #include <iostream>
-#include <vector>
 #include <memory>
+#include <string>
+#include <vector>
+
 
 class Ship{
     public:

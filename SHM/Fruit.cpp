@@ -14,3 +14,16 @@ Fruit& Fruit::operator--()
     }
 
 }
+
+void Fruit::print(std::ostream& os) const {
+        os<<"Cargo: "<<name_<<" | "
+        <<"Amount: " <<amount_<<" | "
+        <<"Base Price: "<<basePrice_<<" | "
+        <<"Time to spoil: "<<timeToSpoil_<<" days";
+    }
+
+std::ostream& operator<<(std::ostream &os, const Fruit& fruit)
+    {   
+        fruit.print(os);
+        return os;
+    }

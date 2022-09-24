@@ -1,21 +1,19 @@
-#include "Fruit.hpp"
-#include "Fruit.cpp"
-#include "Ship.hpp"
-#include "Ship.cpp"
-#include "Cargo.hpp"
+
+#include "Alcohol.cpp"
 #include "Cargo.cpp"
-#include "Coordinates.hpp"
 #include "Coordinates.cpp"
-#include "Map.hpp"
-#include "Map.cpp"
-#include "Island.hpp"
+#include "Fruit.cpp"
 #include "Island.cpp"
-#include "Player.hpp"
+#include "Item.cpp"
+#include "Map.cpp"
 #include "Player.cpp"
-#include "Alcohol.hpp"
-#include "Item.hpp"
-#include <cmath>
-#include <iomanip>
+#include "Ship.cpp"
+
+
+
+
+
+
 
 
 int main(){
@@ -47,9 +45,6 @@ int main(){
 
     double baseprice = 40;
     size_t percentage = 96; // base price dla 96 percentage to jest 40. /40
-    std::cout << "exp(1) = e¹ = "  <<std::setprecision(2)<< static_cast<double>(std::exp(percentage/baseprice)) << '\n';
-    percentage=86;
-    std::cout << "exp(1) = e¹ = "  <<std::setprecision(2)<< static_cast<double>( std::exp(percentage/baseprice) )<< '\n';
      percentage=76;
     std::cout << "exp(1) = e¹ = " << std::exp(percentage/baseprice) << '\n';
      percentage=66;
