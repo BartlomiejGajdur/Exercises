@@ -13,6 +13,7 @@
 #include "Player.hpp"
 #include "Player.cpp"
 #include "Alcohol.hpp"
+#include "Item.hpp"
 #include <cmath>
 #include <iomanip>
 
@@ -65,6 +66,18 @@ int main(){
     std::cout<<spirol1.getName()<<": "<<spirol1.getPrice()<<"\n";
     Alcohol spirol2{"Spiryy123nowy",10,40,70};
     std::cout<<spirol2.getName()<<": "<<spirol2.getPrice()<<"\n";
+
+    Item P1{"common",1,10,Item::Rarity::Common};
+    Item P2{"dsdasda",1,10,Item::Rarity::Mythic};
+    std::cout<<P1.getName()<<": "<<P1.getRarity()<<": "<<P1.getPrice()<<"\n";
+    std::cout<<P2.getName()<<": "<<P2.getRarity()<<": "<<P2.getPrice()<<"\n";
+
+
+
+
+
+
+
 
 
     return 0;
