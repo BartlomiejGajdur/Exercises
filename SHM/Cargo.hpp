@@ -3,10 +3,12 @@
 
 class Cargo{
     public:
-    Cargo(const std::string& name, size_t amount, double basePrice) :  
-                                                            name_(name),
-                                                            amount_(amount),
-                                                            basePrice_(basePrice) {}
+    Cargo(const std::string& name,
+                     size_t amount, 
+                     double basePrice):  
+                                        name_(name),
+                                        amount_(amount),
+                                        basePrice_(basePrice) {}
     Cargo() = default; 
     virtual ~Cargo() = default;
 
