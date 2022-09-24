@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <ostream>
 
 class Cargo{
     public:
@@ -25,6 +26,9 @@ class Cargo{
     // Cargo& operator+=(const size_t amount);                                                      
     // Cargo& operator-=(const size_t amount);
     // bool operator==(const Cargo& other);
+    virtual void print(std::ostream& os) const = 0;
+
+    friend std::ostream& operator<<(std::ostream &os, const Cargo& cargo);
 
     protected:
     std::string name_;
@@ -32,3 +36,9 @@ class Cargo{
     double basePrice_;
 
 };
+
+std::ostream& operator<<(std::ostream &os, const Cargo& cargo)
+    {   
+        cargo.print(os);
+        return os;
+    }

@@ -69,12 +69,32 @@ int main(){
 
     Item P1{"common",1,10,Item::Rarity::Common};
     Item P2{"dsdasda",1,10,Item::Rarity::Mythic};
-    std::cout<<P1.getName()<<": "<<P1.getRarity()<<": "<<P1.getPrice()<<"\n";
-    std::cout<<P2.getName()<<": "<<P2.getRarity()<<": "<<P2.getPrice()<<"\n";
+    // std::cout<<P1.getName()<<": "<<P1.getRarity()<<": "<<P1.getPrice()<<"\n";
+    // std::cout<<P2.getName()<<": "<<P2.getRarity()<<": "<<P2.getPrice()<<"\n";
 
+    Alcohol wodka1{"wodka",10,20};
+    Fruit owoc1{"jabko",10,10};
+    Alcohol wodka12{"wod12ka",10,20};
+    Fruit owoc12{"jab12ko",10,10};
 
+    Ship shipp{1,"nazw",10,100,100};
 
+    shipp.addCargo(std::make_shared<Alcohol>(wodka1));
+    shipp.addCargo(std::make_shared<Fruit>(owoc1));
+    shipp.addCargo(std::make_shared<Alcohol>(wodka12));
+    shipp.addCargo(std::make_shared<Fruit>(owoc12));    
+    shipp.addCargo(std::make_shared<Item>(P1));
+    shipp.addCargo(std::make_shared<Item>(P2));
 
+     std::vector<std::shared_ptr<Cargo>> allcargo;
+     allcargo = shipp.getAllCargo();
+
+     for (auto &v: allcargo){
+        std::cout<<*v<<std::endl;
+     }
+    //dopisac wypisywanie printCargo
+
+    
 
 
 

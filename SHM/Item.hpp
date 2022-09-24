@@ -23,9 +23,15 @@ class Item : public Cargo{
     size_t getAmount()      const override {return amount_;}
     double getBasePrice()   const override {return basePrice_;}
     std::string getRarity() const;
-
     double getPrice() const override {return basePrice_*static_cast<int>(rarity_);}
 
+    void print(std::ostream& os) const override{
+        os<<"Cargo: "<<name_<<" | "
+        <<"Amount: " <<amount_<<" | "
+        <<"Base Price: "<<basePrice_<<" | "
+        <<"Rarity: "<<getRarity();
+    }
+    friend std::ostream& operator<<(std::ostream &os, const Item& Item);
     private:
     Rarity rarity_{Rarity::Common};
 
@@ -33,29 +39,35 @@ class Item : public Cargo{
 
 };
 
+std::ostream& operator<<(std::ostream &os, const Item& Item)
+    {   
+        Item.print(os);
+        return os;
+    }
+
 
 std::string Item::getRarity() const
 {
     switch(rarity_)
 {
 case Rarity::Common:
-    return "Rarity: Common";
+    return "Common";
     break;
    
 case Rarity::Rare:
-    return "Rarity: Rare";
+    return "Rare";
     break;
    
 case Rarity::Epic:
-    return "Rarity: Epic";
+    return "Epic";
     break;
 
 case Rarity::Legendary:
-    return "Rarity: Legendary";
+    return "Legendary";
     break;
 
 case Rarity::Mythic:
-    return "Rarity: Mythic";
+    return "Mythic";
     break;
    
 default:

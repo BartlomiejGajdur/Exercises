@@ -31,9 +31,23 @@ class Alcohol : public Cargo{
 
     double getPrice() const override {return (basePrice_*(static_cast<double>(percentage_)/maxPercentage_));}
 
+    void print(std::ostream& os) const override{
+        os<<"Cargo: "<<name_<<" | "
+        <<"Amount: " <<amount_<<" | "
+        <<"Base Price: "<<basePrice_<<" | "
+        <<"Percentage: "<<percentage_<<" days";
+    }
+
+    friend std::ostream& operator<<(std::ostream &os, const Alcohol& alcohol);
 
     private:
     const size_t percentage_{40};
 
 
 };
+
+std::ostream& operator<<(std::ostream &os, const Alcohol& alcohol)
+    {   
+        alcohol.print(os);
+        return os;
+    }
