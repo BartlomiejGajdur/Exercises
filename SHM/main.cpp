@@ -72,21 +72,19 @@ int main(){
     Alcohol wodka12{"wod12ka",10,20};
     Fruit owoc12{"jab12ko",10,10};
 
-    Ship shipp{1,"nazw",10,100,100};
+    Ship shipp{1,"nazw",10,30,30};
 
-    shipp.addCargo(std::make_shared<Alcohol>(wodka1));
-    shipp.addCargo(std::make_shared<Fruit>(owoc1));
-    shipp.addCargo(std::make_shared<Alcohol>(wodka12));
-    shipp.addCargo(std::make_shared<Fruit>(owoc12));    
-    shipp.addCargo(std::make_shared<Item>(P1));
-    shipp.addCargo(std::make_shared<Item>(P2));
+    shipp.load(std::make_shared<Alcohol>(wodka1));
+    shipp.load(std::make_shared<Fruit>(owoc1));
+    shipp.load(std::make_shared<Alcohol>(wodka12));
+    shipp.load(std::make_shared<Fruit>(owoc12));    
+    shipp.load(std::make_shared<Item>(P1));
+    shipp.load(std::make_shared<Item>(P2));
 
-     std::vector<std::shared_ptr<Cargo>> allcargo;
-     allcargo = shipp.getAllCargo();
 
-     for (auto &v: allcargo){
-        std::cout<<*v<<std::endl;
-     }
+    std::cout<<"\n\n";
+
+    shipp.printCargo();
     //dopisac wypisywanie printCargo
 
     

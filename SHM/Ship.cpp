@@ -23,3 +23,26 @@ Ship& Ship::operator-=(const size_t num)
                 return *this;
             }
     }
+
+
+void Ship::load(const std::shared_ptr<Cargo> &cargo)
+{
+    size_t amountOfWholeCargos = 0;
+        for (auto &v : getAllCargo())
+    {
+        amountOfWholeCargos+=v->getAmount();
+    }
+
+    if ((getCapacity()-amountOfWholeCargos)>=cargo->getAmount()) {
+        cargo_.push_back(cargo);
+    }else{
+        std::cout<<"No available space!\n";
+    } 
+    
+}
+
+void Ship::printCargo() const{
+    for (auto &v: getAllCargo()){
+        std::cout<<*v<<std::endl;
+     }
+}
