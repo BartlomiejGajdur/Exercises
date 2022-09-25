@@ -28,8 +28,20 @@ std::ostream& operator<<(std::ostream &os, const Fruit& fruit)
         return os;
     }
 
-bool Fruit::operator==(const Fruit& other){
-        return  this->name_ == other.name_ &&
-            this->basePrice_== other.basePrice_;
+bool Fruit::operator==(const Cargo& otherFruit){
+        return  this->name_ == otherFruit.getName()&&
+            this->basePrice_== otherFruit.getBasePrice();
     
 }
+
+Fruit& Fruit::operator+=(const size_t amount)
+    {      
+        amount_+=amount;
+        return *this;
+    }     
+
+Fruit& Fruit::operator-=(const size_t amount)
+    {
+        amount_-=amount;
+        return *this;
+    }   

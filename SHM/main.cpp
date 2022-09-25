@@ -10,12 +10,6 @@
 #include "Ship.cpp"
 
 
-
-
-
-
-
-
 int main(){
 
     Fruit owoc{"Jablko",10,5};

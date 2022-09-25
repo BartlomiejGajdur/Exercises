@@ -30,7 +30,9 @@ class Alcohol : public Cargo{
 
     //OPERATORS
     friend std::ostream& operator<<(std::ostream &os, const Alcohol& alcohol);
-    bool operator==(const Alcohol& other);
+    bool operator==(const Cargo& otherAlcohol) override;
+    Alcohol& operator+=(const size_t amount)   override;                                                      
+    Alcohol& operator-=(const size_t amount)   override;
 
     private:
     const size_t percentage_{40};

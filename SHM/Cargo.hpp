@@ -23,12 +23,15 @@ class Cargo{
     
 
 //OPERATORS
-    // Cargo& operator+=(const size_t amount);                                                      
-    // Cargo& operator-=(const size_t amount);
-    //virtual bool operator==(const Cargo& other);
+    virtual Cargo& operator+=(const size_t amount) = 0;                                                      
+    virtual Cargo& operator-=(const size_t amount) = 0;
+    virtual bool operator==(const Cargo& other) = 0;
+    friend std::ostream& operator<<(std::ostream &os, const Cargo& cargo);
+
+//Functions
     virtual void print(std::ostream& os) const = 0;
 
-   friend std::ostream& operator<<(std::ostream &os, const Cargo& cargo);
+    
    
     protected:
     std::string name_;

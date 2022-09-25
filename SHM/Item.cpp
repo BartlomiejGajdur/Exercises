@@ -43,8 +43,20 @@ std::ostream& operator<<(std::ostream &os, const Item& Item)
         return os;
     }
 
-bool Item::operator==(const Item& other)
+bool Item::operator==(const Cargo& otherItem)
     {
-        return  this->name_ == other.name_ &&
-            this->basePrice_== other.basePrice_;
+        return  this->name_ == otherItem.getName() &&
+            this->basePrice_== otherItem.getBasePrice();
     }
+
+Item& Item::operator+=(const size_t amount)
+    {      
+        amount_+=amount;
+        return *this;
+    }     
+
+Item& Item::operator-=(const size_t amount)
+    {
+        amount_-=amount;
+        return *this;
+    }   

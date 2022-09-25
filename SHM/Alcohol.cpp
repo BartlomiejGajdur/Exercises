@@ -13,7 +13,19 @@ std::ostream& operator<<(std::ostream &os, const Alcohol& alcohol)
         return os;
     }
 
-bool Alcohol::operator==(const Alcohol& other){
-    return  this->name_ == other.name_ &&
-            this->basePrice_== other.basePrice_;
+bool Alcohol::operator==(const Cargo& otherAlcohol){
+    return  this->name_ == otherAlcohol.getName() &&
+            this->basePrice_== otherAlcohol.getBasePrice();
 }
+
+Alcohol& Alcohol::operator+=(const size_t amount)
+    {      
+        amount_+=amount;
+        return *this;
+    }     
+
+Alcohol& Alcohol::operator-=(const size_t amount)
+    {
+        amount_-=amount;
+        return *this;
+    }   

@@ -24,7 +24,9 @@ class Fruit : public Cargo{
 
     //Operator
     Fruit& operator--();
-    bool operator==(const Fruit& other);
+    bool operator==(const Cargo& other)    override;
+    Fruit& operator+=(const size_t amount) override;                                                      
+    Fruit& operator-=(const size_t amount) override;
     friend std::ostream& operator<<(std::ostream &os, const Fruit& fruit);
 
      private:
