@@ -42,6 +42,10 @@ Fruit& Fruit::operator+=(const size_t amount)
 
 Fruit& Fruit::operator-=(const size_t amount)
     {
-        amount_-=amount;
-        return *this;
+        if (amount_-amount>0)
+        {
+            amount_-=amount;
+        }
+            return *this;
+        
     }   
