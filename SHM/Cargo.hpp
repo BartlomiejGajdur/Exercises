@@ -25,7 +25,7 @@ class Cargo{
 //OPERATORS
     // Cargo& operator+=(const size_t amount);                                                      
     // Cargo& operator-=(const size_t amount);
-    // bool operator==(const Cargo& other);
+    //virtual bool operator==(const Cargo& other);
     virtual void print(std::ostream& os) const = 0;
 
    friend std::ostream& operator<<(std::ostream &os, const Cargo& cargo);

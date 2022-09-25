@@ -42,3 +42,9 @@ std::ostream& operator<<(std::ostream &os, const Item& Item)
         Item.print(os);
         return os;
     }
+
+bool Item::operator==(const Item& other)
+    {
+        return  this->name_ == other.name_ &&
+            this->basePrice_== other.basePrice_;
+    }

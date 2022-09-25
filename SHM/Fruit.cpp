@@ -27,3 +27,9 @@ std::ostream& operator<<(std::ostream &os, const Fruit& fruit)
         fruit.print(os);
         return os;
     }
+
+bool Fruit::operator==(const Fruit& other){
+        return  this->name_ == other.name_ &&
+            this->basePrice_== other.basePrice_;
+    
+}

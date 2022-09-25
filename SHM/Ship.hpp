@@ -40,7 +40,7 @@ class Ship{
     Ship& operator-=(const size_t num);
 
     //Functions
-    void load(const std::shared_ptr<Cargo> &cargo);//Shall call function which check if added Cargo not overload Capacity of the Ship
+    void load(const std::shared_ptr<Cargo>& cargo);//Shall call function which check if added Cargo not overload Capacity of the Ship
     void printCargo() const;
     
     private:

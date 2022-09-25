@@ -27,12 +27,22 @@ Ship& Ship::operator-=(const size_t num)
 
 void Ship::load(const std::shared_ptr<Cargo> &cargo)
 {
+    //Przeszukanie czy na statku jest już taki sam towar
+    
+
+
+
+
+
+    // Suma wszystkich dostepnych towarow na statku 
     size_t amountOfWholeCargos = 0;
         for (auto &v : getAllCargo())
     {
         amountOfWholeCargos+=v->getAmount();
     }
 
+    //Sprawdzenie czy towar ktory ma byc dodany nie bedzie zajmowal wicej niż dostępne
+    //miejsce na statku 
     if ((getCapacity()-amountOfWholeCargos)>=cargo->getAmount()) {
         cargo_.push_back(cargo);
     }else{

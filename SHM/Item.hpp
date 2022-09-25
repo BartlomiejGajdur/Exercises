@@ -31,6 +31,7 @@ class Item : public Cargo{
 
     //OPERATORS 
     friend std::ostream& operator<<(std::ostream &os, const Item& Item);
+    bool operator==(const Item& other);
     
     private:
     Rarity rarity_{Rarity::Common};

@@ -81,11 +81,11 @@ int main(){
     shipp.load(std::make_shared<Item>(P1));
     shipp.load(std::make_shared<Item>(P2));
 
-
+    Player gracz{std::make_shared<Ship>(shipp),100};
     std::cout<<"\n\n";
 
     shipp.printCargo();
-    //dopisac wypisywanie printCargo
+    
 
     
 
