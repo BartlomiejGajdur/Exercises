@@ -57,6 +57,9 @@ Item& Item::operator+=(const size_t amount)
 
 Item& Item::operator-=(const size_t amount)
     {
-        amount_-=amount;
+        if (amount_-amount>0)
+        {
+            amount_-=amount;
+        }
         return *this;
     }   

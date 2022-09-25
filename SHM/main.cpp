@@ -56,8 +56,7 @@ int main(){
     Alcohol spirol2{"Spiryy123nowy",10,40,70};
     std::cout<<spirol2.getName()<<": "<<spirol2.getPrice()<<"\n";
 
-    Item P1{"common",1,10,Item::Rarity::Common};
-    Item P2{"dsdasda",1,10,Item::Rarity::Mythic};
+   
     // std::cout<<P1.getName()<<": "<<P1.getRarity()<<": "<<P1.getPrice()<<"\n";
     // std::cout<<P2.getName()<<": "<<P2.getRarity()<<": "<<P2.getPrice()<<"\n";
 
@@ -65,15 +64,18 @@ int main(){
     Fruit owoc1{"jabko",10,10};
     Alcohol wodka12{"wod12ka",10,20};
     Fruit owoc12{"jab12ko",10,10};
+    Fruit P1{"jab12ko",24,10};
+    Fruit P2{"jab12ko",41,10};
 
-    Ship shipp{1,"nazw",10,30,30};
+    
+    Ship shipp{1,"nazw",10,200,200};
 
     shipp.load(std::make_shared<Alcohol>(wodka1));
     shipp.load(std::make_shared<Fruit>(owoc1));
     shipp.load(std::make_shared<Alcohol>(wodka12));
     shipp.load(std::make_shared<Fruit>(owoc12));    
-    shipp.load(std::make_shared<Item>(P1));
-    shipp.load(std::make_shared<Item>(P2));
+    shipp.load(std::make_shared<Fruit>(P1));
+    shipp.load(std::make_shared<Fruit>(P2));
 
     Player gracz{std::make_shared<Ship>(shipp),100};
     std::cout<<"\n\n";
