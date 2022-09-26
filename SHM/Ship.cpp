@@ -27,14 +27,9 @@ Ship& Ship::operator-=(const size_t num)
     }
 
 size_t Ship::getAvailableSpace() { //returns Available space 
-    size_t amountOfWholeCargos = 0;
-        for (auto &v : getAllCargo())
-    {
-        amountOfWholeCargos+=v->getAmount();
-    }
 
-    return getCapacity() - amountOfWholeCargos;
-    
+    return getCapacity() - std::accumulate(cargo_.begin(), cargo_.end(),0,[](size_t amountOfWholeCargos, std::shared_ptr<Cargo> v){
+                                                                          return amountOfWholeCargos+v->getAmount();}); 
 }
 
 void Ship::load(const std::shared_ptr<Cargo> &cargo)
@@ -57,11 +52,6 @@ void Ship::load(const std::shared_ptr<Cargo> &cargo)
     
     
 }
-// Alcohol wodka1{"wodka",10,20};
-//ship.unload(wodka1)
-
-//Przechodzi po vectorze i sprawdza czy jest cos takiego jak wodka1
-
 
 void Ship::unload(const std::shared_ptr<Cargo> &cargo){ 
         
@@ -71,7 +61,7 @@ void Ship::unload(const std::shared_ptr<Cargo> &cargo){
             {
                 if(cargo->getAmount()>= v->getAmount())
                 {   
-                    cargo_.erase(std::remove_if(cargo_.begin(), cargo_.end(), [cargo](auto &x){return *cargo==*x;}), cargo_.end()); // Nie usuwa z vectora cargo
+                    cargo_.erase(std::remove_if(cargo_.begin(), cargo_.end(), [&cargo](auto &x){return *cargo==*x;}), cargo_.end()); // Nie usuwa z vectora cargo
                     return;
                 }else{
                     *v-=cargo->getAmount();
