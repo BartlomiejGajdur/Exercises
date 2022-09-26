@@ -41,6 +41,7 @@ class Ship{
 
     //Functions
     void load(const std::shared_ptr<Cargo>& cargo);//Shall call function which check if added Cargo not overload Capacity of the Ship
+    void unload(const std::shared_ptr<Cargo>& cargo);
     size_t getAvailableSpace();
     void printCargo() const;
     
