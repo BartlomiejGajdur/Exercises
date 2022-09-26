@@ -1,5 +1,6 @@
 #include "Ship.hpp"
 #include <numeric>
+#include <algorithm>
 
 Ship& Ship::operator+=(const int num)
     {
@@ -51,14 +52,38 @@ void Ship::load(const std::shared_ptr<Cargo> &cargo)
         cargo_.push_back(cargo);
         
     }else{
-        std::cout<<"No available space for: "<<cargo->getName()<<" | Amount: "<<cargo->getAmount();
+        std::cout<<"No available space for: "<<cargo->getName()<<" | Amount: "<<cargo->getAmount()<<"\n";
     } 
     
     
 }
+// Alcohol wodka1{"wodka",10,20};
+//ship.unload(wodka1)
+
+//Przechodzi po vectorze i sprawdza czy jest cos takiego jak wodka1
+
+
+void Ship::unload(const std::shared_ptr<Cargo> &cargo){ 
+        
+    for (auto &v : cargo_)
+        {
+            if(*cargo == *v)
+            {
+                if(cargo->getAmount()>= v->getAmount())
+                {   
+                    cargo_.erase(std::remove_if(cargo_.begin(), cargo_.end(), [cargo](auto &x){return *cargo==*x;}), cargo_.end()); // Nie usuwa z vectora cargo
+                    return;
+                }else{
+                    *v-=cargo->getAmount();
+                    return;
+                }
+            }
+        }
+        std::cout<<"There is no such Cargo on ship!\n";    
+}
 
 void Ship::printCargo() const{
-    for (auto &v: getAllCargo()){
+    for (auto &v: cargo_){
         std::cout<<*v<<std::endl;
      }
 }
