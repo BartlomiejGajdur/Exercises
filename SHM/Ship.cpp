@@ -1,4 +1,5 @@
 #include "Ship.hpp"
+#include <numeric>
 
 Ship& Ship::operator+=(const int num)
     {
@@ -24,19 +25,21 @@ Ship& Ship::operator-=(const size_t num)
             }
     }
 
-
-void Ship::load(const std::shared_ptr<Cargo> &cargo)
-{
-    // Suma wszystkich dostepnych towarow na statku 
+size_t Ship::getAvailableSpace() { //returns Available space 
     size_t amountOfWholeCargos = 0;
         for (auto &v : getAllCargo())
     {
         amountOfWholeCargos+=v->getAmount();
     }
 
-    //Sprawdzenie czy towar ktory ma byc dodany nie bedzie zajmowal wicej niż dostępne
-    //miejsce na statku 
-    if ((getCapacity()-amountOfWholeCargos)>=cargo->getAmount()) {
+    return getCapacity() - amountOfWholeCargos;
+    
+}
+
+void Ship::load(const std::shared_ptr<Cargo> &cargo)
+{
+    //Sprawdzenie czy towar ktory ma byc dodany nie bedzie zajmowal wicej niż dostępne miejsce na statku 
+    if (getAvailableSpace()>=cargo->getAmount()) {
         //Przeszukanie czy na statku jest już taki sam towar
         for (auto &v : getAllCargo())
         {
@@ -48,8 +51,9 @@ void Ship::load(const std::shared_ptr<Cargo> &cargo)
         cargo_.push_back(cargo);
         
     }else{
-        std::cout<<"No available space!\n";
+        std::cout<<"No available space for: "<<cargo->getName()<<" | Amount: "<<cargo->getAmount();
     } 
+    
     
 }
 
