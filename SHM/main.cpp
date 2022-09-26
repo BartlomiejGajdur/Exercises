@@ -61,14 +61,14 @@ int main(){
     // std::cout<<P2.getName()<<": "<<P2.getRarity()<<": "<<P2.getPrice()<<"\n";
 
     Alcohol wodka1{"wodka",10,20};
-    Fruit owoc1{"jabko",10,10};
+    Fruit owoc1{"jab12ko",10,10};
     Alcohol wodka12{"wod12ka",10,20};
     Fruit owoc12{"jab12ko",10,10};
-    Fruit P1{"jab12ko",24,10};
+    Fruit P1{"jab12ko",500,10};
     Fruit P2{"jab12ko",41,10};
 
     
-    Ship shipp{1,"nazw",10,200,200};
+    Ship shipp{1,"nazw",10,100,200};
 
     shipp.load(std::make_shared<Alcohol>(wodka1));
     shipp.load(std::make_shared<Fruit>(owoc1));
