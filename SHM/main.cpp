@@ -70,6 +70,9 @@ int main(){
      player_->printCargo();
     std::cout<<"\n"<<player_->getMoney();
 
+    std::cout<<sklep.generateRandomNumber(1,10);
+    std::cout<<sklep.generateRandomNumber(1,10);
+    std::cout<<sklep.generateRandomNumber(1,10);
 
     return 0;
 }
