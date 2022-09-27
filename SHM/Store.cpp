@@ -35,3 +35,18 @@ int Store::generateRandomNumber(const int& first, const int& second){
 
     return Random(gen);
 }
+
+ void Store::printCargo() const {
+        for (auto &v: storeCargo_){
+            std::cout<<*v<<std::endl;
+            }
+ }  
+
+ void Store::GenerateFruit() {
+        
+        std::array<std::string,3> name{"Jablko","Banan","Gruszka"};
+        int generatedAmount = generateRandomNumber(1,10);
+        int generatedBasePrice = generateRandomNumber(5,10);
+        storeCargo_.push_back(std::make_shared<Fruit>(name[generateRandomNumber(0,2)],generatedAmount,generatedBasePrice));
+
+    }

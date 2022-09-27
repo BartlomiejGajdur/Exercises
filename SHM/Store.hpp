@@ -11,17 +11,21 @@ class Store{
 
     Store(std::vector<std::shared_ptr<Cargo>> storeCargo): storeCargo_(storeCargo) {}
     Store(){
-        //Tu bedzie kontruktor który randomowo tworzy np 10 randomowych towarów do kupienia
-        //np 6 random owocow 3 alcohole i itemek jakis losowy
+        for(int i = 0 ; i<10 ; i++)
+        {
+            GenerateFruit();
+        }
     }
 
     Response buy(std::shared_ptr<Cargo> cargo, size_t amount, std::unique_ptr<Player> &player);
-    
-    int generateRandomNumber(const int&, const int&);
     Response sell(std::shared_ptr<Cargo> cargo, size_t amount, std::shared_ptr<Player>& player);
 
+   
+    void GenerateFruit();
+    void printCargo() const;
+    
     private:
     std::vector<std::shared_ptr<Cargo>> storeCargo_;
-
+    int generateRandomNumber(const int&, const int&);
 
 };

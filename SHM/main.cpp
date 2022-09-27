@@ -70,9 +70,10 @@ int main(){
      player_->printCargo();
     std::cout<<"\n"<<player_->getMoney();
 
-    std::cout<<sklep.generateRandomNumber(1,10);
-    std::cout<<sklep.generateRandomNumber(1,10);
-    std::cout<<sklep.generateRandomNumber(1,10);
+    std::cout<<"\n\n\n\n";
+    Store storka{};
+
+    storka.printCargo();
 
     return 0;
 }
