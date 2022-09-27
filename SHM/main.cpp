@@ -8,6 +8,7 @@
 #include "Map.cpp"
 #include "Player.cpp"
 #include "Ship.cpp"
+#include "Store.cpp"
 
 
 int main(){
