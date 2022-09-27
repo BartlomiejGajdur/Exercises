@@ -3,10 +3,6 @@
 #include <iostream>
 #include <memory>
 
-
-
-
-
 class Player{
     public:
     Player(std::shared_ptr<Ship> ship, double money): 
@@ -24,8 +20,11 @@ class Player{
     size_t getSpeed() const {return ship_->getSpeed();}
     size_t getAvailableSpace() const; //Checking the whole vector Cargos from Ship. Add all values then substract with Capacity _return AvailableSpace_;
     void substractMoney(const double& moneyToSubstract);
+    void printCargo() const {ship_->printCargo();}
     
     private:
+    
+
     std::shared_ptr<Ship> ship_;
     double money_;
     int availableSpace_;

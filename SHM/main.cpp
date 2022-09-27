@@ -60,12 +60,14 @@ int main(){
 
     Store sklep{vec_};
 
-     player_->getShip()->printCargo();
+    player_->printCargo();
+     std::cout<<"\n\nShipCargo\n";
+     Statek.printCargo();
     std::cout<<"\n"<<player_->getMoney();
 
     sklep.buy(std::make_shared<Fruit>(P3),5,player_);
 
-    player_->getShip()->printCargo();
+     player_->printCargo();
     std::cout<<"\n"<<player_->getMoney();
 
 
