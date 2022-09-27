@@ -9,7 +9,7 @@ size_t Player::getAvailableSpace() const{ //Checking the whole vector Cargos fro
         return ship_->getCapacity()-amountOfWholeCargos;
     }
 
-double Player::substractMoney(double moneyToSubstract)
+void Player::substractMoney(const double& moneyToSubstract)
 {
-    return money_=money_-moneyToSubstract;
+     money_-=moneyToSubstract;
 }
