@@ -21,6 +21,7 @@ class Player{
     size_t getAvailableSpace() const; //Checking the whole vector Cargos from Ship. Add all values then substract with Capacity _return AvailableSpace_;
     void substractMoney(const double& moneyToSubstract);
     void printCargo() const {ship_->printCargo();}
+    void load(const std::shared_ptr<Cargo>& cargo) {ship_->load(cargo);}
     
     private:
     

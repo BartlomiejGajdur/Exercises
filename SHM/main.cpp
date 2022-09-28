@@ -20,13 +20,13 @@ int main(){
     Fruit P5{"Banan",10,15};
 
     Ship Statek{1,"StatekBartek",100,100,100}; //Capacity ostatnie
-    Player Bartek{std::make_shared<Ship>(Statek),100};
+    Player Bartek{std::make_unique<Ship>(Statek),100};
    
 
     std::unique_ptr<Player> player_;
     player_ = std::make_unique<Player>(std::make_shared<Ship>(Statek),100);
-    Statek.load(std::make_shared<Fruit>(P1));
-    Statek.load(std::make_shared<Fruit>(P2));
+    player_->load(std::make_shared<Fruit>(P1));
+    player_->load(std::make_shared<Fruit>(P2));
     //Statek.load(std::make_shared<Fruit>(P3));
     //Statek.load(std::make_shared<Fruit>(P4));
     //Statek.load(std::make_shared<Fruit>(P5));
@@ -61,19 +61,21 @@ int main(){
     Store sklep{vec_};
 
     player_->printCargo();
-     std::cout<<"\n\nShipCargo\n";
-     Statek.printCargo();
+    // std::cout<<"\n\nShipCargo\n";
+    // Statek.printCargo();
     std::cout<<"\n"<<player_->getMoney();
 
     sklep.buy(std::make_shared<Fruit>(P3),5,player_);
 
      player_->printCargo();
     std::cout<<"\n"<<player_->getMoney();
+    std::cout<<"\n\n";
+    player_->load(std::make_shared<Fruit>(P4));
+    player_->printCargo();
+    // std::cout<<"\n\n\n\n";
+    // Store storka{};
 
-    std::cout<<"\n\n\n\n";
-    Store storka{};
-
-    storka.printCargo();
+    // storka.printCargo();
 
     return 0;
 }
