@@ -22,6 +22,9 @@ class Store{
 
    
     void GenerateFruit();
+    void GenerateAlcohol();
+    void GenerateItem();
+    
     void printCargo() const;
     
     private:

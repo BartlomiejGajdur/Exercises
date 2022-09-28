@@ -50,3 +50,11 @@ int Store::generateRandomNumber(const int& first, const int& second){
         storeCargo_.push_back(std::make_shared<Fruit>(name[generateRandomNumber(0,2)],generatedAmount,generatedBasePrice));
 
     }
+
+void GenerateAlcohol(){
+
+}
+
+void GenerateItem(){
+    
+}
