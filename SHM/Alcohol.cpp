@@ -4,7 +4,7 @@ void Alcohol::print(std::ostream& os) const {
         os<<"Cargo: "<<name_<<" | "
         <<"Amount: " <<amount_<<" | "
         <<"Base Price: "<<basePrice_<<" | "
-        <<"Percentage: "<<percentage_<<" days";
+        <<"Percentage: "<<percentage_<<"%";
     }
 
 std::ostream& operator<<(std::ostream &os, const Alcohol& alcohol)

@@ -11,9 +11,10 @@ class Store{
 
     Store(std::vector<std::shared_ptr<Cargo>> storeCargo): storeCargo_(storeCargo) {}
     Store(){
-        for(int i = 0 ; i<10 ; i++)
+        for(int i = 0 ; i<3 ; i++)
         {
             GenerateFruit();
+            GenerateAlcohol();
         }
     }
 
@@ -24,7 +25,7 @@ class Store{
     void GenerateFruit();
     void GenerateAlcohol();
     void GenerateItem();
-    
+
     void printCargo() const;
     
     private:

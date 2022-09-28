@@ -1,4 +1,9 @@
+#pragma once
 #include "Store.hpp"
+
+// #include "Fruit.hpp"
+// #include "Alcohol.hpp"
+// #include "Item.hpp"
 
 Store::Response Store::buy(std::shared_ptr<Cargo> cargo, size_t amount, std::unique_ptr<Player> &player)
     {
@@ -51,10 +56,22 @@ int Store::generateRandomNumber(const int& first, const int& second){
 
     }
 
-void GenerateAlcohol(){
+void Store::GenerateAlcohol(){
+     std::array<std::string,3> name{"Wodka","Bimber","Spirytus"};
+     std::array<int,3> percentage{40,60,96};
+     int generatedAmount = generateRandomNumber(1,10);
+     int generatedNumber = generateRandomNumber(0,2);
+     storeCargo_.push_back(std::make_shared<Alcohol>(name[generatedNumber],generatedAmount,10,percentage[generatedNumber]));
 
 }
 
-void GenerateItem(){
+void Store::GenerateItem(){
+    //amount bedzie jeden -> mapa z Rarity i price -> i jakiegos if ze jezeli wygenerowany item 
+    //np od 0-90 bedzie common 90-05 to zeby wzielo tamto itd itd... 
+    //Ale to bedzie tylko w Sell chyba 
+    //Mozna kupic skrzynke których bedzie np 5 w kazdym sklepie i funkcjonalnosc otwierania skrzynki 
+    //z której wypada wlasnie jakis Losowy itemek i dodaje się do Ship. ( Przy otwieraniu trzeba miec wystarczajaca ilosc miejsca)
+    //nr. 9 --> otworz skrzynek jeżeli jest to wysweitla ile masz skrzynek itd... 
     
+
 }
