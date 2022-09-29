@@ -27,6 +27,31 @@ Store::Response Store::buy(std::shared_ptr<Cargo> cargo, size_t amount, std::uni
     std::cout<<"Zakup done\n";
     return Response::done;
 }
+
+Store::Response Store::sell(std::shared_ptr<Cargo> cargo, size_t amount, std::unique_ptr<Player> &player){
+    //Nie wiem czy by sie nie przydala jakas static zmienna do oznaczania towarow, moze wystarczy po prostu numer czy cos
+    int totalPrice = cargo->getPrice() * amount;
+
+    // przeszukanie vectora cargo w ship i sprawdzenie czy ejst to samo z CArog
+    for (auto &v: player->getShip()->getAllCargo())
+    {
+        if(*v == *cargo && amount<=v->getAmount())
+        {
+            player->addMoney(totalPrice); // dodajemy monety
+            if(amount<v->getAmount())
+            {
+                *v-=amount;
+            }else if( amount==v->getAmount())
+            {
+                player->unload(cargo); // Tutaj musi byc jakis inny erase bo sie amount nie zgadza xD w funkcji unload
+            }
+            std::cout<<"\nDone\n";
+            return Response::done;
+        }
+       
+    }
+    return Response::lack_of_cargo;
+}
 /*
 Jeśli w vectorze Cargo, który mamy w Store jest dany towar który podajemy w:
 buy(jakies cargo(czyli np cargo o nazwie "Jablko" i cenie bazowej 20), ilosc tego Cargo,Nie wiem czy tu potrzebny jest player)

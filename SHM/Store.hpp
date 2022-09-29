@@ -19,7 +19,7 @@ class Store{
     }
 
     Response buy(std::shared_ptr<Cargo> cargo, size_t amount, std::unique_ptr<Player> &player);
-    Response sell(std::shared_ptr<Cargo> cargo, size_t amount, std::shared_ptr<Player>& player);
+    Response sell(std::shared_ptr<Cargo> cargo, size_t amount, std::unique_ptr<Player> &player);
 
    
     void GenerateFruit();
