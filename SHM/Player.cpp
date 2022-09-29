@@ -13,3 +13,7 @@ void Player::substractMoney(const double& moneyToSubstract)
 {
      money_-=moneyToSubstract;
 }
+
+void Player::addMoney(const double& moneyToAdd){
+    money_+=moneyToAdd;
+}
