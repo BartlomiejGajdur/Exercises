@@ -19,6 +19,7 @@ class Cargo{
     virtual size_t getAmount()    const = 0;
     virtual double getBasePrice() const = 0;
     virtual double getPrice()     const = 0;
+
 //SETTERS
     
 

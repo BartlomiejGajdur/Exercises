@@ -72,10 +72,22 @@ int main(){
     std::cout<<"\n\n";
     player_->load(std::make_shared<Fruit>(P4));
     player_->printCargo();
+
+    sklep.sell(std::make_shared<Fruit>("Jablko",1,10),35,player_);
+    std::cout<<"\n\n";
+    player_->printCargo();
+    std::cout<<"\n"<<player_->getMoney();
+
+    std::cout<<"\n\n";
+    std::cout<<"\n\n";
+    sklep.sell(std::make_shared<Fruit>("Banan",15,15),15,player_);
+    std::cout<<"\n\n";
+    player_->printCargo();
+    std::cout<<"\n"<<player_->getMoney();
     // std::cout<<"\n\n\n\n";
     // Store storka{};
 
-    // storka.printCargo();
+    // storka.printCargo();`
 
     return 0;
 }
