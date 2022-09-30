@@ -9,23 +9,25 @@ Store::Response Store::buy(std::shared_ptr<Cargo> cargo, size_t amount, std::uni
     {
         // Nie wiem czy SHIP w plajerze musi byc uniqe ptr lub jakos musze przeanalizowac kiedy shared ptr robi kopie sobie obiektu swojego
          int totalPrice = cargo->getPrice() * amount; 
-        std::cout<<totalPrice<<"\n\n\n\n";
-    //Powinno byc wsprawdzenie czy wgl ten towar jest w vectorze storeCargo, czaisz ?
-    //Jesli jest to sprawdza te wszystkie rzeczy jak jest done to usuwa ten towar z vectora shared_ptr.
-    if(totalPrice>player->getMoney()){
-        return Response::lack_of_money;
+    
+    if(findMatchCargo(cargo)!=nullptr){
+        if(totalPrice>player->getMoney()){
+            return Response::lack_of_money;
+        }
+        if(amount>player->getShip()->getAvailableSpace()){
+            return Response::lack_of_space;
+        }
+        if(amount>cargo->getAmount()){
+            return Response::lack_of_cargo;
+        }
+        player->getShip()->load(cargo);
+        player->substractMoney(totalPrice); 
+        std::cout<<"Zakup done\n";
+        return Response::done;
     }
-    if(amount>player->getShip()->getAvailableSpace()){
-        return Response::lack_of_space;
-    }
-    if(amount>cargo->getAmount()){
-        return Response::lack_of_cargo;
-    }
-
-    player->getShip()->load(cargo);
-    player->substractMoney(totalPrice); //tutaj ograc to dobrze.
-    std::cout<<"Zakup done\n";
-    return Response::done;
+    std::cout<<"Nie ma takiego cargo w vectorze Store::Cargo";
+    return Response::lack_of_cargo;
+    
 }
 
 Store::Response Store::sell(std::shared_ptr<Cargo> cargo, size_t amount, std::unique_ptr<Player> &player){
@@ -100,3 +102,16 @@ void Store::GenerateItem(){
     
 
 }
+
+std::shared_ptr<Cargo> Store::findMatchCargo(std::shared_ptr<Cargo> Cargo){
+
+    for(auto &v : storeCargo_)
+    {
+        if(*v==*Cargo){
+            return v;
+        }
+    }
+    return nullptr;
+}
+
+//Znajdz Cargo z vectora shared ptr z STORECARGO 

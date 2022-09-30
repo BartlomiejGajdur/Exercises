@@ -31,5 +31,6 @@ class Store{
     private:
     std::vector<std::shared_ptr<Cargo>> storeCargo_;
     int generateRandomNumber(const int&, const int&);
+    std::shared_ptr<Cargo> findMatchCargo(std::shared_ptr<Cargo>);
 
 };
