@@ -9,19 +9,37 @@ Store::Response Store::buy(std::shared_ptr<Cargo> cargo, size_t amount, std::uni
     {
         // Nie wiem czy SHIP w plajerze musi byc uniqe ptr lub jakos musze przeanalizowac kiedy shared ptr robi kopie sobie obiektu swojego
          int totalPrice = cargo->getPrice() * amount; 
-    
+       
     if(findMatchCargo(cargo)!=nullptr){
         if(totalPrice>player->getMoney()){
+            std::cout<<"lack_of_money";
             return Response::lack_of_money;
         }
         if(amount>player->getShip()->getAvailableSpace()){
+            std::cout<<"lack_of_space";
             return Response::lack_of_space;
         }
-        if(amount>cargo->getAmount()){
+        if(amount>findMatchCargo(cargo)->getAmount()){ //If amount to buy > 
+            std::cout<<"lack_of_cargoAmount";
             return Response::lack_of_cargo;
+        }else if(amount==findMatchCargo(cargo)->getAmount()){
+            player->getShip()->load(findMatchCargo(cargo));
+            player->substractMoney(totalPrice);
+             std::cout<<"Zakup done1\n";
+            storeCargo_.erase(std::remove_if(storeCargo_.begin(), storeCargo_.end(), [&cargo](auto &x){return *cargo==*x;}), storeCargo_.end());
+           
+            return Response::done;
+        }else if (amount<findMatchCargo(cargo)->getAmount()){ //tutaj dalej pracujemy chyba na tym obiekcie 
+            player->getShip()->load(findMatchCargo(cargo));
+            player->substractMoney(totalPrice);
+            *findMatchCargo(cargo)-=amount;
+            std::cout<<"Zakup done2\n";
+            return Response::done;
         }
-        player->getShip()->load(cargo);
-        player->substractMoney(totalPrice); 
+    
+        
+        //*findMatchCargo(cargo)-=amount; // Tutaj caly czas te same obiekty , może jakaś głeboka kopia musi byc zrobiona zeby je oddzielic
+        //storeCargo_.erase(std::remove_if(storeCargo_.begin(),storeCargo_.end()))
         std::cout<<"Zakup done\n";
         return Response::done;
     }
@@ -76,8 +94,8 @@ int Store::generateRandomNumber(const int& first, const int& second){
 
  void Store::GenerateFruit() {
         
-        std::array<std::string,3> name{"Jablko","Banan","Gruszka"};
-        int generatedAmount = generateRandomNumber(1,10);
+        std::array<std::string,3> name{"Jablko","Gruszka","Banan"};
+        int generatedAmount = generateRandomNumber(5,10);
         int generatedBasePrice = generateRandomNumber(5,10);
         storeCargo_.push_back(std::make_shared<Fruit>(name[generateRandomNumber(0,2)],generatedAmount,generatedBasePrice));
 

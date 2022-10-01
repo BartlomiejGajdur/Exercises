@@ -22,7 +22,7 @@ int main(){
     auto Statek = std::make_shared<Ship>(1,"StatekBartek",100,100,100); 
 
     std::unique_ptr<Player> player_;
-    player_ = std::make_unique<Player>(Statek,100);
+    player_ = std::make_unique<Player>(Statek,1000);
 
     Store sklep{};
     std::cout<<"CargoSHOP ----------------------------\n";
@@ -31,17 +31,21 @@ int main(){
 
     
     Statek->load(std::make_shared<Fruit>(P1));
-    player_->load(std::make_shared<Fruit>(P2));
+    player_->load(std::make_shared<Fruit>(P3));
    
-     std::cout<<"PlayerCargo ----------------------------\n";
+    std::cout<<"PlayerCargo ----------------------------\n";
     player_->printCargo();
-std::cout<<"\n\n\n";
-std::cout<<"Transaction:";
-    sklep.buy(std::make_shared<Fruit>("Jablko",1,5),1,player_);
+    std::cout<<"\n\n\n";
+    std::cout<<"Transaction:";
+    sklep.buy(std::make_shared<Fruit>("Banan",1,11),20,player_);
 
     std::cout<<"\nPlayerCargo ----------------------------\n";
     player_->printCargo();
-std::cout<<"\n\n\n";
+    std::cout<<"\n\n\n";
+
+     std::cout<<"CargoSHOP ----------------------------\n";
+    sklep.printCargo();
+    std::cout<<"\n\n\n";
 
     return 0;
 }

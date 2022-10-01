@@ -16,6 +16,7 @@ class Store{
             GenerateFruit();
             GenerateAlcohol();
         }
+        storeCargo_.push_back(std::make_shared<Fruit>("Banan",27,11));
     }
 
     Response buy(std::shared_ptr<Cargo> cargo, size_t amount, std::unique_ptr<Player> &player);
