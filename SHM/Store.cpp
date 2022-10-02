@@ -6,11 +6,9 @@
 // #include "Item.hpp"
 
 Store::Response Store::buy(std::shared_ptr<Cargo> cargo, size_t amount, std::unique_ptr<Player> &player)
-    {
+    { // Działa tylko dla Fruit 
         
          int totalPrice = cargo->getPrice() * amount; 
-
-         auto nowy = std::make_shared<Cargo>(*findMatchCargo(cargo));
 
     if(findMatchCargo(cargo)!=nullptr){
         if(totalPrice>player->getMoney()){
@@ -27,32 +25,37 @@ Store::Response Store::buy(std::shared_ptr<Cargo> cargo, size_t amount, std::uni
             std::cout<<"lack_of_cargoAmount";
             return Response::lack_of_cargo;
 
-        }else if(amount==findMatchCargo(cargo)->getAmount()){
+        }
+        
+        if(amount==findMatchCargo(cargo)->getAmount()){
             player->getShip()->load(findMatchCargo(cargo));
             player->substractMoney(totalPrice);
-             std::cout<<"Zakup done1\n";
+             std::cout<<"Zakup done\n";
             storeCargo_.erase(std::remove_if(storeCargo_.begin(), storeCargo_.end(), [&cargo](auto &x){return *cargo==*x;}), storeCargo_.end());
             return Response::done;
 
-        }else if (amount<nowy->getAmount()){ //tutaj dalej pracujemy chyba na tym obiekcie a powinnismy na innym
-            player->getShip()->load(nowy);
+        }else if (amount<findMatchCargo(cargo)->getAmount()){ 
+            auto nowy = std::make_shared<Fruit>(*findMatchCargo(cargo));
+            int temp = nowy->getAmount(); 
+            temp-=amount; 
+            *nowy-=temp;
+            player->load(nowy);
             player->substractMoney(totalPrice);
             *findMatchCargo(cargo)-=amount;
-            std::cout<<"Zakup done2\n";
+            std::cout<<"Zakup done\n";
             return Response::done;
 
          }
     
-        std::cout<<"Zakup done\n";
-        return Response::done;
+        std::cout<<"Incorrect\n";
+        return Response::lack_of_cargo;
     }
-    std::cout<<"Nie ma takiego cargo w vectorze Store::Cargo";
+    std::cout<<"No such cargo in vector Store::Cargo";
     return Response::lack_of_cargo;
-    
 }
 
 Store::Response Store::sell(std::shared_ptr<Cargo> cargo, size_t amount, std::unique_ptr<Player> &player){
-    //Nie wiem czy by sie nie przydala jakas static zmienna do oznaczania towarow, moze wystarczy po prostu numer czy cos
+    
     int totalPrice = cargo->getPrice() * amount;
 
     // przeszukanie vectora cargo w ship i sprawdzenie czy ejst to samo z CArog
@@ -75,10 +78,7 @@ Store::Response Store::sell(std::shared_ptr<Cargo> cargo, size_t amount, std::un
     }
     return Response::lack_of_cargo;
 }
-/*
-Jeśli w vectorze Cargo, który mamy w Store jest dany towar który podajemy w:
-buy(jakies cargo(czyli np cargo o nazwie "Jablko" i cenie bazowej 20), ilosc tego Cargo,Nie wiem czy tu potrzebny jest player)
-*/
+
 
 int Store::generateRandomNumber(const int& first, const int& second){
 
@@ -99,7 +99,7 @@ int Store::generateRandomNumber(const int& first, const int& second){
         
         std::array<std::string,3> name{"Jablko","Gruszka","Banan"};
         int generatedAmount = generateRandomNumber(5,10);
-        int generatedBasePrice = generateRandomNumber(5,10);
+        int generatedBasePrice = generateRandomNumber(10,10);
         storeCargo_.push_back(std::make_shared<Fruit>(name[generateRandomNumber(0,2)],generatedAmount,generatedBasePrice));
 
     }
@@ -119,9 +119,7 @@ void Store::GenerateItem(){
     //Ale to bedzie tylko w Sell chyba 
     //Mozna kupic skrzynke których bedzie np 5 w kazdym sklepie i funkcjonalnosc otwierania skrzynki 
     //z której wypada wlasnie jakis Losowy itemek i dodaje się do Ship. ( Przy otwieraniu trzeba miec wystarczajaca ilosc miejsca)
-    //nr. 9 --> otworz skrzynek jeżeli jest to wysweitla ile masz skrzynek itd... 
-    
-
+    //nr. 9 --> otworz skrzynek jeżeli jest to wysweitla ile masz skrzynek itd...  
 }
 
 std::shared_ptr<Cargo> Store::findMatchCargo(std::shared_ptr<Cargo> Cargo){

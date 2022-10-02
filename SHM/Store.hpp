@@ -17,6 +17,8 @@ class Store{
             GenerateAlcohol();
         }
         storeCargo_.push_back(std::make_shared<Fruit>("Banan",27,11));
+
+        //Tutaj musze zrobic jakies akumulowanie tych samych rzeczy.
     }
 
     Response buy(std::shared_ptr<Cargo> cargo, size_t amount, std::unique_ptr<Player> &player);

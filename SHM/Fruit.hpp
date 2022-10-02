@@ -12,6 +12,11 @@ class Fruit : public Cargo{
                                                                                                             Cargo(name,amount,basePrice), 
                                                                                                             expire_date_(expiry_date),
                                                                                                             timeToSpoil_(time_elapsed) {};
+     Fruit(const Cargo& other){
+        name_     = other.getName();
+        amount_   = other.getAmount();
+        basePrice_= other.getBasePrice();
+    }
     Fruit() = default;
     ~Fruit() override = default;
     
@@ -28,19 +33,6 @@ class Fruit : public Cargo{
     Fruit& operator+=(const size_t amount) override;                                                      
     Fruit& operator-=(const size_t amount) override;
     friend std::ostream& operator<<(std::ostream &os, const Fruit& fruit);
-
-    // Cargo& operator=(const Cargo& other) override{
-    //     name_     = other.getName();
-    //     amount_   = other.getAmount();
-    //     basePrice_= other.getBasePrice();
-    //     return *this;
-    // }
-
-    Fruit(const Fruit& other){
-        name_     = other.getName();
-        amount_   = other.getAmount();
-        basePrice_= other.getBasePrice();
-    }
 
 
      private:
