@@ -34,6 +34,20 @@ class Item : public Cargo{
     bool operator==(const Cargo& otherItem) override;
     Item& operator+=(const size_t amount)   override;                                                      
     Item& operator-=(const size_t amount)   override;
+
+    // Cargo& operator=(const Cargo& other) override{
+    //     name_     = other.getName();
+    //     amount_   = other.getAmount();
+    //     basePrice_= other.getBasePrice();
+    //     return *this;
+    // }
+
+    Item(const Item& other){
+        name_     = other.getName();
+        amount_   = other.getAmount();
+        basePrice_= other.getBasePrice();
+    }
+
     
     private:
     Rarity rarity_{Rarity::Common};

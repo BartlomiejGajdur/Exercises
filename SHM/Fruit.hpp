@@ -29,6 +29,20 @@ class Fruit : public Cargo{
     Fruit& operator-=(const size_t amount) override;
     friend std::ostream& operator<<(std::ostream &os, const Fruit& fruit);
 
+    // Cargo& operator=(const Cargo& other) override{
+    //     name_     = other.getName();
+    //     amount_   = other.getAmount();
+    //     basePrice_= other.getBasePrice();
+    //     return *this;
+    // }
+
+    Fruit(const Fruit& other){
+        name_     = other.getName();
+        amount_   = other.getAmount();
+        basePrice_= other.getBasePrice();
+    }
+
+
      private:
      double timeToSpoil_{10};
      const double expire_date_{10};

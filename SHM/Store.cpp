@@ -7,39 +7,42 @@
 
 Store::Response Store::buy(std::shared_ptr<Cargo> cargo, size_t amount, std::unique_ptr<Player> &player)
     {
-        // Nie wiem czy SHIP w plajerze musi byc uniqe ptr lub jakos musze przeanalizowac kiedy shared ptr robi kopie sobie obiektu swojego
+        
          int totalPrice = cargo->getPrice() * amount; 
-       
+
+         auto nowy = std::make_shared<Cargo>(*findMatchCargo(cargo));
+
     if(findMatchCargo(cargo)!=nullptr){
         if(totalPrice>player->getMoney()){
             std::cout<<"lack_of_money";
             return Response::lack_of_money;
+
         }
         if(amount>player->getShip()->getAvailableSpace()){
             std::cout<<"lack_of_space";
             return Response::lack_of_space;
+
         }
-        if(amount>findMatchCargo(cargo)->getAmount()){ //If amount to buy > 
+        if(amount>findMatchCargo(cargo)->getAmount()){
             std::cout<<"lack_of_cargoAmount";
             return Response::lack_of_cargo;
+
         }else if(amount==findMatchCargo(cargo)->getAmount()){
             player->getShip()->load(findMatchCargo(cargo));
             player->substractMoney(totalPrice);
              std::cout<<"Zakup done1\n";
             storeCargo_.erase(std::remove_if(storeCargo_.begin(), storeCargo_.end(), [&cargo](auto &x){return *cargo==*x;}), storeCargo_.end());
-           
             return Response::done;
-        }else if (amount<findMatchCargo(cargo)->getAmount()){ //tutaj dalej pracujemy chyba na tym obiekcie 
-            player->getShip()->load(findMatchCargo(cargo));
+
+        }else if (amount<nowy->getAmount()){ //tutaj dalej pracujemy chyba na tym obiekcie a powinnismy na innym
+            player->getShip()->load(nowy);
             player->substractMoney(totalPrice);
             *findMatchCargo(cargo)-=amount;
             std::cout<<"Zakup done2\n";
             return Response::done;
-        }
+
+         }
     
-        
-        //*findMatchCargo(cargo)-=amount; // Tutaj caly czas te same obiekty , może jakaś głeboka kopia musi byc zrobiona zeby je oddzielic
-        //storeCargo_.erase(std::remove_if(storeCargo_.begin(),storeCargo_.end()))
         std::cout<<"Zakup done\n";
         return Response::done;
     }

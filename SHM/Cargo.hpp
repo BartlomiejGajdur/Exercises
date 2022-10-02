@@ -12,7 +12,7 @@ class Cargo{
                                         basePrice_(basePrice) {}
     Cargo() = default; 
     virtual ~Cargo() = default;
-
+    
 //GETTERS
 
     virtual std::string getName() const = 0;
@@ -28,6 +28,8 @@ class Cargo{
     virtual Cargo& operator-=(const size_t amount) = 0;
     virtual bool operator==(const Cargo& other)    = 0;
     friend std::ostream& operator<<(std::ostream &os, const Cargo& cargo);
+
+   // virtual Cargo& operator=(const Cargo& other) = 0;
 
 //Functions
     virtual void print(std::ostream& os) const = 0;
