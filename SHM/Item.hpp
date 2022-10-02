@@ -17,6 +17,11 @@ class Item : public Cargo{
                        Rarity rarity):
                                         Cargo(name,amount,basePrice),
                                               rarity_(rarity){}
+    Item(const Cargo& other){
+        name_     = other.getName();
+        amount_   = other.getAmount();
+        basePrice_= other.getBasePrice();
+    }
     ~Item() = default;
     Item() = default;
     //GETTERS
@@ -35,20 +40,7 @@ class Item : public Cargo{
     Item& operator+=(const size_t amount)   override;                                                      
     Item& operator-=(const size_t amount)   override;
 
-    // Cargo& operator=(const Cargo& other) override{
-    //     name_     = other.getName();
-    //     amount_   = other.getAmount();
-    //     basePrice_= other.getBasePrice();
-    //     return *this;
-    // }
-
-    Item(const Item& other){
-        name_     = other.getName();
-        amount_   = other.getAmount();
-        basePrice_= other.getBasePrice();
-    }
-
-    
+  
     private:
     Rarity rarity_{Rarity::Common};
 

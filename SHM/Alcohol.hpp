@@ -15,6 +15,11 @@ class Alcohol : public Cargo{
                        size_t percentage):
                                         Cargo(name,amount,basePrice),
                                              percentage_(percentage){}
+    Alcohol(const Cargo& other){
+        name_     = other.getName();
+        amount_   = other.getAmount();
+        basePrice_= other.getBasePrice();
+    }
      Alcohol() = default;
     ~Alcohol() override = default;
    
@@ -34,19 +39,6 @@ class Alcohol : public Cargo{
     Alcohol& operator+=(const size_t amount)   override;                                                      
     Alcohol& operator-=(const size_t amount)   override;
 
-    // Cargo& operator=(const Cargo& other) override{
-    //     name_     = other.getName();
-    //     amount_   = other.getAmount();
-    //     basePrice_= other.getBasePrice();
-    //     return *this;
-        
-    // }
-
-    Alcohol(const Alcohol& other){
-        name_     = other.getName();
-        amount_   = other.getAmount();
-        basePrice_= other.getBasePrice();
-    }
 
     private:
     const size_t percentage_{40};
