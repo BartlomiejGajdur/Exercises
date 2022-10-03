@@ -12,7 +12,7 @@ class Ship{
          std::string name, 
          size_t speed, 
          size_t maxCrew,
-         size_t capacity): id_(id), name_(name), speed_(speed), maxCrew_(maxCrew), capacity_(capacity), crew_(0) {}
+         size_t capacity): id_(id), name_(name), speed_(speed), maxCrew_(maxCrew), capacity_(capacity), crew_(0) { setCrew(10);}
 
     Ship() : id_(-1), crew_(0) {}
 

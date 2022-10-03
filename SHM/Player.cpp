@@ -17,3 +17,8 @@ void Player::substractMoney(const double& moneyToSubstract)
 void Player::addMoney(const double& moneyToAdd){
     money_+=moneyToAdd;
 }
+
+void Player::nextDay(){
+    this->substractMoney(ship_->getCrew());
+    
+}

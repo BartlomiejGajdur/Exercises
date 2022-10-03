@@ -24,6 +24,8 @@ class Player{
     void printCargo() const {ship_->printCargo();}
     void load(const std::shared_ptr<Cargo>& cargo) {ship_->load(cargo);}
     void unload(const std::shared_ptr<Cargo>& cargo) {ship_->unload(cargo);}
+
+    void nextDay();
     
     private:
     
