@@ -10,6 +10,7 @@ Fruit& Fruit::operator--()
         --timeToSpoil_;
         return *this;
     }else{
+        std::cout<<"Rotten!";
         return *this;
     }
 
@@ -49,3 +50,7 @@ Fruit& Fruit::operator-=(const size_t amount)
             return *this;
         
     }   
+
+void Fruit::nextDay(){
+    operator--();
+}

@@ -55,5 +55,8 @@ int main(){
     player_->substractMoney(player_->getShip()->getCrew());
     std::cout<<player_->getMoney()<<std::endl;
 
+    std::cout<<P5.getTimeToSpoil()<<std::endl;
+    P5.nextDay();
+    std::cout<<P5.getTimeToSpoil()<<std::endl;
     return 0;
 }

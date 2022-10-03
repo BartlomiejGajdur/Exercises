@@ -34,6 +34,7 @@ class Fruit : public Cargo{
     Fruit& operator-=(const size_t amount) override;
     friend std::ostream& operator<<(std::ostream &os, const Fruit& fruit);
 
+    void nextDay();
 
      private:
      double timeToSpoil_{10};
