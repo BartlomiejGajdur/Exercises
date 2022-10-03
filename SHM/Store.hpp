@@ -11,14 +11,7 @@ class Store{
 
     Store(std::vector<std::shared_ptr<Cargo>> storeCargo): storeCargo_(storeCargo) {}
     Store(){
-        for(int i = 0 ; i<3 ; i++)
-        {
-            GenerateFruit();
-            GenerateAlcohol();
-        }
-        storeCargo_.push_back(std::make_shared<Fruit>("Banan",27,11));
-
-        //Tutaj musze zrobic jakies akumulowanie tych samych rzeczy.
+        GenerateCargoForStore();
     }
 
     Response buy(std::shared_ptr<Cargo> cargo, size_t amount, std::unique_ptr<Player> &player);
@@ -28,8 +21,11 @@ class Store{
     void GenerateFruit();
     void GenerateAlcohol();
     void GenerateItem();
+    void GenerateCargoForStore();
 
     void printCargo() const;
+
+    void nextDay();
     
     private:
     std::vector<std::shared_ptr<Cargo>> storeCargo_;

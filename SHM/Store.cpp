@@ -114,12 +114,16 @@ void Store::GenerateAlcohol(){
 }
 
 void Store::GenerateItem(){
-    //amount bedzie jeden -> mapa z Rarity i price -> i jakiegos if ze jezeli wygenerowany item 
-    //np od 0-90 bedzie common 90-05 to zeby wzielo tamto itd itd... 
-    //Ale to bedzie tylko w Sell chyba 
-    //Mozna kupic skrzynke których bedzie np 5 w kazdym sklepie i funkcjonalnosc otwierania skrzynki 
-    //z której wypada wlasnie jakis Losowy itemek i dodaje się do Ship. ( Przy otwieraniu trzeba miec wystarczajaca ilosc miejsca)
-    //nr. 9 --> otworz skrzynek jeżeli jest to wysweitla ile masz skrzynek itd...  
+     std::array<Item::Rarity,5>rarity   {Item::Rarity::Common,
+                                         Item::Rarity::Rare,
+                                         Item::Rarity::Epic,
+                                         Item::Rarity::Legendary,
+                                         Item::Rarity::Mythic};
+     std::array<std::string,5>name      {"Common Item","Rare Item","Epic Item","Legendary Item","Mythic Item"};
+     int generatedNumber = generateRandomNumber(0,4);
+     storeCargo_.push_back(std::make_shared<Item>(name[generatedNumber],
+                                                    1,1,rarity[generatedNumber]));
+    
 }
 
 std::shared_ptr<Cargo> Store::findMatchCargo(std::shared_ptr<Cargo> Cargo){
@@ -133,4 +137,18 @@ std::shared_ptr<Cargo> Store::findMatchCargo(std::shared_ptr<Cargo> Cargo){
     return nullptr;
 }
 
-//Znajdz Cargo z vectora shared ptr z STORECARGO 
+void Store::GenerateCargoForStore(){
+
+        for(int i = 0 ; i<3 ; i++)
+        {
+            GenerateFruit();
+            GenerateAlcohol();
+        }
+             GenerateItem();
+}
+
+
+void Store::nextDay(){
+    storeCargo_.clear();
+    GenerateCargoForStore();
+}

@@ -49,14 +49,23 @@ int main(){
     // sklep.printCargo();
     // std::cout<<"\n\n\n";
 
-    std::cout<<player_->getMoney()<<std::endl;
-    player_->nextDay();
-    std::cout<<player_->getMoney()<<std::endl;
-    player_->substractMoney(player_->getShip()->getCrew());
-    std::cout<<player_->getMoney()<<std::endl;
+    // std::cout<<player_->getMoney()<<std::endl;
+    // player_->nextDay();
+    // std::cout<<player_->getMoney()<<std::endl;
+    // player_->substractMoney(player_->getShip()->getCrew());
+    // std::cout<<player_->getMoney()<<std::endl;
 
-    std::cout<<P5.getTimeToSpoil()<<std::endl;
-    P5.nextDay();
-    std::cout<<P5.getTimeToSpoil()<<std::endl;
+    // std::cout<<P5.getTimeToSpoil()<<std::endl;
+    // P5.nextDay();
+    // std::cout<<P5.getTimeToSpoil()<<std::endl;
+
+    Store sklep{};
+    sklep.printCargo();
+    std::cout<<std::endl;
+    sklep.nextDay();
+    sklep.printCargo();
+    std::cout<<std::endl;
+    sklep.printCargo();
+
     return 0;
 }
