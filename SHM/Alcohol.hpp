@@ -1,4 +1,5 @@
 #include "Cargo.cpp"
+#include <memory>
 
 const size_t maxPercentage_{96};
 
@@ -32,6 +33,9 @@ class Alcohol : public Cargo{
     double getPrice() const override {return (basePrice_*(static_cast<double>(percentage_)/maxPercentage_));}
 
     void print(std::ostream& os) const override;
+    std::shared_ptr<Cargo> clone() const override{
+       return std::make_shared<Alcohol>(*this);
+    }
 
     //OPERATORS
     friend std::ostream& operator<<(std::ostream &os, const Alcohol& alcohol);

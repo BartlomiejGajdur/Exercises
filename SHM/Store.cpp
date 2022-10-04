@@ -6,10 +6,10 @@
 // #include "Item.hpp"
 
 Store::Response Store::buy(std::shared_ptr<Cargo> cargo, size_t amount, std::unique_ptr<Player> &player)
-    { // Działa tylko dla Fruit 
+    { 
         
          int totalPrice = cargo->getPrice() * amount; 
-
+         auto nowy = findMatchCargo(cargo)->clone();
     if(findMatchCargo(cargo)!=nullptr){
         if(totalPrice>player->getMoney()){
             std::cout<<"lack_of_money";
@@ -35,9 +35,8 @@ Store::Response Store::buy(std::shared_ptr<Cargo> cargo, size_t amount, std::uni
             return Response::done;
 
         }else if (amount<findMatchCargo(cargo)->getAmount()){ 
-            auto nowy = std::make_shared<Fruit>(*findMatchCargo(cargo));
-            int temp = nowy->getAmount(); 
-            temp-=amount; 
+            int temp = nowy->getAmount();  
+            temp-=amount;                     
             *nowy-=temp;
             player->load(nowy);
             player->substractMoney(totalPrice);

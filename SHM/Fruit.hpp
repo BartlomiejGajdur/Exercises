@@ -2,6 +2,7 @@
 #include "Cargo.hpp"
 #include "Cargo.cpp"
 #include <iostream>
+#include <memory>
 
 class Fruit : public Cargo{
     public:
@@ -25,7 +26,12 @@ class Fruit : public Cargo{
     double getBasePrice() const override{return basePrice_;}
     size_t getTimeToSpoil() const {return timeToSpoil_;}
     double getPrice()     const override;
+
     void print(std::ostream& os) const override;
+    std::shared_ptr<Cargo> clone() const override{
+        return std::make_shared<Fruit>(*this);
+    }
+
 
     //Operator
     Fruit& operator--();

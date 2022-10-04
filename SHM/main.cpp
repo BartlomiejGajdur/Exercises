@@ -26,46 +26,51 @@ int main(){
     std::unique_ptr<Player> player_;
     player_ = std::make_unique<Player>(Statek,1000);
 
-    // Store sklep{};
-    // std::cout<<"CargoSHOP ----------------------------\n";
-    // sklep.printCargo();
-    // std::cout<<"\n\n\n";
+    Store sklep{};
+    std::cout<<"CargoSHOP ----------------------------\n";
+    sklep.printCargo();
+    std::cout<<"\n\n\n";
 
     
-    // Statek->load(std::make_shared<Fruit>(P1));
-    // player_->load(std::make_shared<Fruit>(P3));
+    Statek->load(std::make_shared<Fruit>(P1));
+    player_->load(std::make_shared<Fruit>(P3));
    
-    // std::cout<<"PlayerCargo ----------------------------\n";
-    // player_->printCargo();
-    // std::cout<<"\n\n\n";
-    // std::cout<<"Transaction:";
-    // sklep.buy(std::make_shared<Fruit>("Gruszka",1,10),5,player_);
+    std::cout<<"PlayerCargo ----------------------------\n";
+    player_->printCargo();
+    std::cout<<"\n\n\n";
+    std::cout<<"Transaction:";
+    sklep.buy(std::make_shared<Fruit>("Banan",1,10),27,player_);
 
-    // std::cout<<"\nPlayerCargo ----------------------------\n";
-    // player_->printCargo();
-    // std::cout<<"\n\n\n";
+    std::cout<<"\nPlayerCargo ----------------------------\n";
+    player_->printCargo();
+    std::cout<<"\n\n\n";
 
-    //  std::cout<<"CargoSHOP ----------------------------\n";
-    // sklep.printCargo();
-    // std::cout<<"\n\n\n";
-
-    // std::cout<<player_->getMoney()<<std::endl;
-    // player_->nextDay();
-    // std::cout<<player_->getMoney()<<std::endl;
-    // player_->substractMoney(player_->getShip()->getCrew());
-    // std::cout<<player_->getMoney()<<std::endl;
-
-    // std::cout<<P5.getTimeToSpoil()<<std::endl;
-    // P5.nextDay();
-    // std::cout<<P5.getTimeToSpoil()<<std::endl;
-
-    Store sklep{};
+     std::cout<<"CargoSHOP ----------------------------\n";
     sklep.printCargo();
-    std::cout<<std::endl;
-    sklep.nextDay();
-    sklep.printCargo();
-    std::cout<<std::endl;
-    sklep.printCargo();
+    std::cout<<"\n\n\n";
+
+    
+
+    
 
     return 0;
 }
+
+
+// Time& Time::operator++() {
+//     time_elapsed_--;                     Czyli uplywa jeden dzien
+//     auto it = observers_.begin();        iterator jest na pierwszej pozycji 
+//     while (it != observers_.end()) {     Dopoki ten iterator nie przjedzize calej listy ( observers_end zwraca iterator po ostatnim obiekcie)
+//         (*it)->nextDay();                Wywolywanie dla kazdego subssykbenta funckji NextDay
+//         ++it;                            przesuniecie dalej iteratora
+//     }
+//     return *this;                        Zwraca aktualnych obserwatorow (juz cos tam zmienionych);
+// }
+
+// void Time::addObserver(Observer* obs) {     //Dodaje obserwatora
+//     observers_.push_back(obs);
+// }
+
+// void Time::removeObserver(Observer* obs) {   //Wyrzuca obserwatora
+//     observers_.remove(obs);
+// }

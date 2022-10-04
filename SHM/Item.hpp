@@ -1,6 +1,7 @@
 #pragma once
 #include "Cargo.cpp"
 #include <iostream> 
+#include <memory>
 
 class Item : public Cargo{
     public:
@@ -32,6 +33,9 @@ class Item : public Cargo{
 
     std::string getRarity() const;              //Returns string from enum
     void print(std::ostream& os) const override;
+    std::shared_ptr<Cargo> clone() const override{
+        return std::make_shared<Item>(*this);
+    }
 
 
     //OPERATORS 

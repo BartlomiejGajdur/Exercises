@@ -12,6 +12,7 @@ class Store{
     Store(std::vector<std::shared_ptr<Cargo>> storeCargo): storeCargo_(storeCargo) {}
     Store(){
         GenerateCargoForStore();
+        storeCargo_.push_back(std::make_shared<Fruit>("Banan",27,10));
     }
 
     Response buy(std::shared_ptr<Cargo> cargo, size_t amount, std::unique_ptr<Player> &player);

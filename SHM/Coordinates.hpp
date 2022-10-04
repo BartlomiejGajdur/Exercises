@@ -20,7 +20,7 @@ class Coordinates{
     //OPERATORS
     bool operator==(const Coordinates &other);
     friend std::ostream& operator<<(std::ostream &os, const Coordinates& position);
-
+    
     
  
     private:

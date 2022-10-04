@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <ostream>
+#include <memory>
 
 class Cargo{
     public:
@@ -33,6 +34,7 @@ class Cargo{
 
 //Functions
     virtual void print(std::ostream& os) const = 0;
+    virtual std::shared_ptr<Cargo> clone() const = 0;
 
     
    
