@@ -9,6 +9,7 @@
 #include "Player.cpp"
 #include "Ship.cpp"
 #include "Store.cpp"
+#include "Time.cpp"
 
 
 int main(){
@@ -32,24 +33,36 @@ int main(){
     std::cout<<"\n\n\n";
 
     
-    Statek->load(std::make_shared<Fruit>(P1));
-    player_->load(std::make_shared<Fruit>(P3));
+    // Statek->load(std::make_shared<Fruit>(P1));
+    // player_->load(std::make_shared<Fruit>(P3));
    
-    std::cout<<"PlayerCargo ----------------------------\n";
-    player_->printCargo();
-    std::cout<<"\n\n\n";
-    std::cout<<"Transaction:";
-    sklep.buy(std::make_shared<Fruit>("Banan",1,10),27,player_);
+    // std::cout<<"PlayerCargo ----------------------------\n";
+    // player_->printCargo();
+    // std::cout<<"\n\n\n";
+    // std::cout<<"Transaction:";
+    // sklep.buy(std::make_shared<Fruit>("Banan",1,10),27,player_);
 
-    std::cout<<"\nPlayerCargo ----------------------------\n";
-    player_->printCargo();
-    std::cout<<"\n\n\n";
+    // std::cout<<"\nPlayerCargo ----------------------------\n";
+    // player_->printCargo();
+    // std::cout<<"\n\n\n";
 
-     std::cout<<"CargoSHOP ----------------------------\n";
+    //  std::cout<<"CargoSHOP ----------------------------\n";
+    // sklep.printCargo();
+    // std::cout<<"\n\n\n";
+
+    Time czas{100};
+
+    czas.addObserver(player_.get());
+    czas.addObserver(&sklep);
+    czas.addObserver(&P5);
+
+    std::cout<<"Player money: "<<player_->getMoney()<<"\n";
+    std::cout<<"P: "<<P5.getTimeToSpoil()<<"\n";
+    ++czas;
+    std::cout<<"Player money: "<<player_->getMoney()<<"\n";
+    std::cout<<"P: "<<P5.getTimeToSpoil()<<"\n";
+    std::cout<<"CargoSHOP ----------------------------\n";
     sklep.printCargo();
-    std::cout<<"\n\n\n";
-
-    
 
     
 
@@ -57,20 +70,3 @@ int main(){
 }
 
 
-// Time& Time::operator++() {
-//     time_elapsed_--;                     Czyli uplywa jeden dzien
-//     auto it = observers_.begin();        iterator jest na pierwszej pozycji 
-//     while (it != observers_.end()) {     Dopoki ten iterator nie przjedzize calej listy ( observers_end zwraca iterator po ostatnim obiekcie)
-//         (*it)->nextDay();                Wywolywanie dla kazdego subssykbenta funckji NextDay
-//         ++it;                            przesuniecie dalej iteratora
-//     }
-//     return *this;                        Zwraca aktualnych obserwatorow (juz cos tam zmienionych);
-// }
-
-// void Time::addObserver(Observer* obs) {     //Dodaje obserwatora
-//     observers_.push_back(obs);
-// }
-
-// void Time::removeObserver(Observer* obs) {   //Wyrzuca obserwatora
-//     observers_.remove(obs);
-// }

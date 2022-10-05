@@ -1,9 +1,10 @@
 #pragma once
 #include "Ship.hpp"
 #include <iostream>
+#include "Time.hpp"
 #include <memory>
 
-class Player{
+class Player : public Observer{
     public:
     Player(std::shared_ptr<Ship> ship, double money): 
                                                     ship_(ship), 
@@ -25,11 +26,9 @@ class Player{
     void load(const std::shared_ptr<Cargo>& cargo) {ship_->load(cargo);}
     void unload(const std::shared_ptr<Cargo>& cargo) {ship_->unload(cargo);}
 
-    void nextDay();
+    void nextDay() override; //override;
     
     private:
-    
-
     std::shared_ptr<Ship> ship_;
     double money_;
     int availableSpace_;

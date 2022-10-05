@@ -1,10 +1,11 @@
 #pragma once
 #include "Cargo.hpp"
 #include "Cargo.cpp"
+#include "Time.hpp"
 #include <iostream>
 #include <memory>
 
-class Fruit : public Cargo{
+class Fruit : public Cargo, public Observer{
     public:
     Fruit(const std::string& name, size_t amount, double basePrice): 
                                                                     Cargo(name,amount,basePrice) {}
@@ -40,7 +41,7 @@ class Fruit : public Cargo{
     Fruit& operator-=(const size_t amount) override;
     friend std::ostream& operator<<(std::ostream &os, const Fruit& fruit);
 
-    void nextDay();
+    void nextDay() override;
 
      private:
      double timeToSpoil_{10};

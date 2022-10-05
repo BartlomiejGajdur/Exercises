@@ -1,11 +1,11 @@
 #pragma once 
 #include "Cargo.hpp"
 #include "Player.hpp"
-
+#include "Time.hpp"
 #include <random>
 
 
-class Store{
+class Store : public Observer{
     public:
     enum class Response{done = 1, lack_of_money, lack_of_cargo, lack_of_space};
 
@@ -26,7 +26,7 @@ class Store{
 
     void printCargo() const;
 
-    void nextDay();
+    void nextDay() override;
     
     private:
     std::vector<std::shared_ptr<Cargo>> storeCargo_;
