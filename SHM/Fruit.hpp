@@ -35,7 +35,7 @@ class Fruit : public Cargo, public Observer{
 
 
     //Operator
-    Fruit& operator--();
+    Fruit& operator--() override;
     bool operator==(const Cargo& other)    override;
     Fruit& operator+=(const size_t amount) override;                                                      
     Fruit& operator-=(const size_t amount) override;

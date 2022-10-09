@@ -30,7 +30,7 @@ class Item : public Cargo{
     size_t getAmount()      const override {return amount_;}
     double getBasePrice()   const override {return basePrice_;}
     double getPrice() const override {return basePrice_*static_cast<int>(rarity_);}
-
+    Item& operator--() override {return *this;}
     std::string getRarity() const;              //Returns string from enum
     void print(std::ostream& os) const override;
     std::shared_ptr<Cargo> clone() const override{

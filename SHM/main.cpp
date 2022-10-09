@@ -33,8 +33,8 @@ int main(){
     std::cout<<"\n\n\n";
 
     
-    // Statek->load(std::make_shared<Fruit>(P1));
-    // player_->load(std::make_shared<Fruit>(P3));
+    Statek->load(std::make_shared<Fruit>(P1));
+    player_->load(std::make_shared<Fruit>(P3));
    
     // std::cout<<"PlayerCargo ----------------------------\n";
     // player_->printCargo();
@@ -53,18 +53,29 @@ int main(){
     Time czas{100};
 
     czas.addObserver(player_.get());
+    czas.addObserver(Statek.get());
     czas.addObserver(&sklep);
     czas.addObserver(&P5);
 
     std::cout<<"Player money: "<<player_->getMoney()<<"\n";
-    std::cout<<"P: "<<P5.getTimeToSpoil()<<"\n";
+    std::cout<<"OBSERVED P5: "<<P5.getTimeToSpoil()<<"\n";
+    std::cout<<"P4: "<<P4.getTimeToSpoil()<<"\n";
     ++czas;
     std::cout<<"Player money: "<<player_->getMoney()<<"\n";
-    std::cout<<"P: "<<P5.getTimeToSpoil()<<"\n";
+    std::cout<<"OBSERVED P5: "<<P5.getTimeToSpoil()<<"\n";
+    std::cout<<"P4: "<<P4.getTimeToSpoil()<<"\n";
     std::cout<<"CargoSHOP ----------------------------\n";
     sklep.printCargo();
 
-    
+    std::cout<<"\n\n\n"<<"PLAYER CARGO\n";
+    player_->printCargo();
+    std::cout<<"\n\n";
+    Statek->nextDay();
+    std::cout<<"\n\n\n"<<"PLAYER CARGO AFTER NEXT DAY\n";
+    player_->printCargo();
+    std::cout<<"\n\n";
+
+
 
     return 0;
 }

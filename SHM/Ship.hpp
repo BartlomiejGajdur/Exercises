@@ -1,12 +1,13 @@
 #pragma once
 #include "Cargo.cpp"
+#include "Time.hpp"
 #include <iostream>
 #include <memory>
 #include <string>
 #include <vector>
 
 
-class Ship{
+class Ship : public Observer{
     public:
     Ship(int id, 
          std::string name, 
@@ -44,6 +45,12 @@ class Ship{
     void unload(const std::shared_ptr<Cargo>& cargo);
     size_t getAvailableSpace();
     void printCargo() const;
+    void nextDay() override{
+     for(auto &cargo : cargo_)
+     {
+          --*cargo;
+     }
+    }
     
     private:
     int id_;

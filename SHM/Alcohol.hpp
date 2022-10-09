@@ -31,7 +31,7 @@ class Alcohol : public Cargo{
     double getBasePrice()   const override {return basePrice_;}
     size_t getPercentage()  const {return percentage_;}
     double getPrice() const override {return (basePrice_*(static_cast<double>(percentage_)/maxPercentage_));}
-
+    Alcohol& operator--() override {return *this;}
     void print(std::ostream& os) const override;
     std::shared_ptr<Cargo> clone() const override{
        return std::make_shared<Alcohol>(*this);
