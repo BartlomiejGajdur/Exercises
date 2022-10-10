@@ -29,6 +29,7 @@ class Island{
     //Functions
     void setRandomCoordinates(Coordinates &pos); //Setting random Coordinates for Island
     void printCargo() const {store_.printCargo();}
+    static size_t distance(const Island& lhs, const Island& rhs);
     //OPERATORS
     bool operator==(const Island &other);
     friend std::ostream& operator<<(std::ostream &os, Island& island);

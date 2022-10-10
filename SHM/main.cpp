@@ -85,10 +85,10 @@ int main(){
     player_->printCargo();
 
     std::cout<<"\n\n\n"<<"LICZENIE DYSTANSU\n";
-    // Map mapka;
-    // std::cout<<*mapka.getAllIslands()[0];
-    // std::cout<<*mapka.getAllIslands()[1];
-    // std::cout<<Coordinates::distance(*mapka.getAllIslands()[0],*mapka.getAllIslands()[1])
+    Map mapka;
+    std::cout<<*mapka.getAllIslands()[0]<<std::endl;
+    std::cout<<*mapka.getAllIslands()[1]<<std::endl;
+    std::cout<<Island::distance(*mapka.getAllIslands()[0],*mapka.getAllIslands()[1])<<std::endl;
 
     std::cout<<Coordinates::distance({5,5},{1,2});
     return 0;

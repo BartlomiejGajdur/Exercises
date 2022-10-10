@@ -22,3 +22,8 @@ std::ostream& operator<<(std::ostream &os, Island& island)
         os<<island.getPosition();
         return os;
     }
+
+size_t Island::distance(const Island& lhs, const Island& rhs){
+    return sqrt(pow(lhs.getPosition().getPositionX()-rhs.getPosition().getPositionX(),2) 
+               +pow(lhs.getPosition().getPositionY()-rhs.getPosition().getPositionY(),2));
+}
