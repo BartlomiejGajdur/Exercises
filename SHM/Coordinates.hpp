@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include <cmath>
 
 class Coordinates{
     public:
@@ -21,6 +22,8 @@ class Coordinates{
     bool operator==(const Coordinates &other);
     friend std::ostream& operator<<(std::ostream &os, const Coordinates& position);
     
+    //FUNCTIONS
+    static size_t distance(const Coordinates& lhs, const Coordinates& rhs); //przeciazanie dla wyso dac
     
  
     private:
