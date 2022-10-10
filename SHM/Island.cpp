@@ -1,6 +1,6 @@
   #include "Island.hpp"
   
-void Island::getRandomCoordinates(Coordinates &pos) //Setting random Coordinates for Island
+void Island::setRandomCoordinates(Coordinates &pos) //Setting random Coordinates for Island
     {
         std::random_device rd;
         std::mt19937 gen(rd());

@@ -9,8 +9,8 @@ Store::Response Store::buy(std::shared_ptr<Cargo> cargo, size_t amount, std::uni
     { 
         
          int totalPrice = cargo->getPrice() * amount; 
-         auto nowy = findMatchCargo(cargo)->clone();
     if(findMatchCargo(cargo)!=nullptr){
+        auto nowy = findMatchCargo(cargo)->clone();
         if(totalPrice>player->getMoney()){
             std::cout<<"lack_of_money";
             return Response::lack_of_money;
@@ -97,7 +97,7 @@ int Store::generateRandomNumber(const int& first, const int& second){
  void Store::GenerateFruit() {
         
         std::array<std::string,3> name{"Jablko","Gruszka","Banan"};
-        int generatedAmount = generateRandomNumber(5,10);
+        int generatedAmount = generateRandomNumber(10,10);
         int generatedBasePrice = generateRandomNumber(10,10);
         storeCargo_.push_back(std::make_shared<Fruit>(name[generateRandomNumber(0,2)],generatedAmount,generatedBasePrice));
 
@@ -140,10 +140,10 @@ void Store::GenerateCargoForStore(){
 
         for(int i = 0 ; i<3 ; i++)
         {
-            GenerateFruit();
-            GenerateAlcohol();
+            Store::GenerateFruit();
+            Store::GenerateAlcohol();
         }
-             GenerateItem();
+             Store::GenerateItem();
 }
 
 

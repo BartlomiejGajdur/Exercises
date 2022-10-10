@@ -19,7 +19,7 @@ int main(){
     Fruit P3{"Gruszka",35,5};
     Fruit P4{"Banan",15,15};
     Fruit P5{"Banan",10,15};
-
+    auto Banan = std::make_shared<Fruit>("Banan",10,10);
     auto Statek = std::make_shared<Ship>(1,"StatekBartek",100,100,100); 
 
     //auto nowy = std::make_shared<Fruit>(P4);
@@ -36,19 +36,19 @@ int main(){
     Statek->load(std::make_shared<Fruit>(P1));
     player_->load(std::make_shared<Fruit>(P3));
    
-    // std::cout<<"PlayerCargo ----------------------------\n";
-    // player_->printCargo();
-    // std::cout<<"\n\n\n";
-    // std::cout<<"Transaction:";
-    // sklep.buy(std::make_shared<Fruit>("Banan",1,10),27,player_);
+    std::cout<<"PlayerCargo ----------------------------\n";
+    player_->printCargo();
+    std::cout<<"\n\n\n";
+    std::cout<<"Transaction:";
+    sklep.buy(std::make_shared<Fruit>("Banan",1,10),10,player_);
 
-    // std::cout<<"\nPlayerCargo ----------------------------\n";
-    // player_->printCargo();
-    // std::cout<<"\n\n\n";
+    std::cout<<"\nPlayerCargo ----------------------------\n";
+    player_->printCargo();
+    std::cout<<"\n\n\n";
 
-    //  std::cout<<"CargoSHOP ----------------------------\n";
-    // sklep.printCargo();
-    // std::cout<<"\n\n\n";
+     std::cout<<"CargoSHOP ----------------------------\n";
+    sklep.printCargo();
+    std::cout<<"\n\n\n";
 
     Time czas{100};
 
@@ -75,8 +75,14 @@ int main(){
     player_->printCargo();
     std::cout<<"\n\n";
 
+    Island wyspa;
 
-
+    wyspa.printCargo();
+    wyspa.getStore().buy(Banan,8,player_);
+    std::cout<<"\n\n";
+    wyspa.printCargo();
+    std::cout<<"\n\n\n"<<"PLAYER CARGO\n";
+    player_->printCargo();
     return 0;
 }
 

@@ -12,8 +12,9 @@ class Store : public Observer{
     Store(std::vector<std::shared_ptr<Cargo>> storeCargo): storeCargo_(storeCargo) {}
     Store(){
         GenerateCargoForStore();
-        storeCargo_.push_back(std::make_shared<Fruit>("Banan",27,10));
     }
+    ~Store() {};
+    
 
     Response buy(std::shared_ptr<Cargo> cargo, size_t amount, std::unique_ptr<Player> &player);
     Response sell(std::shared_ptr<Cargo> cargo, size_t amount, std::unique_ptr<Player> &player);
