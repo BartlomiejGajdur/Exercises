@@ -20,7 +20,7 @@ class Fruit : public Cargo, public Observer{
         basePrice_= other.getBasePrice();
     }
     Fruit() = default;
-    ~Fruit() override = default;
+    virtual ~Fruit() override{};
     
     std::string getName() const override{return name_;}
     size_t getAmount()    const override{return amount_;}
@@ -43,9 +43,8 @@ class Fruit : public Cargo, public Observer{
 
     void nextDay() override;
 
-     private:
+     protected:
      double timeToSpoil_{10};
      const double expire_date_{10};
-
 };
 

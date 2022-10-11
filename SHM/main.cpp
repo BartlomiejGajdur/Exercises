@@ -10,6 +10,7 @@
 #include "Ship.cpp"
 #include "Store.cpp"
 #include "Time.cpp"
+#include "DryFruit.hpp"
 
 
 int main(){
@@ -91,6 +92,24 @@ int main(){
     std::cout<<Island::distance(*mapka.getAllIslands()[0],*mapka.getAllIslands()[1])<<std::endl;
 
     std::cout<<Coordinates::distance({5,5},{1,2});
+
+    DryFruit SuchyOwoc{"SuchyBanan",10,10};
+    Fruit MokryOwoc{"Banan",10,10};
+
+    std::vector<std::shared_ptr<Cargo>> vectorek;
+    vectorek.push_back(std::make_shared<DryFruit>(SuchyOwoc));
+    vectorek.push_back(std::make_shared<Fruit>(MokryOwoc));
+
+    for(int i = 0 ; i<6; i++){
+        std::cout<<"PRZEJSCIE --------------\n";
+    for (auto vec: vectorek){
+        std::cout<<*vec;
+    }
+    --*vectorek[0];
+    --*vectorek[1];
+
+    }
+    
     return 0;
 }
 

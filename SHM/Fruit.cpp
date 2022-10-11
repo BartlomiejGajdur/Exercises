@@ -20,7 +20,7 @@ void Fruit::print(std::ostream& os) const {
         os<<"Cargo: "<<name_<<" | "
         <<"Amount: " <<amount_<<" | "
         <<"Base Price: "<<basePrice_<<" | "
-        <<"Time to spoil: "<<timeToSpoil_<<" days";
+        <<"Time to spoil: "<<timeToSpoil_<<" days\n";
     }
 
 std::ostream& operator<<(std::ostream &os, const Fruit& fruit)

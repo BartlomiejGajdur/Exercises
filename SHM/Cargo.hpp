@@ -12,7 +12,7 @@ class Cargo{
                                         amount_(amount),
                                         basePrice_(basePrice) {}
     Cargo() = default; 
-    virtual ~Cargo() = default;
+    virtual ~Cargo() {};
     
 //GETTERS
 
