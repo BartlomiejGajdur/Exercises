@@ -1,18 +1,21 @@
 #pragma once
+
+#include <memory>
+#include <iostream>
+
 #include "Cargo.hpp"
 #include "Time.hpp"
-#include <iostream>
-#include <memory>
 
 class Fruit : public Cargo, public Observer{
     public:
     Fruit(const std::string& name, size_t amount, double basePrice): 
                                                                     Cargo(name,amount,basePrice) {}
 
-    Fruit(const std::string& name,size_t amount , double basePrice, size_t expiry_date, size_t time_elapsed):  
+    Fruit(const std::string& name,size_t amount , double basePrice, double timeToSpoil, double expire_date):  
                                                                                                             Cargo(name,amount,basePrice), 
-                                                                                                            expire_date_(expiry_date),
-                                                                                                            timeToSpoil_(time_elapsed) {};
+                                                                                                            timeToSpoil_(timeToSpoil),
+                                                                                                            expire_date_(expire_date) {};
+                                                                                                        
      Fruit(const Cargo& other){
         name_     = other.getName();
         amount_   = other.getAmount();

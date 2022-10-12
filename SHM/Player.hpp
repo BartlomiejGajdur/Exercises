@@ -1,8 +1,10 @@
 #pragma once
-#include "Ship.hpp"
+
 #include <iostream>
-#include "Time.hpp"
 #include <memory>
+
+#include "Ship.hpp"
+#include "Time.hpp"
 
 class Player : public Observer{
     public:
@@ -11,6 +13,8 @@ class Player : public Observer{
                                                     money_(money) {}
     std::shared_ptr<Ship> getShip() const {return ship_;}
     double getMoney()               const {return money_;}
+
+    virtual ~Player() = default;
     //SETTERS
 
 

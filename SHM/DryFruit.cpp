@@ -1,4 +1,5 @@
 #include "DryFruit.hpp"
+
 DryFruit::DryFruit(const std::string& name, size_t amount, double basePrice): 
                                                                     Fruit(name,amount,basePrice) {}
 

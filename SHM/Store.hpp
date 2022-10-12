@@ -1,8 +1,16 @@
 #pragma once 
+
+#include <random>
+
+#include "Alcohol.hpp"
 #include "Cargo.hpp"
+#include "Fruit.hpp"
+#include "Item.hpp"
 #include "Player.hpp"
 #include "Time.hpp"
-#include <random>
+
+
+
 
 
 class Store : public Observer{
@@ -13,7 +21,7 @@ class Store : public Observer{
     Store(){
         GenerateCargoForStore();
     }
-    ~Store() {};
+    virtual ~Store() = default;
     
 
     Response buy(std::shared_ptr<Cargo> cargo, size_t amount, std::unique_ptr<Player> &player);

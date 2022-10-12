@@ -1,8 +1,11 @@
 #pragma once
+
+#include <random>
+
+#include "Cargo.hpp"
 #include "Coordinates.hpp"
 #include "Store.hpp"
-#include "Cargo.hpp"
-#include <random>
+
 
 constexpr size_t kWidth = 100;
 constexpr size_t kHeight = 100;

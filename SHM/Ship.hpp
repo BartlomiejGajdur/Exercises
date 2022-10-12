@@ -1,10 +1,11 @@
 #pragma once
-#include "Cargo.hpp"
-#include "Time.hpp"
+
 #include <iostream>
 #include <memory>
-#include <string>
 #include <vector>
+
+#include "Cargo.hpp"
+#include "Time.hpp"
 
 
 class Ship : public Observer{
@@ -20,6 +21,8 @@ class Ship : public Observer{
     Ship(int id, 
          size_t speed, 
          size_t maxCrew): Ship(id,"",speed,maxCrew,0) {}
+     
+     virtual ~Ship() = default;
 
     //Getters
     int         getId()          const { return id_;}
