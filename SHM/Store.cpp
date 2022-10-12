@@ -1,9 +1,10 @@
-#pragma once
 #include "Store.hpp"
+#include "Item.hpp"
+#include "Fruit.hpp"
+#include "Alcohol.hpp"
 
-// #include "Fruit.hpp"
-// #include "Alcohol.hpp"
-// #include "Item.hpp"
+#include <algorithm>
+
 
 Store::Response Store::buy(std::shared_ptr<Cargo> cargo, size_t amount, std::unique_ptr<Player> &player)
     { 

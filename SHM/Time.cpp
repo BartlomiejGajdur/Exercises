@@ -1,4 +1,3 @@
-#pragma once
 #include "Time.hpp"
 
 void Time::addObserver(Observer* obs){

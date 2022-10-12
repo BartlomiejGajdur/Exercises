@@ -1,4 +1,4 @@
-#include "Cargo.cpp"
+#include "Cargo.hpp"
 #include <memory>
 
 const size_t maxPercentage_{96};
@@ -38,7 +38,11 @@ class Alcohol : public Cargo{
     }
 
     //OPERATORS
-    friend std::ostream& operator<<(std::ostream &os, const Alcohol& alcohol);
+    inline friend std::ostream& operator<<(std::ostream &os, const Alcohol& alcohol) {   
+        alcohol.print(os);
+        return os;
+    }
+    
     bool operator==(const Cargo& otherAlcohol) override;
     Alcohol& operator+=(const size_t amount)   override;                                                      
     Alcohol& operator-=(const size_t amount)   override;
@@ -46,7 +50,6 @@ class Alcohol : public Cargo{
 
     private:
     const size_t percentage_{40};
-
 
 };
 

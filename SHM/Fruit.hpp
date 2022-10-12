@@ -1,6 +1,5 @@
 #pragma once
 #include "Cargo.hpp"
-#include "Cargo.cpp"
 #include "Time.hpp"
 #include <iostream>
 #include <memory>
@@ -39,7 +38,10 @@ class Fruit : public Cargo, public Observer{
     bool operator==(const Cargo& other)    override;
     Fruit& operator+=(const size_t amount) override;                                                      
     Fruit& operator-=(const size_t amount) override;
-    friend std::ostream& operator<<(std::ostream &os, const Fruit& fruit);
+    friend std::ostream& operator<<(std::ostream &os, const Fruit& fruit){   
+        fruit.print(os);
+        return os;
+    }
 
     void nextDay() override;
 

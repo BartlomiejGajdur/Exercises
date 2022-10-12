@@ -18,7 +18,7 @@ class Time{
     Time& operator++();
 
     private:
-    size_t gameDays_;
+    int gameDays_;
     std::list<Observer*> observers_;
 
 };

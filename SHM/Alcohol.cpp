@@ -7,12 +7,6 @@ void Alcohol::print(std::ostream& os) const {
         <<"Percentage: "<<percentage_<<"%";
     }
 
-std::ostream& operator<<(std::ostream &os, const Alcohol& alcohol)
-    {   
-        alcohol.print(os);
-        return os;
-    }
-
 bool Alcohol::operator==(const Cargo& otherAlcohol){
     return  this->name_ == otherAlcohol.getName() &&
             this->basePrice_== otherAlcohol.getBasePrice();

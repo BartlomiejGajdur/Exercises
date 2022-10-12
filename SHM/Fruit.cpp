@@ -23,11 +23,7 @@ void Fruit::print(std::ostream& os) const {
         <<"Time to spoil: "<<timeToSpoil_<<" days\n";
     }
 
-std::ostream& operator<<(std::ostream &os, const Fruit& fruit)
-    {   
-        fruit.print(os);
-        return os;
-    }
+
 
 bool Fruit::operator==(const Cargo& otherFruit){
         return  this->name_ == otherFruit.getName()&&

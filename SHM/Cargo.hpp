@@ -29,7 +29,10 @@ class Cargo{
     virtual Cargo& operator-=(const size_t amount) = 0;
     virtual Cargo& operator--() = 0;
     virtual bool operator==(const Cargo& other)    = 0;
-    friend std::ostream& operator<<(std::ostream &os, const Cargo& cargo);
+    inline friend std::ostream& operator<<(std::ostream &os, const Cargo& cargo) {   
+        cargo.print(os);
+        return os;
+    }
 
    // virtual Cargo& operator=(const Cargo& other) = 0;
 
@@ -46,8 +49,3 @@ class Cargo{
 
 };
 
-std::ostream& operator<<(std::ostream &os, const Cargo& cargo)
-    {   
-        cargo.print(os);
-        return os;
-    }
