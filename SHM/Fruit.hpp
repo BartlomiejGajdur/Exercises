@@ -1,8 +1,10 @@
 #pragma once
+
+#include <memory>
+#include <iostream>
+
 #include "Cargo.hpp"
 #include "Time.hpp"
-#include <iostream>
-#include <memory>
 
 class Fruit : public Cargo, public Observer{
     public:

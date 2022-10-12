@@ -1,6 +1,7 @@
-#include "Ship.hpp"
 #include <numeric>
 #include <algorithm>
+
+#include "Ship.hpp"
 
 Ship& Ship::operator+=(const int num)
     {

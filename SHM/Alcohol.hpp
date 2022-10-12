@@ -1,5 +1,6 @@
-#include "Cargo.hpp"
 #include <memory>
+
+#include "Cargo.hpp"
 
 const size_t maxPercentage_{96};
 

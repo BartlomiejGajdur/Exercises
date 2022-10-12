@@ -1,7 +1,8 @@
 #pragma once
-#include <iostream>
-#include <string>
+
 #include <cmath>
+#include <ostream>
+
 
 class Coordinates{
     public:

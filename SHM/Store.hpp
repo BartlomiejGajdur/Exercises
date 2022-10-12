@@ -1,8 +1,10 @@
 #pragma once 
+
+#include <random>
+
 #include "Cargo.hpp"
 #include "Player.hpp"
 #include "Time.hpp"
-#include <random>
 
 
 class Store : public Observer{

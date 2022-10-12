@@ -1,8 +1,10 @@
 #pragma once
-#include "Ship.hpp"
+
 #include <iostream>
-#include "Time.hpp"
 #include <memory>
+
+#include "Ship.hpp"
+#include "Time.hpp"
 
 class Player : public Observer{
     public:
