@@ -15,36 +15,30 @@
 #include <iostream>
 #include <deque>
 
-void printDeque(const std::deque<int>&);
-
-int main(){
-
-    std::deque<int> zadanie{1,2,3,4,5};
-
-    printDeque(zadanie);
-
-    zadanie.erase(zadanie.begin()+1,zadanie.begin()+2);
-    zadanie.erase(zadanie.begin()+2,zadanie.begin()+3);
-    printDeque(zadanie);
-
-    zadanie.push_back(30);
-    zadanie.push_front(30);
-    printDeque(zadanie);
-
-    zadanie.insert(zadanie.begin()+3,20);
-    printDeque(zadanie);
-
-    std::cout<<zadanie.size();
-    zadanie.shrink_to_fit();
-    
-    return 0;
-}
-
-void printDeque(const std::deque<int>& deque)
+void printDeque(const std::deque<int>& kolejka)
 {
-    for (const auto& ele : deque)
-    {
+    for (const auto& ele: kolejka){
         std::cout<<ele<<" ";
     }
     std::cout<<std::endl;
+}
+
+int main(){
+
+    std::deque<int> kolejka{1,2,3,4,5};
+    printDeque(kolejka);
+
+    kolejka.erase(std::next(kolejka.begin(),1));
+    kolejka.erase(std::next(kolejka.begin(),3));
+    printDeque(kolejka);
+
+    kolejka.push_front(30);
+    kolejka.push_back(30);
+    printDeque(kolejka);
+    
+
+
+
+
+    return 0;
 }
