@@ -1,5 +1,4 @@
 /*Zadanie
-
     Znajdź dokumentację std::deque na cppreference.com
     Stwórz nowy plik i napisz funkcję main()
     Stwórz pusty deque
@@ -36,8 +35,8 @@ int main(){
     kolejka.push_back(30);
     printDeque(kolejka);
     
-
-
+    kolejka.insert(std::next(kolejka.begin(),3),20);
+    printDeque(kolejka);
 
 
     return 0;
