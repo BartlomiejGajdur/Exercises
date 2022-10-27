@@ -1,9 +1,10 @@
 #include <random>
 #include <fstream>
 #include <array>
+#include <vector>   
 
-constexpr int width = 6;
-constexpr int height = 4;
+constexpr int width = 10;
+constexpr int height = 3;
 constexpr int maxValue = 255;
 
 // Generating random number from two given
@@ -61,4 +62,60 @@ std::array<std::array<int, width>, height> generateImageData(std::fstream& objec
 
    return bitmap_;
 }
+//Problem jest kiedy w kolejnych wierszach jest ta sama awartosc
+std::vector<std::pair<int,int>> compressGrayscale(std::array<std::array<int, width>, height> &bitmapa){
 
+    std::vector<std::pair<int,int>> compressedBitmap{};
+    std::pair<int,int> para{-1,1};
+    
+    // for(auto& outer : bitmapa)
+    // {
+    //     for(auto& inner: outer)
+    //     {
+    //         para.first = inner; 
+            
+    //         if(inner == *(&inner + 1)){
+    //             ++para.second;
+    //             if()
+    //         }else{
+    //             compressedBitmap.push_back(para);
+    //             para.second = 1;
+    //         }
+     
+    //     }
+    //     compressedBitmap.push_back(para);
+    //     para = {-1,1};
+    // }
+
+  
+
+    for(size_t i = 0 ; i <height ; i++){
+        for(size_t j = 0 ;j<width ; j++){
+
+
+             para.first = bitmapa[i][j];
+
+             if(bitmapa[i][j] == bitmapa[i][j+1]){
+                ++para.second;
+                if(j== width-1 && bitmapa[i][width-1] == bitmapa[i+1][0]){
+                    --para.second;
+                }
+            }else{
+                compressedBitmap.push_back(para);
+                para.second = 1;   
+            }
+        }
+         
+         compressedBitmap.push_back(para);  
+         para = {-1,1}; 
+    }
+
+
+    return compressedBitmap;
+}
+
+void printVectorOfPair(const std::vector<std::pair<int,int>>& vec){
+    for(const auto &el: vec){
+        std::cout<<"{"<<el.first<<", "<<el.second<<"} ";
+    }
+}
