@@ -2,6 +2,7 @@
 #include <fstream>
 #include <array>
 #include <vector>   
+#include <windows.h>
 
 constexpr int width = 10;
 constexpr int height = 3;
@@ -62,33 +63,14 @@ std::array<std::array<int, width>, height> generateImageData(std::fstream& objec
 
    return bitmap_;
 }
-//Problem jest kiedy w kolejnych wierszach jest ta sama awartosc
+
+//Function shall return std::vector<std::pait<int,int>> of compressed Grayscale
 std::vector<std::pair<int,int>> compressGrayscale(std::array<std::array<int, width>, height> &bitmapa){
 
     std::vector<std::pair<int,int>> compressedBitmap{};
     std::pair<int,int> para{-1,1};
-    
-    // for(auto& outer : bitmapa)
-    // {
-    //     for(auto& inner: outer)
-    //     {
-    //         para.first = inner; 
-            
-    //         if(inner == *(&inner + 1)){
-    //             ++para.second;
-    //             if()
-    //         }else{
-    //             compressedBitmap.push_back(para);
-    //             para.second = 1;
-    //         }
-     
-    //     }
-    //     compressedBitmap.push_back(para);
-    //     para = {-1,1};
-    // }
 
   
-
     for(size_t i = 0 ; i <height ; i++){
         for(size_t j = 0 ;j<width ; j++){
 
@@ -97,16 +79,15 @@ std::vector<std::pair<int,int>> compressGrayscale(std::array<std::array<int, wid
 
              if(bitmapa[i][j] == bitmapa[i][j+1]){
                 ++para.second;
-                if(j== width-1 && bitmapa[i][width-1] == bitmapa[i+1][0]){
+                if(j == width-1 && bitmapa[i][width-1] == bitmapa[i+1][0]){
                     --para.second;
+                    compressedBitmap.push_back(para);
                 }
             }else{
                 compressedBitmap.push_back(para);
                 para.second = 1;   
             }
         }
-         
-         compressedBitmap.push_back(para);  
          para = {-1,1}; 
     }
 
@@ -114,8 +95,34 @@ std::vector<std::pair<int,int>> compressGrayscale(std::array<std::array<int, wid
     return compressedBitmap;
 }
 
+//Function shall print vector of pairs
 void printVectorOfPair(const std::vector<std::pair<int,int>>& vec){
+    std::cout<<std::endl;
     for(const auto &el: vec){
         std::cout<<"{"<<el.first<<", "<<el.second<<"} ";
     }
+    std::cout<<std::endl;
+}
+
+//Function shall returns number if the memory value has changed
+void howMuchCompressed(const std::array<std::array<int, width>, height> &bitmapa ,const std::vector<std::pair<int,int>>& vec){
+
+    HANDLE hOut;
+    hOut = GetStdHandle( STD_OUTPUT_HANDLE );
+    
+    std::cout<<"\nSizeof Bitmap [Bytes]: "<<sizeof(bitmapa)<<"\n";
+    std::cout<<"Sizeof Compressed Bitmap [Bytes]: "<<vec.size()*8<<"\n";
+    if(sizeof(bitmapa)>vec.size()*8)
+    {
+        SetConsoleTextAttribute( hOut, FOREGROUND_GREEN );
+        std::cout<<"Gained "<<100-(double((vec.size()*8*100))/sizeof(bitmapa))<<"% memory! :) [Bytes]\n";
+        SetConsoleTextAttribute( hOut, 15 );
+    }else if (sizeof(bitmapa)<vec.size()*8){
+        SetConsoleTextAttribute( hOut, FOREGROUND_RED );
+        std::cout<<"Your compressed file is not even lighter "<<100-(double((vec.size()*8*100))/sizeof(bitmapa))<<"% memory! ;/ [Bytes]\n";
+        SetConsoleTextAttribute( hOut, 15 );
+    }else{
+        std::cout<<"Gained "<<100-((vec.size()*8*100)/sizeof(bitmapa))<<"% memory! [Bytes]\n";
+    }
+
 }
