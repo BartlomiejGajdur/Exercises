@@ -14,7 +14,7 @@ js/reveal.min.js
 
 # Prerequisites
 *.d
-
+*.pgm
 # Builds, test, IDE
 build/
 .vscode/
