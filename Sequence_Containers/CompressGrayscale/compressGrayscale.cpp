@@ -19,8 +19,5 @@ int main(){
    printArray(bitmap2);
    
    isDecompressedCorrect(bitmap2,bitmap);
-
- 
-
    return 0;
 }

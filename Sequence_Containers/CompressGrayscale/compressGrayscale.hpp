@@ -94,7 +94,7 @@ std::vector<std::pair<int,int>> compressGrayscale(std::array<std::array<int, wid
 
     return compressedBitmap;
 }
-
+//Function shall return std::array<std::array<int, width>, height> of decompressed Grayscale
  std::array<std::array<int, width>, height> decompressGrayscale(std::vector<std::pair<int,int>> &compressedVec){
 
     int licznik{0};
@@ -123,6 +123,7 @@ void printVectorOfPair(const std::vector<std::pair<int,int>>& vec){
     std::cout<<std::endl;
 }
 
+//Function shall print array
 void printArray(const  std::array<std::array<int, width>, height>& array){
     std::cout<<std::endl;
     for(const auto &outer: array){
@@ -157,6 +158,7 @@ void howMuchCompressed(const std::array<std::array<int, width>, height> &bitmapa
 
 }
 
+//Function shall check if decompressed method works fine
 void isDecompressedCorrect (const std::array<std::array<int, width>, height>& first , const std::array<std::array<int, width>, height>& second)
 {
 if(first == second){
