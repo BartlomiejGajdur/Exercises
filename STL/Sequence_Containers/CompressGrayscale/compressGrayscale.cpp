@@ -4,6 +4,7 @@
 
 int main(){
 
+
    std::fstream plik = openFile("../obrazek.pgm");
    generateHeader(plik);
 
