@@ -4,21 +4,23 @@
 
 int main(){
 
-   std::fstream plik = openFile("obrazek.pgm");
+   std::fstream plik = openFile("../obrazek.pgm");
    generateHeader(plik);
 
    std::array<std::array<int, width>, height> bitmap = generateImageData(plik);
-   std::vector<std::pair<int,int>> compressedGrayscale;
+   std::vector<std::pair<int,int>> compressedGrayscale = compressGrayscale(bitmap);
 
-   compressedGrayscale = compressGrayscale(bitmap);
    printVectorOfPair(compressedGrayscale);
 
    howMuchCompressed(bitmap,compressedGrayscale);
 
-   // std::cout<<"\n\n";
-   // std::array<std::array<int, 10>, 3> bitmap2 {{{0,0,0,1,1,2,3,0,0,0},{0,0,4,4,4,1,1,1,1,1},{2,2,2,2,2,1,2,2,2,2}}};
-   // compressedGrayscale = compressGrayscale(bitmap2);
-   // printVectorOfPair(compressedGrayscale);
-   // howMuchCompressed(bitmap2,compressedGrayscale);
+   std::cout<<"\n\n\n";
+   std::array<std::array<int, width>, height> bitmap2 = decompressGrayscale(compressedGrayscale);
+   printArray(bitmap2);
+   
+   isDecompressedCorrect(bitmap2,bitmap);
+
+ 
+
    return 0;
 }

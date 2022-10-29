@@ -16,3 +16,8 @@ TEST_F(CompressTESTS, compressGreayscaleShouldReturnCorrectResultInVectorOfPairs
     std::vector<std::pair<int,int>> result = compressGrayscale(bitmap2);
     ASSERT_EQ(result, expected);
 }
+
+TEST_F(CompressTESTS, DecompressGrayScale){
+    std::array<std::array<int, 10>, 3> bitmap3 = decompressGrayscale(expected);
+     ASSERT_EQ(bitmap3, bitmap2);
+}

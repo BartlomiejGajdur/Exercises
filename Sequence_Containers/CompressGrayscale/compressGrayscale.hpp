@@ -95,6 +95,25 @@ std::vector<std::pair<int,int>> compressGrayscale(std::array<std::array<int, wid
     return compressedBitmap;
 }
 
+ std::array<std::array<int, width>, height> decompressGrayscale(std::vector<std::pair<int,int>> &compressedVec){
+
+    int licznik{0};
+    std::array<std::array<int, width>, height> bitmap;
+
+        for (auto v : compressedVec){
+            int current = v.second;
+            licznik+=v.second;
+
+                for(int i = licznik - current;i<licznik; i++)
+                {   
+                        bitmap[0][i] = v.first;    
+                }
+            }
+
+        return bitmap;
+ }
+
+
 //Function shall print vector of pairs
 void printVectorOfPair(const std::vector<std::pair<int,int>>& vec){
     std::cout<<std::endl;
@@ -102,6 +121,16 @@ void printVectorOfPair(const std::vector<std::pair<int,int>>& vec){
         std::cout<<"{"<<el.first<<", "<<el.second<<"} ";
     }
     std::cout<<std::endl;
+}
+
+void printArray(const  std::array<std::array<int, width>, height>& array){
+    std::cout<<std::endl;
+    for(const auto &outer: array){
+        for(const auto & inner : outer){
+            std::cout<<inner<<" ";
+        }
+        std::cout<<std::endl;
+    }
 }
 
 //Function shall returns number if the memory value has changed
@@ -120,9 +149,23 @@ void howMuchCompressed(const std::array<std::array<int, width>, height> &bitmapa
     }else if (sizeof(bitmapa)<vec.size()*8){
         SetConsoleTextAttribute( hOut, FOREGROUND_RED );
         std::cout<<"Your compressed file is not even lighter "<<100-(double((vec.size()*8*100))/sizeof(bitmapa))<<"% memory! ;/ [Bytes]\n";
+        std::cout<<"This file compression method does workonly with real data. Random generated data is hard to compress.";
         SetConsoleTextAttribute( hOut, 15 );
     }else{
         std::cout<<"Gained "<<100-((vec.size()*8*100)/sizeof(bitmapa))<<"% memory! [Bytes]\n";
     }
 
+}
+
+void isDecompressedCorrect (const std::array<std::array<int, width>, height>& first , const std::array<std::array<int, width>, height>& second)
+{
+if(first == second){
+      SetConsoleTextAttribute( GetStdHandle( STD_OUTPUT_HANDLE ), FOREGROUND_GREEN );
+      std::cout<<"Decompression completed and is correct!";
+      SetConsoleTextAttribute( GetStdHandle( STD_OUTPUT_HANDLE ), 15 );
+   }else{
+        SetConsoleTextAttribute( GetStdHandle( STD_OUTPUT_HANDLE ), FOREGROUND_RED );
+      std::cout<<"Opps, Decompression went wrong! ;/";
+      SetConsoleTextAttribute( GetStdHandle( STD_OUTPUT_HANDLE ), 15 );
+   }
 }
