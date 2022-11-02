@@ -111,5 +111,11 @@ int main(){
 
     if(std::equal(vec.begin(),vec.end(),lis.begin(),lis.end()))
         std::cout<<"No i rowne";
+
+
+
+
+
+    
     return 0;
 }
