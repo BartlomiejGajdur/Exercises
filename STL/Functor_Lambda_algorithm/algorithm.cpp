@@ -5,7 +5,6 @@
 #include <list>
 #include <numeric>
 
-//Algorytm przyjmuje zakres slowa czyli dla "KajaK" bedzie to od BEGIN do 
 
 bool isPalindrome(const std::string& text){
     return std::equal(text.begin(),text.begin() + text.size()/2, text.rbegin(), text.rbegin()+text.size()/2);
