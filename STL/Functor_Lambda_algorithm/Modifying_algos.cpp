@@ -79,6 +79,22 @@ std::map<int, std::string> converter(std::list<std::string> lista, std::deque<in
     return mapa;
 }
 
+template<typename T>
+void erase(std::vector<T> &vec,const T& value){
+    vec.erase(std::remove(vec.begin(),vec.end(),value),vec.end());
+}
+
+template<typename T>
+void unique(std::vector<T> &vec){
+    vec.erase(std::unique(vec.begin(),vec.end()), vec.end());
+}
+
+template<typename T>
+void set_unique(std::vector<T> &vec){
+    std::sort(vec.begin(),vec.end());
+    vec.erase(std::unique(vec.begin(),vec.end()), vec.end());
+}
+
 int main(){
     // #1
     std::vector<std::pair<int, std::string>> v {
@@ -144,6 +160,21 @@ int main(){
     
     std::for_each(mapa.begin(),mapa.end(),[](auto a){std::cout<<a.first<<" "<<a.second<<"   ";});
 
+    // #12 -> 105 STL algorithms in Less than an Hour
+
+    std::vector<int> vectors{1,2,99,99,99,-1,-2,99,0,1};
+    std::vector<int> vectors2{vectors};
+    std::vector<int> vectors3{vectors};
+
+    std::cout<<std::endl;
+    erase(vectors,99);
+    printVector(vectors);
+    
+    unique(vectors2);
+    printVector(vectors2);
+
+    set_unique(vectors3);
+    printVector(vectors3);
 
     return 0;
 }
