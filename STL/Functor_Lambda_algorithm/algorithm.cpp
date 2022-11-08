@@ -111,10 +111,15 @@ int main(){
     if(std::equal(vec.begin(),vec.end(),lis.begin(),lis.end()))
         std::cout<<"No i rowne";
 
+    std::string a = "aaabcsdfgexsafssssa";
+    std::string b = "aabacsdfssssgexsafa";
 
+    std::cout<<"[A]: "<<a<<"   [B]: "<<b<<std::endl;
 
+    std::sort(a.begin(),a.end());
+    std::sort(b.begin(),b.end());
+    std::cout<<"[A]: "<<a<<"   [B]: "<<b<<std::endl;
+    std::cout<<std::boolalpha<<std::is_permutation(a.begin(),a.end(),b.begin());
 
-
-    
     return 0;
 }

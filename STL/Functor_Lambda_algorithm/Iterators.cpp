@@ -3,6 +3,10 @@
 #include <vector>
 #include <iterator>
 #include <list>
+#include <set>
+#include <algorithm>
+#include <ostream>
+#include <map>
 
 /*
 Zadanie
@@ -71,6 +75,13 @@ int main(){
 
     auto mid2 = middle(forwardLista.begin(),forwardLista.end());
     std::cout<<*mid2<<" \n";
+
+    std::map<int,int> cc {{1,1},{1,2},{5,3},{2,2}};
+    
+    for(auto it = cc.begin(); it != cc.end() ; ++it){
+        std::cout<<it->first<<" - "<<it->second<<std::endl;
+      
+    }
 
     return 0;
 }
