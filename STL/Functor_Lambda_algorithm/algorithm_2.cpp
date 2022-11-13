@@ -1,5 +1,8 @@
 #include <iostream>
 #include <algorithm>
+#include <numeric>
+#include <math.h>
+#include <functional>
 
 /*
 Zadanie1
@@ -15,6 +18,16 @@ chcemy przenieść, a wartość int to numer indexu, na który chcemy przenieś�
 zadanie3
 Napisz funkcję Gather, która przyjmie std::vector<char> oraz spowoduje,
 że wszystkie wystąpienia * pojawią się w środku std::vector<char>
+
+zadanie4
+Napisz funckje która zwróci vector z wartościami od 10 do 10+n inkrementujac je co 1
+Napisz funkcje ktora zwroci wartosc rowna iloczynowi kazdego elementu vectora.
+
+zadanie5
+Napisz program, który obliczy średnią artymetyczną dwóch vectorow
+
+zadanie6
+Program który obliczy średnią euklidesowa
 */
 template <typename T>
 void printVec(const std::vector<T>& vec){
@@ -81,10 +94,41 @@ void Gather(std::vector<char>& vec){
 
 }
 
+std::vector<int> GetVec(size_t count){
+
+    std::vector<int> vec(count);
+    std::iota(vec.begin(),vec.end(),10);
+
+    return vec;
+}
+
+int multiply(std::vector<int> vec){
+    return std::accumulate(vec.begin(),vec.end(),1,std::multiplies<int>());
+}
+
+// Inner product(zakres1_poczatek,zakres1_koniec,zakres2_poczatek,wartosc_inicjujaca, juz po kolei co ma robic jak juz mamy teoretycznie jeden zakres,Po jednej wartosci z kazdego zakresu i co z nimi robimy )
+double sredniaArtymetyczna(const std::vector<int>& vec1, const std::vector<int>& vec2){
+   
+    double suma = std::inner_product(vec1.begin(),vec1.end(),vec2.begin(),0,std::plus<int>(), [](int a, int b){
+        std::cout<<"a"<<a<<"  b"<<b<<std::endl;
+        return a+b;});
+    std::cout<<suma<<std::endl;
+    return suma/(vec1.size()*2);
+}
+
+double euklides(const std::vector<int>& vec1, const std::vector<int>& vec2 ){
+    double suma = std::inner_product(vec1.begin(),vec1.end(),vec2.begin(),0,std::plus<int>(), [](int a, int b){
+        std::cout<<"a"<<a<<"  b"<<b<<std::endl;
+        return std::pow(b-a,2);});
+        
+    std::cout<<suma<<std::endl;
+    return std::sqrt(suma);
+}
+
 int main(){
 
     std::vector<int> vec{1,2,3,4,5,6,7,8,9,10};
-    std::cout<<"-----STD::ROTATE-----\n\n";
+    std::cout<<"-----STD::ROTATE-----\n";
     printVec(vec);
     changePos1(vec,2,8);
     printVec(vec);
@@ -92,21 +136,38 @@ int main(){
     printVec(vec);
 
     std::vector<int> values{1,5,9,6};
-    std::cout<<"\n\n\n-----STD::STABLE_PARTITION-----\n";
+    std::cout<<"\n\n-----STD::STABLE_PARTITION-----\n";
     printVec(vec);
     changePos2(vec,values,5);
     printVec(vec);
 
     std::vector<int> vec2{1,2,3,4,5,6,7,8,9,10};
-    std::cout<<"\n\n\n-----STD::STABLE_PARTITION-----\n";
+    std::cout<<"\n\n-----STD::STABLE_PARTITION-----\n";
     printVec(vec2);
     changePos3(vec2,values,6);
     printVec(vec2);
 
-    std::cout<<"\n\n\n-----GATHER*-----\n";
+    std::cout<<"\n\n-----GATHER*-----\n";
     std::vector<char> vec3{',','*','d','.','/','/','*','!','*','*'};
     printVec(vec3);
     Gather(vec3);
     printVec(vec3);
+
+    std::cout<<"\n\n-----Exercise4-----\n";
+    vec2.clear();
+    vec2 = GetVec(7);
+    printVec(vec2);
+    std::cout<<multiply(vec2)<<std::endl;
+
+    std::cout<<"\n\n-----SredniaArtymetyczna-----\n";
+    std::vector<int> vec5{1,2,3,4};
+    std::vector<int> vec6{1,2,3,4};
+    std::cout<<sredniaArtymetyczna(vec5,vec6)<<std::endl;
+
+    std::cout<<"\n\n-----Euklides-----\n";
+    std::vector<int> vec7{7,4,3};
+    std::vector<int> vec8{17,6,2};
+    std::cout<<euklides(vec7,vec8)<<std::endl;
+    
     return 0;
 }
