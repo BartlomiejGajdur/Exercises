@@ -10,9 +10,15 @@ odpowiednio przesuwając reszte elementów
 Zadanie2
 Napisz funkcje, która przyjmie dwa std::vector<int> oraz zmienną int.
 Pierwszy vector zaweira kontener na którym operujemy, drugei zawiera wartości jakie
-chcemy przenieść, a wartość int to numer indexu, na który chcemy przenieść wartości*/
-void printVec(const std::vector<int>& vec){
-    std::for_each(vec.begin(),vec.end(),[](const int& a){ std::cout<<a<<" ";});
+chcemy przenieść, a wartość int to numer indexu, na który chcemy przenieść wartości
+
+zadanie3
+Napisz funkcję Gather, która przyjmie std::vector<char> oraz spowoduje,
+że wszystkie wystąpienia * pojawią się w środku std::vector<char>
+*/
+template <typename T>
+void printVec(const std::vector<T>& vec){
+    std::for_each(vec.begin(),vec.end(),[](const T& a){ std::cout<<a<<" ";});
     std::cout<<"\n";
 }
 bool changePos1(std::vector<int>& vec, int value, int new_pos){
@@ -62,7 +68,18 @@ bool changePos3(std::vector<int>& vec, const std::vector<int>& values, int new_p
     return true;  
 }
 
+void Gather(std::vector<char>& vec){
 
+    auto pred {[&vec](const char& a)
+                {return a != '*'; }};
+
+    auto middle = vec.begin() + vec.size()/2;
+
+
+    std::stable_partition(vec.begin(),middle,pred);
+    std::stable_partition(middle,vec.end(),[&vec,pred](const char& a){return !pred(a);});
+
+}
 
 int main(){
 
@@ -82,9 +99,14 @@ int main(){
 
     std::vector<int> vec2{1,2,3,4,5,6,7,8,9,10};
     std::cout<<"\n\n\n-----STD::STABLE_PARTITION-----\n";
+    printVec(vec2);
     changePos3(vec2,values,6);
     printVec(vec2);
-    
-    
+
+    std::cout<<"\n\n\n-----GATHER*-----\n";
+    std::vector<char> vec3{',','*','d','.','/','/','*','!','*','*'};
+    printVec(vec3);
+    Gather(vec3);
+    printVec(vec3);
     return 0;
 }
