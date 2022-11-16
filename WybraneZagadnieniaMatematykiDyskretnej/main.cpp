@@ -9,8 +9,28 @@ void printTabelaIDUCZNIA(const std::vector<IDucznia>& uczniowie);
 void printTabelaIDPRZEDMIOTU(const std::vector<IDprzedmiotu>& przedmioty);
 void printTabelaIDNAUCZYCIELA(const std::vector<IDnauczyciela>& nauczyciele);
 
-//Wypisz nazwiska uczniów grupy 11i / nauczycieli / nazwy przedmiotow, z których są oceny 2 lub 5 u nauczycieli Suchenia i Bak
+//Wypisz nazwiska uczniów grupy 11i / nauczycieli / nazwy przedmiotow | z których są oceny 2 lub 5 u nauczycieli Suchenia lub Bak. grupa 11i
+void Exercise1(const std::vector<Database>& database){
+    std::cout<<"\n\n\n---------EXERCISE1---------\n";
+    std::vector<Database> FinalRecords;
+    auto lambda = [&](const Database& record)
+                    { 
+                        if((record.getOcena() == 2 || record.getOcena() == 5) 
+                            &&(record.getIDnauczyciela().getNazwiskoNauczyciela() == "Suchenia" || record.getIDnauczyciela().getNazwiskoNauczyciela() == "Bak") 
+                            && record.getIDucznia().getGrupa()=="11i")
+                            FinalRecords.push_back(record);         
+                    };
+    
+    std::for_each(database.begin(),database.end(),lambda);
 
+    //FinalRecords.erase(std::unique(FinalRecords.begin(),FinalRecords.end()),FinalRecords.end());
+    std::for_each(FinalRecords.begin(),FinalRecords.end(),[](const Database& recordy)
+                { 
+                    std::cout<<recordy.getIDucznia().getNazwiskoUcznia()<<" | "
+                    <<recordy.getIDnauczyciela().getNazwiskoNauczyciela()<<" | "
+                    <<recordy.getIDprzedmiotu().getNazwaPrzedmiotu()<<" | ";
+                });
+}
 
 //Wypisz przedmioty, z których w dniach 17.01.19 lub 25.01.19 byly wpisane oceny powyżej 3.5
 void Exercise2(const std::vector<Database>& database){
@@ -63,6 +83,7 @@ void Exercise4(const std::vector<Database>& database){
     nauczyciele.erase(std::unique(nauczyciele.begin(),nauczyciele.end()),nauczyciele.end());
     std::for_each(nauczyciele.begin(),nauczyciele.end(),[](const IDnauczyciela& przedmiot){ std::cout<<przedmiot;});
 }
+
 int main(){
 
     std::vector<IDprzedmiotu> przedmioty {{"0101","UML"},
@@ -89,13 +110,15 @@ int main(){
                                    {uczniowie[1],przedmioty[2],nauczyciele[1],"17.01.19",4},
                                    {uczniowie[2],przedmioty[3],nauczyciele[2],"25.01.19",3.5},
                                    {uczniowie[2],przedmioty[2],nauczyciele[1],"18.01.19",4.5},
-                                   {uczniowie[1],przedmioty[3],nauczyciele[2],"25.01.19",3},
-                                   {uczniowie[2],przedmioty[3],nauczyciele[2],"28.01.19",5},};
+                                   {uczniowie[0],przedmioty[3],nauczyciele[2],"25.01.19",3},
+                                   {uczniowie[1],przedmioty[3],nauczyciele[2],"28.01.19",5},};
+                                   
     printTabelaDATABASE(database);
     printTabelaIDNAUCZYCIELA(nauczyciele);
     printTabelaIDPRZEDMIOTU(przedmioty);
     printTabelaIDUCZNIA(uczniowie);
 
+    Exercise1(database);
     Exercise2(database);
     Exercise3(database);
     Exercise4(database);
