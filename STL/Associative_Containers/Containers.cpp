@@ -3,12 +3,14 @@
 #include <map>
 #include <string>
 #include <algorithm>
+#include <unordered_map>
 
+// #1
 namespace std{
 
     std::ostream& operator<<(std::ostream& out, const std::pair<int, std::string>& pair)
     {
-        return out<<pair.second;
+        return out<<"Key: "<<pair.first<<"      Value: "<<pair.second<<"\n";
     }
 }
 
@@ -26,6 +28,16 @@ void PrintMap2(const std::multimap<int,std::string> &map){
         return pair.second.size() >= 3;});
 }
 
+
+void printMAP(const std::unordered_map<int,std::string>& mapa){
+    for(auto[key,value] : mapa){
+        std::cout<<"Key: "<<key<<"      Value: "<<value<<"\n";
+    }
+
+    std::cout<<"---------------------------------------------------------------------\n";
+}
+
+
 int main(){
 
     std::multimap<int,std::string> map;
@@ -41,7 +53,39 @@ int main(){
     PrintMap(map);
     std::cout<<"\n";
     PrintMap2(map);
-    
+
+    //
+
+    std::unordered_map<int, std::string> uMAP = {
+        {1,"Ala"},
+        {2,"ma"},
+        {3,"kota"}
+    };
+
+    printMAP(uMAP);
+
+    uMAP.emplace(std::make_pair(4,"Dodatkowy ELement"));
+    printMAP(uMAP);
+
+    uMAP.erase(3);
+    printMAP(uMAP);
+
+    auto it = uMAP.begin();
+    std::advance(it,2);
+    uMAP.erase(it);
+    printMAP(uMAP);
+
+    uMAP.emplace(std::make_pair(4,"Dodatkowy ELement4"));
+    uMAP.emplace(std::make_pair(5,"Dodatkowy ELemen5"));
+    uMAP.emplace(std::make_pair(6,"Dodatkowy ELeme6666nt"));
+    uMAP.emplace(std::make_pair(7,"Dodatkowy ELeme777777nt"));
+    printMAP(uMAP);
+
+    std::copy_if(begin(uMAP),end(uMAP),std::ostream_iterator<std::pair<const int, std::string>>(std::cout),[](const auto pair)
+    {
+        return pair.first % 2 == 0;
+    });
+
 
     return 0;
 }
