@@ -86,7 +86,7 @@ int main(){
 
     uMAP.emplace(std::make_pair(4,"Dodatkowy ELement4"));
     uMAP.emplace(std::make_pair(5,"Dodatkowy ELemen5"));
-    uMAP.emplace(std::make_pair(6,"Dodatkowy ELeme6666nt"));
+    uMAP.emplace(std::make_pair(8,"Dodatkowy ELeme6666nt"));
     uMAP.emplace(std::make_pair(7,"Dodatkowy ELeme777777nt"));
     printMAP(uMAP);
 
