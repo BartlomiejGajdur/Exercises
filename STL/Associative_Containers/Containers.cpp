@@ -4,6 +4,7 @@
 #include <string>
 #include <algorithm>
 #include <unordered_map>
+#include <set>
 
 // #1
 namespace std{
@@ -35,6 +36,14 @@ void printMAP(const std::unordered_map<int,std::string>& mapa){
     }
 
     std::cout<<"---------------------------------------------------------------------\n";
+}
+
+void printMAP(const std::multiset<int>& mapa){
+    for(auto a : mapa){
+        std::cout<<a<<" ";
+    }
+
+    std::cout<<"\n---------------------------------------------------------------------\n";
 }
 
 
@@ -85,6 +94,29 @@ int main(){
     {
         return pair.first % 2 == 0;
     });
+
+
+
+    //
+
+     std::multiset<int> mMAP = {
+        1,3,4,5,2,1,5,2,3,5
+    };
+
+    printMAP(mMAP);
+
+    mMAP.emplace(10);
+    printMAP(mMAP);
+
+    mMAP.erase(mMAP.find(4), mMAP.end());
+    printMAP(mMAP);
+
+    std::copy_if(begin(mMAP),end(mMAP),std::ostream_iterator<int>(std::cout, " "),[](const auto pair)
+    {
+        return pair % 2 == 0;
+    });
+
+    
 
 
     return 0;
