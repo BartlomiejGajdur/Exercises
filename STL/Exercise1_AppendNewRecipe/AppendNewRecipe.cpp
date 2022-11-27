@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <sstream> 
 #include <iterator>
+#include <fstream>
 
 std::string convertCharIntoString(char zn){
   
@@ -73,7 +74,6 @@ std::stringstream FormatRecipit(std::vector<std::string> steps,
                                       stream<<++i<<") "+line+".\n";
                                     });
 
-                                    
                                     stream<<"___________________________________\n";
                                     return stream;
                                 }
@@ -83,5 +83,12 @@ bool AppendNewRecipe(std::vector<std::string> steps,
                           const std::list<std::string>& ingredients,
                           const std::deque<std::pair<size_t, char>>& amount)
                           {
-                            return true;
+                            std::stringstream stream = FormatRecipit (steps,ingredients,amount);
+                            std::fstream recipes("recipes.txt", recipes.out | recipes.app);
+
+                            if(recipes.is_open()){
+                              recipes<<stream.str();
+                              return true;
+                            }
+                              return false;
                           }
