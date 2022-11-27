@@ -4,6 +4,7 @@
 #include <iterator>
 #include <fstream>
 
+//Function shall convert given char to properly string
 std::string convertCharIntoString(char zn){
   
   switch (zn)
@@ -25,6 +26,7 @@ std::string convertCharIntoString(char zn){
   return " Error";
 }
 
+//Function shall return vector of strings from given deque of pair<size_t ,char>
 std::vector<std::string> formatDequeAmount(const std::deque<std::pair<size_t, char>>& amount){
   std::vector<std::string> formattedDeque;
 
@@ -35,7 +37,6 @@ std::vector<std::string> formatDequeAmount(const std::deque<std::pair<size_t, ch
 
   return formattedDeque;
 }
-
 
 std::vector<std::string> FormatIngredients(const std::list<std::string>& ingredients,
                                           const std::deque<std::pair<size_t, char>>& amount)
@@ -83,6 +84,7 @@ bool AppendNewRecipe(std::vector<std::string> steps,
                           const std::list<std::string>& ingredients,
                           const std::deque<std::pair<size_t, char>>& amount)
                           {
+                            
                             std::stringstream stream = FormatRecipit (steps,ingredients,amount);
                             std::fstream recipes("recipes.txt", recipes.out | recipes.app);
 
