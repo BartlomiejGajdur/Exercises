@@ -23,12 +23,11 @@ void Exercise1(const std::vector<Database>& database){
     
     std::for_each(database.begin(),database.end(),lambda);
 
-    //FinalRecords.erase(std::unique(FinalRecords.begin(),FinalRecords.end()),FinalRecords.end());
     std::for_each(FinalRecords.begin(),FinalRecords.end(),[](const Database& recordy)
                 { 
-                    std::cout<<recordy.getIDucznia().getNazwiskoUcznia()<<" | "
-                    <<recordy.getIDnauczyciela().getNazwiskoNauczyciela()<<" | "
-                    <<recordy.getIDprzedmiotu().getNazwaPrzedmiotu()<<" | ";
+                    std::cout<<std::setw(8)<<recordy.getIDucznia().getNazwiskoUcznia()<<" | "
+                    <<std::setw(8)<<recordy.getIDnauczyciela().getNazwiskoNauczyciela()<<" | "
+                    <<std::setw(8)<<recordy.getIDprzedmiotu().getNazwaPrzedmiotu()<<"\n";
                 });
 }
 
@@ -61,9 +60,9 @@ void Exercise3(const std::vector<Database>& database){
     
     std::for_each(database.begin(),database.end(),lambda);
 
-    std::for_each(FinalRecords.begin(),FinalRecords.end(),[](const Database& record){   std::cout<<record.getIDucznia().getIDucznia()<<" "<<
+    std::for_each(FinalRecords.begin(),FinalRecords.end(),[](const Database& record){   std::cout<<std::setw(8)<<record.getIDucznia().getIDucznia()<<" "<<
                                                                                         record.getIDucznia().getNazwiskoUcznia()<<" | "<< 
-                                                                                        record.getIDnauczyciela().getIDnauczyciela()<<" "<<
+                                                                                        std::setw(8)<<record.getIDnauczyciela().getIDnauczyciela()<<" "<<
                                                                                         record.getIDnauczyciela().getNazwiskoNauczyciela()<<"\n";});
 }
 
