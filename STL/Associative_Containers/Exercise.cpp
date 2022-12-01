@@ -5,6 +5,8 @@
 #include <cmath>
 #include <ostream>
 #include <functional>
+#include <set>
+#include <iomanip>
 
 
 struct Point{
@@ -20,6 +22,13 @@ struct Point{
         return x == other.x && y == other.y;
     }
 
+    bool operator< (const Point& lhs)const {
+        return distance(*this)<distance(lhs);
+    }
+    bool operator> (const Point& lhs)const {
+        return distance(*this)>distance(lhs);
+    }
+
      struct HashFunction
   {
     size_t operator()(const Point& pos) const
@@ -29,6 +38,8 @@ struct Point{
       return xHash ^ yHash;
     }
   };
+
+  friend double distance(const Point& p);
 };
 
 //Shall return distance from {0,0} to Point p{x,y}
@@ -108,7 +119,15 @@ int main(){
             std::cout<<n.first<<" "<<n.second<<"\n";
         } 
     });
+    Point P1{1,2};
+    Point P2{3,4};
+    Point P3{3,7};
+
+    std::set<Point,std::greater<Point>> puunkty{P1,P2,P3};
+
+    std::cout<<std::setprecision(2)<<"DISTANCE:  P1: "<<distance(P1)<<"      P2: "<<distance(P2)<<"      P3: "<<distance(P3)<<"\n";
 
 
+    std::for_each(puunkty.begin(),puunkty.end(),[](const Point& p){ std::cout<<p<<"  ";});
     return 0;
 }
