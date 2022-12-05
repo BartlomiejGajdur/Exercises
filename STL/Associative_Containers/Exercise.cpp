@@ -8,32 +8,31 @@
 
 
 struct Point{
-    int x,y;
+    int x_,y_;
     Point(){}
-    Point(int x, int y) : x(x), y(y) {}
+    Point(int x, int y) : x_(x), y_(y) {}
     friend std::ostream& operator<<(std::ostream& os, const Point& P){
-        return os<<"{"<<P.x<<","<<P.y<<"}";
+        return os<<"{"<<P.x_<<","<<P.y_<<"}";
     } 
 
 
-    bool operator==(const Point& other)const {
-        return x == other.x && y == other.y;
+    bool operator==(const Point& other) const {
+        return x_ == other.x_ && y_ == other.y_;
     }
 
-     struct HashFunction
-  {
-    size_t operator()(const Point& pos) const
-    {
-      size_t xHash = std::hash<int>()(pos.x);
-      size_t yHash = std::hash<int>()(pos.y) << 1;
-      return xHash ^ yHash;
-    }
+     struct HashFunction{
+        size_t operator()(const Point& pos) const
+        {
+        size_t xHash = std::hash<int>()(pos.x_);
+        size_t yHash = std::hash<int>()(pos.y_) << 1;
+        return xHash ^ yHash;
+        }
   };
 };
 
 //Shall return distance from {0,0} to Point p{x,y}
 double distance(const Point& p){
-    return std::sqrt(std::pow(p.x,2)+std::pow(p.y,2));
+    return std::sqrt(std::pow(p.x_,2)+std::pow(p.y_,2));
 }
 
 
@@ -109,6 +108,8 @@ int main(){
         } 
     });
 
+
+    std::cout<<(0b0000000010 >> 1);
 
     return 0;
 }
