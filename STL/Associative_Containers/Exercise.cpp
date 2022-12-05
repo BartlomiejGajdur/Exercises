@@ -5,6 +5,8 @@
 #include <cmath>
 #include <ostream>
 #include <functional>
+#include <set>
+#include <iomanip>
 
 
 struct Point{
@@ -20,6 +22,7 @@ struct Point{
         return x_ == other.x_ && y_ == other.y_;
     }
 
+<<<<<<< HEAD
      struct HashFunction{
         size_t operator()(const Point& pos) const
         {
@@ -27,7 +30,26 @@ struct Point{
         size_t yHash = std::hash<int>()(pos.y_) << 1;
         return xHash ^ yHash;
         }
+=======
+    bool operator< (const Point& lhs)const {
+        return distance(*this)<distance(lhs);
+    }
+    bool operator> (const Point& lhs)const {
+        return distance(*this)>distance(lhs);
+    }
+
+     struct HashFunction
+  {
+    size_t operator()(const Point& pos) const
+    {
+      size_t xHash = std::hash<int>()(pos.x);
+      size_t yHash = std::hash<int>()(pos.y) << 1;
+      return xHash ^ yHash;
+    }
+>>>>>>> c370bb77f9ac32dd0cc7506c89f07026b2e07e39
   };
+
+  friend double distance(const Point& p);
 };
 
 //Shall return distance from {0,0} to Point p{x,y}
@@ -107,9 +129,16 @@ int main(){
             std::cout<<n.first<<" "<<n.second<<"\n";
         } 
     });
+    Point P1{1,2};
+    Point P2{3,4};
+    Point P3{3,7};
 
+    std::set<Point,std::greater<Point>> puunkty{P1,P2,P3};
+
+    std::cout<<std::setprecision(2)<<"DISTANCE:  P1: "<<distance(P1)<<"      P2: "<<distance(P2)<<"      P3: "<<distance(P3)<<"\n";
+
+    std::for_each(puunkty.begin(),puunkty.end(),[](const Point& p){ std::cout<<p<<"  ";});
 
     std::cout<<(0b0000000010 >> 1);
-
     return 0;
 }
