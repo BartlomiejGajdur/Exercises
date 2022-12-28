@@ -18,9 +18,9 @@ FetchContent_MakeAvailable(googletest)
 
 enable_testing()
 
-add_executable(${PROJECT_NAME} ./main.cpp ./Alcohol.cpp ./Coordinates.cpp ./DryFruit.cpp ./Fruit.cpp ./Island.cpp ./Item.cpp ./Map.cpp ./Player.cpp ./Ship.cpp ./Store.cpp ./Time.cpp)
+add_executable(${PROJECT_NAME} ./Src/main.cpp ./Src/Alcohol.cpp ./Src/Coordinates.cpp ./Src/DryFruit.cpp ./Src/Fruit.cpp ./Src/Island.cpp ./Src/Item.cpp ./Src/Map.cpp ./Src/Player.cpp ./Src/Ship.cpp ./Src/Store.cpp ./Src/Time.cpp)
 
-add_executable(${PROJECT_NAME}-ut ./tests/ShipCargoTest.cpp)
+add_executable(${PROJECT_NAME}-ut ./tests/ShipCargoTest.cpp ./Src/Alcohol.cpp ./Src/Coordinates.cpp ./Src/DryFruit.cpp ./Src/Fruit.cpp ./Src/Island.cpp ./Src/Item.cpp ./Src/Map.cpp ./Src/Player.cpp ./Src/Ship.cpp ./Src/Store.cpp ./Src/Time.cpp)
 target_compile_options(${PROJECT_NAME}-ut PRIVATE -Wall -Wextra -Werror)
 target_link_libraries(${PROJECT_NAME}-ut gtest_main)
 

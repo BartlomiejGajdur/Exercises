@@ -1,26 +1,16 @@
 #include <gtest/gtest.h>
-// #include "..\Cargo.hpp"
-// #include "..\Coordinates.hpp"
-// #include "..\Island.hpp"
-// #include "..\Item.hpp"
-// #include "..\Map.hpp"
-// #include "..\Player.hpp"
-// #include "..\Ship.hpp"
-// #include "..\Store.hpp"
-// #include "..\Time.hpp"
-
-#include "..\Alcohol.cpp"
-#include "..\Coordinates.cpp"
-#include "..\DryFruit.cpp"
-#include "..\Fruit.cpp"
-#include "..\Island.cpp"
-#include "..\Item.cpp"
-#include "..\Map.cpp"
-#include "..\Player.cpp"
-#include "..\Ship.cpp"
-#include "..\Store.cpp"
-#include "..\Time.cpp"
-
+#include "../Include/Alcohol.hpp"
+#include "../Include/Cargo.hpp"
+#include "../Include/Coordinates.hpp"
+#include "../Include/DryFruit.hpp"
+#include "../Include/Fruit.hpp"
+#include "../Include/Island.hpp"
+#include "../Include/Item.hpp"
+#include "../Include/Map.hpp"
+#include "../Include/Player.hpp"
+#include "../Include/Ship.hpp"
+#include "../Include/Store.hpp"
+#include "../Include/Time.hpp"
 #include <string>
 #include <iostream>
 #include <vector>
