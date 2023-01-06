@@ -3,8 +3,7 @@
 
 template <typename RealType, typename ImagType>
 auto makeComplex(RealType real, ImagType imag){
-    RealType Imag = imag;
-    return std::complex<RealType>{real,Imag};
+    return std::complex<RealType>{real,static_cast<RealType>(imag)};
 }
 
 int main(){
