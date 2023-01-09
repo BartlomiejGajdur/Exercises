@@ -11,6 +11,7 @@ struct IsSmallPrime<3> : std::true_type{};
 
 template<>
 struct IsSmallPrime<5> : std::true_type{};
+
 template<>
 struct IsSmallPrime<7> : std::true_type{};
 
