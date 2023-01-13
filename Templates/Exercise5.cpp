@@ -1,5 +1,6 @@
 #include <iostream>
 
+//Specjalization for single type
 template <int num>
 struct IsSmallPrime : std::false_type{};
 
@@ -15,6 +16,18 @@ struct IsSmallPrime<5> : std::true_type{};
 template<>
 struct IsSmallPrime<7> : std::true_type{};
 
+//Specjalization for multi type
+template<typename T1, typename T2>
+struct X{};
+
+template<typename T2>
+struct X <int,T2> {};
+
+template<>
+struct X <int,double> {};
+
+template<typename T1>
+struct X <T1,int> {};
 
 int main(){
 
