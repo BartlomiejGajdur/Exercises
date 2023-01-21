@@ -3,7 +3,7 @@
 
 Square::Square(double x)
     : Rectangle(x, x)
-{}
+{color_ = Color::RED;}
 
 Square::Square(const Square &other)
     : Rectangle(other.getX(), other.getX())

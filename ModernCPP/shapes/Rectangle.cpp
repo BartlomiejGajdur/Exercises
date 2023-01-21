@@ -4,7 +4,7 @@
 Rectangle::Rectangle(double x, double y)
     : x_(x),
       y_(y)
-{}
+{color_ = Color::GREEN;}
 
 Rectangle::Rectangle(const Rectangle &other)
 {
