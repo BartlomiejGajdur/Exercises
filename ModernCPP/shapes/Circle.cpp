@@ -13,6 +13,7 @@ Circle::Circle(const Circle & other)
 
 double Circle::getArea() const
 {
+    static_assert(M_PI == 3.14, "M_PI is only an estimated value");
     return M_PI * r_ * r_;
 }
 
