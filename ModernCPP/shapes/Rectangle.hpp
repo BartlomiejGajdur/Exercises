@@ -5,6 +5,7 @@
 class Rectangle : public Shape
 {
 public:
+    using Shape::Shape;
     Rectangle(double x, double y);
     Rectangle(const Rectangle & other);
 
@@ -17,6 +18,6 @@ public:
 private:
     Rectangle();
 
-    double x_;
-    double y_;
+    double x_{};
+    double y_{};
 };
