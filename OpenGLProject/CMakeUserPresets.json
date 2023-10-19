@@ -1,0 +1,9 @@
+{
+    "version": 4,
+    "vendor": {
+        "conan": {}
+    },
+    "include": [
+        "C:\\Users\\veltr\\Desktop\\Exercises\\OpenGLProject\\build\\Release\\generators\\CMakePresets.json"
+    ]
+}
